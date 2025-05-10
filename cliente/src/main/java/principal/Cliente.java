@@ -14,7 +14,7 @@ import vista.*;
  *
  * @author Diurno
  */
-public class Psp18 {
+public class Cliente {
 
 /**
  *
