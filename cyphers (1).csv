@@ -1,0 +1,26 @@
+idDispositivo,nombre,nivel,efecto
+1,ABEYANCE TRAP,1d6 + 1,"To activate the cypher, the user must succeed on a ranged attack against a creature within short range whose level does not exceed the cypher's level. The creature goes into abeyance, exactly as if it had translated to another recursion, except that no version of the creature appears in any other recursion. Instead, the affected creature simply doesn't exist for one hour. At the end of that time, the creature returns, having no memory of lost time or continuity of existence. (Creatures without the spark are not affected by this cypher.)"
+2,AGE TAKER,1d6 + 4,"When activated, the cypher begins a process of rejuvenation that removes years from the wearer's physiological age. Over the course of the next seven days, the wearer sheds a number of years equal to three times the cypher's level. The cypher doesn't regress physiological age past the age of twenty-three years."
+3,ANALEPTIC,1d6 + 2,Substance restores a number of points equal to the cypher's level to the user's Speed Pool.
+4,ANTIDOTE,1d6 + 2,"Ends an ongoing poison, paralysis, or disease condition, if any, already in the user's system."
+5,ARMOR REINFORCER,1d6 + 1,The user's Armor gains an enhancement for a day. Roll a d6 to determine the result.
+6,ATTRACTOR,1d6 + 4,One unanchored item your size or smaller within long range is drawn immediately to the device. This takes one round. The item has no momentum when it arrives.
+7,BLACKOUT,1d6 + 2,"When activated, an area within immediate range of the user becomes secure against any effect outside the area that sees, hears, or otherwise senses what occurs inside. To outside observers, the area is a "blur" to any sense applied. Taps, scrying sensors, and other direct feed surveillance methods are also rendered inoperative within the area for the duration."
+8,CONDITION REMOVER,1d6 + 3,Cures one occurrence of one of the following health conditions. It does not prevent the possibility of future occurrences of the same condition gained from a different or similar source.
+9,CONTEXTUALIZER,1d6 + 2,"Explodes in an immediate radius, changing the context of any creature in the area to the context of the currently occupied recursion. Native creatures and translated visitors are unaffected, but affected creatures who arrived through an inapposite gate are treated as if they had stepped through a translation gate to arrive in the current recursion."
+10,CONTINGENT ACTIVATOR,1d6 + 2,"If activated in conjunction with another cypher, the user can specify a condition under which the linked cypher will activate. The linked cypher retains the contingent command until the cypher is used."
+11,CURATIVE,1d6 + 2,Substance restores a number of points equal to the cypher's level to the user's Might Pool.
+12,CURSE BRINGER,1d6 + 1,"The curse bringer can be activated when given to an individual who doesn't realize its significance. The next time the victim attempts an important task when the cypher is in her possession, the difficulty of the task is modified by three steps to her detriment."
+13,DARKSIGHT,1d6,Grants the ability to see in the dark for eight hours.
+14,DEATH MODULE,1d6,"For the next minute, when the weapon or its ammunition strikes an NPC or creature whose level is equal to or less than the cypher's level, the weapon wielder can choose to make a second attack roll. If the second attack roll is a success, the target is slain outright."
+15,DISGUISE MODULE,1d6 + 2,"For the next hour, the wearer's features become almost identical to those of one designated person the wearer has previously interacted with. This lowers the difficulty by two steps when the wearer attempts to disguise herself as the designated person."
+16,DRAINING CAPACITOR,1d6 + 2,"An object connected to the cypher is drained of energy; it can be used to damage, recharge, or enhance items depending on how the charge is spent."
+17,EFFECT RESISTANCE,1d6 + 1,Provides a chance for additional resistance to direct damaging effects of all kinds (except physical attacks) for a day.
+18,EFFORT ENHANCER,1d6,The user can apply one level of Effort to a noncombat task without spending any points from a Pool.
+19,EFFORT ENHANCER (COMBAT),1d6 + 1,"For one hour, the user can apply one level of Effort to any task (including combat) without spending points, once setup is complete."
+20,ENDURING SHIELD,1d6 + 4,"For a day, the wearer of the activated cypher enjoys the effect of an asset to Speed defense rolls."
+21,EQUIPMENT CACHE,1d6 + 1,The character can retrieve a piece of equipment available in the current recursion. The item persists for up to 24 hours.
+22,FLASHBURST,1d6 + 2,"If thrown, explodes in an immediate radius, blinding all within it for one minute."
+23,FOCUS HOOK,1d6 + 2,Allows the user to retain the focus of a previous recursion even if not normally allowed.
+24,FORCE ARMOR PROJECTOR,1d6 + 3,"Creates a shimmering energy field around the user for one hour, providing +3 Armor (+4 if level 5 or higher)."
+25,FORCE SCREEN PROJECTOR,1d6 + 3,Creates an immobile plane of solid force (20 ft x 20 ft) for one hour.
