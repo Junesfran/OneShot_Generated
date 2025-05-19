@@ -1,6 +1,7 @@
+ 
+@
+
 ANGIOPHAGE 3 (9)
-"If your heart graft gets ideas of its own, you're probably already dead."
- ~a message discovered in the All Song
 -----
 For years, the Ankaseri faction sold an artificial heart graft, one that increased the stamina and
 strength of its recipients. Like many grafts available in Ruk, the Ankaseri heart required little in the
@@ -51,6 +52,8 @@ is found dead with no heart. Alternatively,
 he stops midsentence and a hungry
 angiophage bursts out of his chest.
 
+@
+
 GREEN HOMUNCULUS 3 (9)
 -----
 A homunculus with barely a trace of soul almost invariably comes out of the Body Vats with the
@@ -84,6 +87,8 @@ be intimidated into fleeing by a startling display (like wild animals can), such
 leader or pulling off another impressive or unexpected stunt.
 Use: The PCs witness a trade shipment from a distant part of Ardeyn dropped by accident. The
 container breaks open to reveal a lot of green homunculi, ravenous from their long journey. 
+
+@
 
 RED HOMUNCULUS 5 (15)
 -----
@@ -124,6 +129,8 @@ regarding an ancient qephilim city, and
 the PCs notice.
 Loot: Very often, a squad of reds will have one or
 two cyphers between them.
+
+@
 
 CHAOSPHERE HIERARCH 5 (15)
 -----
@@ -181,6 +188,8 @@ Loot: A hierarch has 1d100 + 2,000 units of
 currency suitable to a recursion it's found
 within, two cyphers, and an artifact.
 
+@
+
 CYPHER EATER 3 (9)
 -----
 The 10-foot-long (3 m) cypher eater grazes on manifestations of energy that crystallize out of the
@@ -229,6 +238,8 @@ is promised in cyphers or in violet spiral.
 Loot: A cypher eater doesn't have loot, but if
 encountered out in the Strange, it's likely not far from
 one or two cyphers that can be extracted. 
+
+@
 
 DARK ENERGY PHARAOH 8 (24)
 -----
@@ -283,6 +294,8 @@ Loot: A dark energy pharaoh has
 1d6 + 3 cyphers and a couple of
 artifacts.
 
+@
+
 DEMON OF LOTAN 5 (15)
 -----
 If a wandering spirit in Ardeyn is not corralled by the Court of Sleep, it descends the endless dark
@@ -333,6 +346,8 @@ demon's presence. If its presence is known, the demon might negotiate, but only 
 of lies and obscenity, and the demon likely betrays any deal reached.
 Use: A crypt found beneath a newer structure has demons within it. A call goes out for someone
 to clean out the threats before they do harm. 
+
+@
 
 DLAMMA 6 (18)
 -----
@@ -390,7 +405,9 @@ find.
 Loot: A dlamma usually carries 1d6 × 100 crowns
 and a few cyphers.
 
- DRAGON 7 (21)
+@
+
+DRAGON 7 (21)
  -----
 The massive, feathered dragons of Ardeyn are exceptionally territorial and competitive. They love
 games of all sorts, especially ones that end with the nondragon loser being eaten. Unfortunately
@@ -447,6 +464,8 @@ contain 2d6 cyphers, 1d6 × 200 gold crowns, and
 possibly a few artifacts (but a dragon's lair is
 usually well guarded).
 
+@
+
 GIANT 6 (18)
 -----
 The evidence of a giant's rampage is discovered more often than the perpetrator herself. That's
@@ -487,7 +506,9 @@ Use: During the last spring storm, a giant came down out of the mountains and la
 a village. Survivors put together an appeal for someone to venture into the giant's mountain lair
 and destroy him. 
 
- GNATHOSTOME 4 (12)
+@
+
+GNATHOSTOME 4 (12)
  -----
 Gnathostomes lurk in dark places, preying on other creatures using ambush tactics. They are
 drawn to inhabited locations because such places offer plenty of the cerebrospinal fluid and fatty
@@ -520,7 +541,9 @@ PCs to track down the gnathostome responsible and see if that information can be
 Loot: Gnathostomes retain elements of their sampler roots, and they could carry one or two
 cyphers in a collection compartment.
 
- GOLEM 6 (18)
+@
+
+GOLEM 6 (18)
  -----
 Golems were summoned to mobility by Incarnations during the Age of Myth to serve as soldiers,
 couriers, and banner-bearers. Now that those wars are over and the Incarnations are gone, many
@@ -577,7 +600,9 @@ breaking free of the binding spells in
 its rage over being denied the peace of
 death.
 
- GREEN ONE 4 (12)
+@
+
+GREEN ONE 4 (12)
 -----
 Green ones are a warrior race in the recursion of Old Mars. The green-skinned adults stand around
 15 feet (5 m) high. They sport large eyes, tusks, and two fully functioning sets of arms. The green
@@ -618,6 +643,8 @@ a group of contractors to discover what's been
 happening to their harvesters.
 Loot: A band of green ones has a couple of rifles, dried food and water,
 knives, and maybe a single cypher between them.
+
+@
 
 HYDRA 6 (18)
 -----
@@ -665,6 +692,8 @@ and other valuables into their hair;
 a defeated hydra may possess 1d6
 cyphers and 1d100 crowns.
 
+@
+
 LESSER INKLING 2 (6)
 -----
 Lesser inklings have as little substance and are as dangerous as regular shadows, but the more
@@ -692,6 +721,8 @@ Interaction: Lesser inklings aren't really intelligent. They're drawn to feed an
 Use: A swarm of inklings seep into a recursion through a fissure in existence, and infest a
 basement, tomb, or closet. Alternatively, a shattered habitat or vessel found in the Strange
 might contain inklings.
+
+@
 
 INKLING SNATCHER 7 (21)
 -----
@@ -730,7 +761,9 @@ fled from if too prolific.
 Loot: Sometimes an inkling snatcher with a victim's likeness has a couple of cyphers and an
 artifact from that victim.
 
- JABBERWOCK 7 (21)
+@
+
+JABBERWOCK 7 (21)
 -----
 Overhearing the burbling jabber of three quarrelsome siblings is unpleasant at best. At worst,
 it could portend the imminent appearance of the jabberwock. Given how disagreeable such a
@@ -778,6 +811,8 @@ possibly a
 Wonderland
 artifact.
 
+@
+
 KRAY SCURRIER 3 (12)
 -----
 A kray seedling that takes root in a living creature needs to gestate for only a few minutes before
@@ -806,6 +841,8 @@ Use: A large family of farmers in the Ardeyn hinterlands has become infected, al
 boy, who has run away. PCs might find the boy along the way to another adventure and hear how
 his parents and siblings "aren't the same as they used to be." That's because they're all being
 puppeted by kray scurriers.
+
+@
 
 KRAY DRONE 5 (15)
 -----
@@ -836,6 +873,8 @@ recursion it finds to make way for the kray broodmother planetovore.
 Use: A kray drone is wreaking havoc in a neighborhood of a large city. Pleas for aid come from all
 quarters.
 Loot: A cypher or two can sometimes be pried loose from a kray drone's corpse
+
+@
 
 KRO COURSER 4 (12)
 -----
@@ -871,6 +910,8 @@ Use: A pack of kro coursers vaults from the shadows and into the flanks of a tra
 has interests in an alternate recursion. If the PCs don't intervene, the pack will kill everyone.
 Loot: The cut-open gullet of a kro courser contains a disgusting knot of decaying flesh, dirt, and
 grave worms, as well as a small amount of crow coin and possibly a cypher.
+
+@
 
 MARROID 6 (18)
 -----
@@ -921,6 +962,8 @@ be thrown to create effects like those
 described under Combat. Salvaged
 enzyme orbs have a shelf life of a
 couple of days before they decay
+
+@
 
 MONITOR 5 (15)
 -----
@@ -977,6 +1020,8 @@ a monitor's monocle. Many
 also usually carry one or two
 cyphers with them.
 
+@
+
 MYRIAND VOLUNTEER 4 (12)
 -----
 Individuals who make up the force are not full-time myriands. They are shift workers who have a
@@ -1006,6 +1051,8 @@ Use: PCs new to Ruk are accosted by a myriand who witnessed them breaking a mino
 rule of Harmonious.
 Loot: A defeated myriand returns to its pre-myriand state, which is a regular Ruk native who might
 possess a stick containing 1d6 × 20 bits on it.
+
+@
 
 MYRIAND VETERAN 6 (18)
 -----
@@ -1040,6 +1087,8 @@ potential suspect.
 Use: A large alteration in or around Harmonious could draw a myriand veteran to investigate.
 Loot: A defeated veteran does not metamorphosize back to a nonmyriand form. It may possess
 one or two noncombat cyphers.
+
+@
 
 NEZEREK 5 (15)
 -----
@@ -1076,6 +1125,8 @@ attitude of indifference to one of predation.
 Use: PCs traveling into the Strange for an extended period might notice a nezerek soaring in the
 distance.
 Loot: A nezerek's unraveled form contains 1d6 cyphers.
+
+@
 
 FREE BATTALION MERCENARIES 3 (9)
 -----
@@ -1123,6 +1174,8 @@ regular warriors (level 2 creatures).
 Loot: Any given Free Battalion merc has 1d6
 crowns in addition to weapons, medium armor,
 and basic gear. 
+
+@
 
 UMBER JUDGE 4 (12)
 -----
@@ -1172,6 +1225,8 @@ crowns, 1d6 cyphers, an artifact, and a wide
 variety of tools. The qephilim might also have
 other normal gear. 
 
+@
+
 QINOD TESTER 4 (12)
 -----
 This machine entity is a 5-foot-diamteter (2 m) mass of metal alloy manipulation cables
@@ -1206,6 +1261,8 @@ is just as likely to ignore PCs as attack them, especially if already involved i
 observation.
 Use: A tester is encountered in the Periphery while the PCs are on another task.
 Loot: One or two weaponlike artifacts could be salvaged from the remains of a tester.
+
+@
 
 QINOD DECONSTRUCTOR 8 (24)
 -----
@@ -1249,6 +1306,8 @@ Loot: One or two artifacts
 resembling weapons could be
 salvaged from the remains of a
 deconstructor.
+
+@
 
 SARK 4 (12)
 -----
@@ -1308,7 +1367,9 @@ perhaps a cypher between them. Pack
 leaders might have cyphers of their own, or
 even an artifact.
 
- SHOGGOTH 7 (21)
+@
+
+SHOGGOTH 7 (21)
 -----
 Shoggoths vary in size, but usually the smallest are 10 feet (3 m) across at least. They are the
 product of incredibly advanced bioengineering by a strange race in the distant past. Angry, vicious
@@ -1335,6 +1396,8 @@ every surface is clear of dirt and debris. Soon they discover why—a shoggoth s
 its halls, absorbing everything it comes upon (and it fills the passages it moves down, floor to
 ceiling, wall to wall).
 Loot: Within a shoggoth, one might find a cypher or a relic of the Strange. 
+
+@
 
 SIRRUSH 5 (15)
 -----
@@ -1373,6 +1436,8 @@ Use: The PCs visit a new location and are invited to give their respects at a ne
 deity sometimes manifests to answer questions and, in return, accept offerings.
 Loot: The inner sanctum of a defeated sirrush might contain several weeks' worth of food, 3d100
 crowns, one or two cyphers, and possibly an artifact. 
+
+@
 
 SOULSHORN 8 (24)
 -----
@@ -1431,7 +1496,9 @@ Loot: The inner sanctum of a defeated soulshorn might
 contain 10d100 crowns, 1d6 + 3 cyphers, and at least one
 artifact. 
 
- SPIRIT OF WRATH 2 (6)
+@
+
+SPIRIT OF WRATH 2 (6)
 -----
 When a spirit of a dead creature fails to find its way to the Night Vault, escapes the same, or is
 summoned forth by a necromancer, it may become a bodiless spirit of rage and loss: a spirit of
@@ -1482,6 +1549,8 @@ Queendom, a section of the Path of the Dead). Even if all the
 wraths are slain, another swarm appears in the location within a
 week. Somewhere nearby, a necromancer is active.
 
+@
+
 SPORE WORM 5 (15)
 -----
 As large as an adult human, the spore worm is a strange serpentine creature of kaleidoscope
@@ -1520,6 +1589,8 @@ train or even placate.
 Use: A spore worm makes an excellent encounter in
 the wilds, showcasing the dangers of Ruk.
 
+@
+
 THONIK 3 (9)
 -----
 A thonik looks like a particularly dense area of chaotic fractal pattern undulating through the Strange.
@@ -1555,6 +1626,8 @@ given territory, to avoid attacking certain individuals, and so on.
 Use: The PCs find the interface to a previously unknown recursion in the Strange. Guarding the
 interface, however, is a pack of thoniks.
 
+@
+
 UMBER WOLF 3 (9)
 -----
 Umber wolves should be feared as much by the living as by the dead, given their taste for souls,
@@ -1587,6 +1660,8 @@ Interaction: Only members of the Court of Sleep have a hope of dealing peacefull
 wolves. To all others, they are vicious, partly supernatural predators.
 Use: As Death's moon rises, a pack of umber wolves sets to howling, and by the sound of it,
 they're close and getting closer to the PCs. 
+
+@
 
 UTRICLE 5 (15)
 -----
@@ -1639,6 +1714,8 @@ result, an utricle body could contain
 bitwallets, a cypher or two, and other
 equipment.
 
+@
+
 VARIOKARYON 4 (12)
 -----
 A body can take only so many grafts before it either shuts down or goes insane. When someone
@@ -1688,6 +1765,8 @@ charade and attacks.
 Loot: A variokaryon usually has weapons and light armor, plus a bitwallet with
 1d6 × 100 bits.
 
+@
+
 SCLERID PATCH 4 (12)
 -----
 This creature appears as a growth of weeds emerging from the surface of a structure, the ground,
@@ -1727,6 +1806,8 @@ and the sure knowledge of continual, unstoppable growth.
 Use: A sclerid patch is growing like a barnacle on a larger creature of the Strange or within a
 recursion where natives travel into the Strange.
 
+@
+
 SCLERID EXECUTIONER 5 (15)
 -----
 This plantlike creature looks different depending on the recursion or prime world where it
@@ -1749,6 +1830,8 @@ Interaction: Executioners seek to kill all living creatures and destroy all arti
 not negotiate.
 Use: If one or more sclerid executioners is encountered, that probably means a serious sclerid
 patch infestation is somewhere close at hand.
+
+@
 
 VENOM TROOPER 3 (9)
 -----
@@ -1780,6 +1863,8 @@ investigation.
 Loot: A dose of their unique
 poison is usually stashed
 somewhere on their person.
+
+@
 
 WINGED MONKEY 3 (9)
 -----
