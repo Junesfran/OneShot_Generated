@@ -47,7 +47,7 @@ public class ClasesRepository {
                 while (sc.hasNext()) {                    
                     info.append(sc.nextLine());     
                 }
-                //ME pasan datos, transformar el stringBUilder en datos
+                //Me pasan datos, transformar el stringBuilder en datos
                 JSONObject datos = new JSONObject(String.valueOf(info));
                 for (int i = 0; i < index; i++) {
                     clases.add(datos.getJSONArray("results").getJSONObject(i).getString("index"));
