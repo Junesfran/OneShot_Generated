@@ -23,6 +23,7 @@ def user_required():
                 print(format_exc())
                 return {"error": "Invalid token"}, 401
             
+            # TODO: hacer esta wea
             user: User = UserDAO().get_by_id(token)
             
             
