@@ -1,0 +1,71 @@
+"Machete",200,,Medium,,Earth
+"Compound bow",500,"Long range",Medium,,Earth 
+"Medium handgun",700,"Long range",Medium,,Earth
+"Medium bladed weapon",800,,Medium,,Earth
+"Submachine gun",1.000,"Rapid-fire weapon",Medium,,Earth
+"3-foot pipe wrench",200,"Also tightens pipes",Medium,,Earth
+Katana,800,,Heavy,,Earth
+"Medieval greatsword",1.000,,Heavy,,Earth
+"Heavy handgun",1.300,"Long range",Heavy,,Earth
+Rifle,2.000,"300-foot (100 m) range",Heavy,,Earth
+"Assault rifle",3.000,"Rapid-fire weapon",Heavy,,Earth
+"Shotgun",350,"Immediate range",Heavy,,Earth
+"Mini GPS tracker",200,"Self-powered",,,Earth
+"Telephoto lens x 100",400,"Comes with mount",,,Earth
+"Nightvision goggles",1.000,"Requires a connection with military or other agency",,,Earth
+"Pen video camera",50,"Press to record",,,Earth
+"Concealed microphone",100,"Record or transmit",,,Earth
+"Concealed camera",150,"Record or transmit",,,Earth
+"Motion sensor",100,"Audible or silent alarm",,,Earth
+"Disguise kit",120,"Asset to disguise tasks",,,Earth
+"Automation 'smart home' kit",300,"Wi-Fi network hub for motion sensor, hidden camera, hidden mic, and so on",,,Earth
+"Electronic key fob",800,"Wireless entry to most cars with such locks",,,Earth
+"Software malware package",250,"Pwn a target's laptop, computer, or smartphone",,,Earth
+"Complete first aid kit",50,"Adds 1 to recovery rolls for rests longer than one round (ten uses)",,,Earth
+"Smartphone",300,"Some phones talk back if talked to",,,Earth
+"Flashlight",10,"Bright light at immediate range, dim light at short range",,,Earth
+"Duct tape",5,"Useful for so many reasons",,,Earth
+"Straightjacket",450,,,,Earth
+"Handcuffs",35,"Comfort fit costs extra",,,Earth
+"Padlock with keys",10,,,,Earth
+"Geiger counter",250,,,,Earth
+"Bolt cutter",50,,,,Earth
+"Cigar lighter, flameless",50,"Wind won't blow out torch",,,Earth
+"Gas mask",150,,,,Earth
+"Shield",30,"Asset for Speed defense tasks",,,Ardeyn
+"Leather jerkin",30,,Light,Ardeyn
+"Hides and furs",20,,Light,Ardeyn
+"Qephilim-craft coat*",4.000,,,Light,Ardeyn
+"Brigandine",50,,,Medium,Ardeyn
+"Chainmail",60,,,Medium,Ardeyn
+"Relic breastplate*",5.000,,,Medium,Ardeyn
+"Plate armor",150,,,Heavy,Ardeyn
+"Scale armor",120,,,Heavy,Ardeyn
+"Incarnation-blessed plate armor*",10.000,,,Heavy,Ardeyn
+"Club",5,,Light,,Ardeyn
+"Dagger",10,,Light,,Ardeyn
+"Sabre",20,,Light,,Ardeyn
+"Shortbow",80,"Long range",,Light,,Ardeyn
+"12 arrows",10,,Light,,Ardeyn
+"Sickle",10,,Light,,Ardeyn
+"Unarmed (punch, kick, elbow)",,,Light,,Ardeyn
+"Whip",20,,Light,,Ardeyn
+"Battleaxe",30,,Medium,,Ardeyn
+"Bow",40,"Long range",Medium,,Ardeyn
+"Crossbow",50,"Long range",Medium,,Ardeyn
+"Flail",30,,Medium,,Ardeyn
+"Hammer",20,,Medium,,Ardeyn
+"Javelin",10,"Short range",Medium,,Ardeyn
+"Mace",20,,Medium,,Ardeyn
+"Polearm",30,"Often used two-handed",Medium,,Ardeyn
+"Quarterstaff",12,"Often used two-handed",Medium,,Ardeyn
+"Spear",20,"Can be thrown up to long range",Medium,,Ardeyn
+"Shamshir (scimitar)",35,,Medium,,Ardeyn
+"Trident",25,,Medium,,Ardeyn
+Heavy (6 points of damage) Price Notes
+"Greataxe",50,,Heavy,,Ardeyn
+"Heavy crossbow",70,"Long range, action to reload",Heavy,,Ardeyn
+"12 heavy bolts",35,,Heavy,,Ardeyn
+"Lance",40,"Often used on a mount",Heavy,,Ardeyn
+"Maul",40,,Heavy,,Ardeyn
+"Talwar (great shamshir)",55,,Heavy,,Ardeyn

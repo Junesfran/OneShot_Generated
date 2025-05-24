@@ -4,6 +4,10 @@
  */
 package vista;
 
+
+import java.awt.Insets;
+import javax.swing.UIManager;
+
 /**
  *
  * @author Nestor y Asociados
@@ -15,6 +19,12 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        
+        UIManager.getLookAndFeelDefaults().put("TabbedPane:TabbedPaneTab.contentMargins", new Insets(10, 100, 0, 500));
+        
+        jTabbedPane1.setTitleAt(0, "DUNGEON MASTER");
+        jTabbedPane1.setTitleAt(1, "JUGADOR");
+        jTabbedPane1.setTitleAt(2, "ARCHIVADOS");
     }
 
     /**
@@ -26,18 +36,95 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        pMaster = new javax.swing.JPanel();
+        pJugador = new javax.swing.JPanel();
+        pArchivadas = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPane1.setBackground(new java.awt.Color(102, 255, 102));
+
+        pMaster.setBackground(new java.awt.Color(0, 153, 0));
+
+        javax.swing.GroupLayout pMasterLayout = new javax.swing.GroupLayout(pMaster);
+        pMaster.setLayout(pMasterLayout);
+        pMasterLayout.setHorizontalGroup(
+            pMasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        pMasterLayout.setVerticalGroup(
+            pMasterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 368, Short.MAX_VALUE)
         );
+
+        jTabbedPane1.addTab("tab1", pMaster);
+
+        pJugador.setBackground(new java.awt.Color(0, 153, 0));
+
+        javax.swing.GroupLayout pJugadorLayout = new javax.swing.GroupLayout(pJugador);
+        pJugador.setLayout(pJugadorLayout);
+        pJugadorLayout.setHorizontalGroup(
+            pJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        pJugadorLayout.setVerticalGroup(
+            pJugadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 368, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab2", pJugador);
+
+        pArchivadas.setBackground(new java.awt.Color(0, 153, 0));
+
+        javax.swing.GroupLayout pArchivadasLayout = new javax.swing.GroupLayout(pArchivadas);
+        pArchivadas.setLayout(pArchivadasLayout);
+        pArchivadasLayout.setHorizontalGroup(
+            pArchivadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        pArchivadasLayout.setVerticalGroup(
+            pArchivadasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 368, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab3", pArchivadas);
+
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, -1));
+        jTabbedPane1.getAccessibleContext().setAccessibleName("DUNGEON MASTER\nJUGADOR\nARCHIVADOS\n");
+
+        jPanel4.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 630, 170));
+
+        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +165,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel pArchivadas;
+    private javax.swing.JPanel pJugador;
+    private javax.swing.JPanel pMaster;
     // End of variables declaration//GEN-END:variables
 }
