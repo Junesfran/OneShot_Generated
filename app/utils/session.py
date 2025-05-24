@@ -4,6 +4,8 @@ from app.model.sql.model.user import User
 from app.model.sql.dao.user import UserDAO
 from app.utils.security import verify_and_extract_token
 
+from app.model.request.token import Token_data
+
 def user_required():
     def wrapper(function):
         def second_wrap(*args, **kwargs):
@@ -18,14 +20,19 @@ def user_required():
                 return {"error": "No token was provided"}, 401
             
             try:
-                token_payload: dict = verify_and_extract_token(token)
+                raw_token_payload: dict = verify_and_extract_token(token)
+                token_payload = Token_data(**raw_token_payload)
             except Exception as e:
                 print(format_exc())
                 return {"error": "Invalid token"}, 401
             
-            # TODO: hacer esta wea
-            user: User = UserDAO().get_by_id(token)
+            user: User = UserDAO().get_by_id(token_payload.user_id)
             
+            if(user == None):
+                print(format_exc())
+                return {"error": "Invalid token"}, 401
+            
+            return function(*args, **kwargs, user = user)
             
         return second_wrap
     return wrapper

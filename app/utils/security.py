@@ -35,7 +35,7 @@ def decrypt_aes256(data: str) -> str:
     based_data = base64.b64decode(data)
     
     iv = based_data[:16]
-    cipher_text = data[16:]
+    cipher_text = based_data[16:]
     
     cipher = Cipher(algorithm=algorithms.AES256(private_key), mode=modes.CBC(iv), backend=default_backend())
     decryptor = cipher.decryptor()

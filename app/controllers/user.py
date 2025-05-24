@@ -40,3 +40,8 @@ class User_controller:
                 return session_token
         
         return None
+    
+    def logout(self, user_id: int) -> bool:
+        user_dao = UserDAO()
+        
+        return user_dao.set_token_for(user_id, None)
