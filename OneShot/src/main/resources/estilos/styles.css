@@ -1,0 +1,21 @@
+.tab {
+
+    -fx-pref-width: 200;
+    -fx-text-alignment: center;
+} 
+.tab-header-background {
+    -fx-background-color:transparent
+}
+
+.tab-pane{
+    -fx-padding: 0 -1 -1 -1
+}
+
+.panelBotones{
+    -fx-background-color: #205f76
+}
+
+.botones{
+    -fx-backgroud-color: #8e5d16;
+    -fx-font-weight: bold;
+}
