@@ -1,71 +1,66 @@
-"Machete",200,,Medium,,Earth
-"Compound bow",500,"Long range",Medium,,Earth 
-"Medium handgun",700,"Long range",Medium,,Earth
-"Medium bladed weapon",800,,Medium,,Earth
-"Submachine gun",1.000,"Rapid-fire weapon",Medium,,Earth
-"3-foot pipe wrench",200,"Also tightens pipes",Medium,,Earth
-Katana,800,,Heavy,,Earth
-"Medieval greatsword",1.000,,Heavy,,Earth
-"Heavy handgun",1.300,"Long range",Heavy,,Earth
-Rifle,2.000,"300-foot (100 m) range",Heavy,,Earth
-"Assault rifle",3.000,"Rapid-fire weapon",Heavy,,Earth
-"Shotgun",350,"Immediate range",Heavy,,Earth
-"Mini GPS tracker",200,"Self-powered",,,Earth
-"Telephoto lens x 100",400,"Comes with mount",,,Earth
-"Nightvision goggles",1.000,"Requires a connection with military or other agency",,,Earth
-"Pen video camera",50,"Press to record",,,Earth
-"Concealed microphone",100,"Record or transmit",,,Earth
-"Concealed camera",150,"Record or transmit",,,Earth
-"Motion sensor",100,"Audible or silent alarm",,,Earth
-"Disguise kit",120,"Asset to disguise tasks",,,Earth
-"Automation 'smart home' kit",300,"Wi-Fi network hub for motion sensor, hidden camera, hidden mic, and so on",,,Earth
-"Electronic key fob",800,"Wireless entry to most cars with such locks",,,Earth
-"Software malware package",250,"Pwn a target's laptop, computer, or smartphone",,,Earth
-"Complete first aid kit",50,"Adds 1 to recovery rolls for rests longer than one round (ten uses)",,,Earth
-"Smartphone",300,"Some phones talk back if talked to",,,Earth
-"Flashlight",10,"Bright light at immediate range, dim light at short range",,,Earth
-"Duct tape",5,"Useful for so many reasons",,,Earth
-"Straightjacket",450,,,,Earth
-"Handcuffs",35,"Comfort fit costs extra",,,Earth
-"Padlock with keys",10,,,,Earth
-"Geiger counter",250,,,,Earth
-"Bolt cutter",50,,,,Earth
-"Cigar lighter, flameless",50,"Wind won't blow out torch",,,Earth
-"Gas mask",150,,,,Earth
-"Shield",30,"Asset for Speed defense tasks",,,Ardeyn
-"Leather jerkin",30,,Light,Ardeyn
-"Hides and furs",20,,Light,Ardeyn
-"Qephilim-craft coat*",4.000,,,Light,Ardeyn
-"Brigandine",50,,,Medium,Ardeyn
-"Chainmail",60,,,Medium,Ardeyn
-"Relic breastplate*",5.000,,,Medium,Ardeyn
-"Plate armor",150,,,Heavy,Ardeyn
-"Scale armor",120,,,Heavy,Ardeyn
-"Incarnation-blessed plate armor*",10.000,,,Heavy,Ardeyn
-"Club",5,,Light,,Ardeyn
-"Dagger",10,,Light,,Ardeyn
-"Sabre",20,,Light,,Ardeyn
-"Shortbow",80,"Long range",,Light,,Ardeyn
-"12 arrows",10,,Light,,Ardeyn
-"Sickle",10,,Light,,Ardeyn
-"Unarmed (punch, kick, elbow)",,,Light,,Ardeyn
-"Whip",20,,Light,,Ardeyn
-"Battleaxe",30,,Medium,,Ardeyn
-"Bow",40,"Long range",Medium,,Ardeyn
-"Crossbow",50,"Long range",Medium,,Ardeyn
-"Flail",30,,Medium,,Ardeyn
-"Hammer",20,,Medium,,Ardeyn
-"Javelin",10,"Short range",Medium,,Ardeyn
-"Mace",20,,Medium,,Ardeyn
-"Polearm",30,"Often used two-handed",Medium,,Ardeyn
-"Quarterstaff",12,"Often used two-handed",Medium,,Ardeyn
-"Spear",20,"Can be thrown up to long range",Medium,,Ardeyn
-"Shamshir (scimitar)",35,,Medium,,Ardeyn
-"Trident",25,,Medium,,Ardeyn
-Heavy (6 points of damage) Price Notes
-"Greataxe",50,,Heavy,,Ardeyn
-"Heavy crossbow",70,"Long range, action to reload",Heavy,,Ardeyn
-"12 heavy bolts",35,,Heavy,,Ardeyn
-"Lance",40,"Often used on a mount",Heavy,,Ardeyn
-"Maul",40,,Heavy,,Ardeyn
-"Talwar (great shamshir)",55,,Heavy,,Ardeyn
+"Backpack",20,,,,Ardeyn
+"Bedroll",20,,,,Ardeyn
+"Book",150,"Asset to roll concerning book topic after thirty minutes spent reading",,,Ardeyn
+"Burlap sack",3,,,Ardeyn
+"Chalk, 7 pieces",3,,,,Ardeyn
+"Ale/wine/other alcohol (glass)",2,,,,Ardeyn
+"Ale/wine/other alcohol (bottle)",12,,,,Ardeyn
+"Boots or shoes",10,,,,Ardeyn
+"Nargila (water pipe)",30,,,,Ardeyn
+"Nargila tobacco",2,,,,Ardeyn
+"Clothing",10,"Fine clothing: up to 50 crowns",,,Ardeyn
+"Meal",2,"Very nice meal: up to 50 crowns",,,Ardeyn
+"Rations for one day",15,"Crowbar 20",,,Ardeyn
+"Disguise kit",120,"Asset to disguise tasks",,,Ardeyn
+"Explorer's pack",150,"50 feet (15 m) rope, three days' rations, three spikes, hammer, warm clothes, sturdy boots, and three torches,,,Ardeyn"
+"First aid kit",100,"Asset to healing tasks",,,Ardeyn
+"Grappling hook",30,,,,Ardeyn
+"Lockpicks",50,,,,Ardeyn
+"Matchsticks (10)",10,,,,Ardeyn
+"Pouch or other small container",5,,,,Ardeyn
+"Rope (50 feet / 15 m)",20,,,,Ardeyn
+"Signal horn2,10,"Audible for 3 miles (5 km)",,,Ardeyn
+"Spikes and hammer",30,,,,Ardeyn
+"String (200 feet / 60 m)",1,,,,Ardeyn
+"Tent",30,,,,Ardeyn
+"Torches (2)",5,,,,Ardeyn
+"Second skin",10,,,Light,Ruk
+"Plastiskin",15,,,Light,Ruk
+"Slicksuit",20,,,Light,Ruk
+"Carapace",55,,,Medium,Ruk
+"Lifesuit",90,,,Medium,Ruk
+"Spiked carapace",75,,,Medium,Ruk
+"Heavy carapace",350,,,Heavy,Ruk
+"Heavy spiked carapace",400,,,Heavy,Ruk
+"Bio-armor",1.000,,,Heavy,Ruk
+"Blowgun",1,"Short range",Light,,Ruk
+"12 darts",3,,Light,,Ruk
+"Finger needle",2,"Excellent for delivering poisons",Light,,Ruk
+"Knife",1,"Can be thrown up to short range",Light,,Ruk
+"Needler",5,"See further notes",,Light,,Ruk
+"Magazine of 10 needles",3,,Light,,Ruk
+"Quiver shiv",50,"Ignores Armor",Light,,Ruk
+"Spore pistol",10,"See further notes",Light,,Ruk
+"Caustic sprayer",20,"See further notes",Medium,,Ruk
+"Deathblade",5,,Medium,,Ruk
+"Longsword",3,,Medium,,Ruk
+"Mace",3,,Medium,,Ruk
+"Spike pistol",20,"Long range, self-generates ammo",Medium,,Ruk
+"Spine lance",40,"See further notes",Medium,,Ruk
+"Spear",3,"Can be thrown up to long range",Medium,,Ruk
+"Heavy spear",5,,Heavy,,Ruk
+"Pole axe",5,,Heavy,,Ruk
+"Slaughter accelerator",55,"See further notes",Heavy,,Ruk
+"Spike rifle",35,"Long range, self-generates ammo",Heavy,,Ruk
+"Binoculars",10,,,Ruk
+"Breather",8,,,Ruk
+"Clothing",3,,,Ruk
+"Disguise graft",25,,,Ruk
+"Healing kit",25,"Asset to healing tasks",,Ruk
+"Heavy tools",3,,,Ruk
+"Flashlight or headlamp",5,,,Ruk
+"Light tools",3,,,Ruk
+"Pod launcher",20,,,Ruk
+"Spore filter mask",20,,,Ruk
+"Umbilical",10,,,Ruk
+"Wing glider",7,,,Ruk
