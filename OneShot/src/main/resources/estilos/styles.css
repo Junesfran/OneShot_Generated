@@ -1,7 +1,13 @@
 .tab {
     -fx-pref-width: 200;
     -fx-background-color: #41c85e;
+    
 } 
+
+.tab-pane .tab-label {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
 
 .tab:selected {
     -fx-background-color: #2c9041;
@@ -13,6 +19,8 @@
 }
 
 .tab-pane{
+    -fx-alignment: center;
+    -fx-text-alignment: center;
     -fx-background-color: #2c9041;
     -fx-padding: 0 -1 -1 -1
 }
