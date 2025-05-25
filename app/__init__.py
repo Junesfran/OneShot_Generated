@@ -19,3 +19,6 @@ app.register_blueprint(test)
 
 from app.routes.user import user
 app.register_blueprint(user)
+
+from app.routes.manual import manual
+app.register_blueprint(manual)
