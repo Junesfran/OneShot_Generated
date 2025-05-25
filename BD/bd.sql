@@ -47,7 +47,7 @@ DROP TABLE IF EXISTS `TheStrange`.`HabilidadRasgo` ;
 
 CREATE TABLE IF NOT EXISTS `TheStrange`.`HabilidadRasgo` (
   `nombre` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(255) NULL DEFAULT NULL,
+  `descripcion` LONGTEXT NULL DEFAULT NULL,
   `rango` INT NULL DEFAULT NULL,
   `coste` INT NULL DEFAULT NULL,
   `reserva` VARCHAR(45) NULL DEFAULT NULL,
@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `TheStrange`.`Efecto` ;
 CREATE TABLE IF NOT EXISTS `TheStrange`.`Efecto` (
   `idEfecto` INT NOT NULL,
   `tipo` VARCHAR(45) NULL DEFAULT NULL,
-  `sugerencia` VARCHAR(255) NULL DEFAULT NULL,
+  `sugerencia` LONGTEXT NULL DEFAULT NULL,
   `Rasgo_nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idEfecto`),
   INDEX `fk_Efecto_Rasgo1_idx` (`Rasgo_nombre` ASC) VISIBLE,
@@ -89,10 +89,10 @@ DROP TABLE IF EXISTS `TheStrange`.`Recursion` ;
 
 CREATE TABLE IF NOT EXISTS `TheStrange`.`Recursion` (
   `nombre` VARCHAR(45) NOT NULL,
-  `resumen` VARCHAR(255) NULL DEFAULT NULL,
+  `resumen` LONGTEXT NULL DEFAULT NULL,
   `nivel` INT NULL DEFAULT NULL,
-  `conexionTheStrange` VARCHAR(255) NULL DEFAULT NULL,
-  `conexionTierra` VARCHAR(255) NULL DEFAULT NULL,
+  `conexionTheStrange` LONGTEXT NULL DEFAULT NULL,
+  `conexionTierra` LONGTEXT NULL DEFAULT NULL,
   `forma` VARCHAR(225) NULL,
   `chispa` VARCHAR(45) NULL DEFAULT NULL,
   `divisa` VARCHAR(45) NULL DEFAULT NULL,
@@ -199,7 +199,7 @@ DROP TABLE IF EXISTS `TheStrange`.`Equipo` ;
 CREATE TABLE IF NOT EXISTS `TheStrange`.`Equipo` (
   `nombre` VARCHAR(45) NOT NULL,
   `precio` FLOAT NULL DEFAULT NULL,
-  `nota` VARCHAR(255) NULL DEFAULT NULL,
+  `nota` LONGTEXT NULL DEFAULT NULL,
   `Arma_nombre` VARCHAR(45) NULL,
   `Armadura_nombre` VARCHAR(45) NULL,
   `Recursion_nombre` VARCHAR(45) NOT NULL,
@@ -310,7 +310,7 @@ DROP TABLE IF EXISTS `TheStrange`.`Descriptor` ;
 
 CREATE TABLE IF NOT EXISTS `TheStrange`.`Descriptor` (
   `nombre` VARCHAR(45) NOT NULL,
-  `descripcion` VARCHAR(255) NULL DEFAULT NULL,
+  `descripcion` LONGTEXT NULL DEFAULT NULL,
   `Vinculo` LONGTEXT NULL,
   PRIMARY KEY (`nombre`))
 ENGINE = InnoDB;
