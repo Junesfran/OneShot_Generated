@@ -7,6 +7,7 @@ from app.routes.TheStrange import theStrange_id_prefix
 from app.model.sql.model.user import User
 from app.model.sql.model.TheStrange.recursion import TheStrange_recursion
 from app.controllers.TheStrange.recursion import TheStrange_recursion_controller
+from app.controllers.TheStrange.rasgo import TheStrange_rasgo_controller
 
 theStrange_recursion = Blueprint("theStrange_recursion", __name__, url_prefix=f"/{theStrange_id_prefix}/recursion")
 
@@ -35,3 +36,20 @@ def get_recursion_by_name(name: str, user: User):
         return {"error": f"recursion {name} does not exist"}, 404
     else:
         return recursion.to_json(), 200
+    
+@theStrange_recursion.get("/<name>/rasgos")
+@user_required
+def get_rasgos_for_recursion(name: str, user: User):
+    rasgos_controller: TheStrange_rasgo_controller = TheStrange_rasgo_controller()
+    
+    try:
+        rasgos: list[dict]
+        count: int
+        count, rasgos = rasgos_controller.get_rasgos_for_recursion(name)
+        
+        if(count == 0):
+            return {"error": f"no rasgos for {name} recursion"}, 404
+        
+        return {"count": count, "data": rasgos}, 200
+    except ValueError as ve:
+        return {"error": str(ve)}, 422
