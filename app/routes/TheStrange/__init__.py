@@ -1,0 +1,1 @@
+theStrange_id_prefix = "the_strange"

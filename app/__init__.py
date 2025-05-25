@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 app.config["SQLALCHEMY_DATABASE_URI"] = user_db_uri
 app.config["SQLALCHEMY_BINDS"] = {
-    "theStrange": theStrange_db_uri
+    "the_strange": theStrange_db_uri
 }
 
 db = SQLAlchemy()
@@ -22,3 +22,6 @@ app.register_blueprint(user)
 
 from app.routes.manual import manual
 app.register_blueprint(manual)
+
+from app.routes.TheStrange.recursion import theStrange_recursion
+app.register_blueprint(theStrange_recursion)

@@ -33,4 +33,4 @@ def get_manual_info(id: str, user: User):
     if(manual == None):
         return {"error": f"manual {id} cannot be found"}, 404
     else:
-        return {"data": manual.to_json()}, 200
+        return manual.to_json(), 200
