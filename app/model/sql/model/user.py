@@ -7,14 +7,12 @@ class User(db.Model):
     
     idUsuario = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nombre = db.Column(db.String(45))
-    contraseña = db.Column(db.String(45))
-    hash_contraseña = db.Column(db.String(128))
+    contraseña = db.Column(db.String(128))
     token = db.Column(db.String(100))
     
     def __init__(self, nombre: str, contraseña: str):
         self.nombre = nombre
-        self.contraseña = contraseña
-        self.hash_contraseña = hash_string_as_string(contraseña)
+        self.contraseña = hash_string_as_string(contraseña)
         self.token = None
         
     def to_json(self) -> dict:

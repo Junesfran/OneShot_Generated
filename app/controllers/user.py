@@ -32,7 +32,7 @@ class User_controller:
         
         if(user):
             password_hash: str = hash_string_as_string(password)
-            if(password_hash == user.hash_contraseña):
+            if(password_hash == user.contraseña):
                 session_token = gen_jwt(user_id=user.idUsuario, username=user.nombre)
                 
                 user_dao.set_token_for(user.idUsuario, session_token)

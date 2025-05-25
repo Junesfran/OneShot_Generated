@@ -26,8 +26,8 @@ def create_user():
 
     return new_user.to_json(), 200
 
-@user_required()
 @user.delete("/<id>")
+@user_required
 def delete_user_by_id(id: int, user: User):
     user_controller = User_controller()
 
@@ -54,8 +54,8 @@ def login():
     else:
         return {"error": "invalid credentials"}, 401
 
-@user_required()
 @user.post("/logout")
+@user_required
 def logout(user: User):
     user_controller = User_controller()
 

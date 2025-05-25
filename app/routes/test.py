@@ -10,7 +10,9 @@ test = Blueprint("test", __name__, url_prefix="/test")
 def holi():
     return "holi", 200
 
-@user_required()
+
+
 @test.get("/protected")
+@user_required
 def holi_pero_protegido(user: User):
     return f"holi pero con condon, de parte de {user.nombre}", 200
