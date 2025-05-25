@@ -7,6 +7,7 @@ package com.mycompany.oneshot;
 import com.mycompany.oneshot.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.scene.control.TabPane;
 import modelo.TheStrangeRepository;
 
 /**

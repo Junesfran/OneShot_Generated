@@ -1,15 +1,22 @@
 .tab {
-
     -fx-pref-width: 200;
-    -fx-text-alignment: center;
+    -fx-background-color: #41c85e;
 } 
+
+.tab:selected {
+    -fx-background-color: #2c9041;
+}
+
 .tab-header-background {
-    -fx-background-color:transparent
+    -fx-background-color:transparent;
+    -fx-text-alignment: center;
 }
 
 .tab-pane{
+    -fx-background-color: #2c9041;
     -fx-padding: 0 -1 -1 -1
 }
+
 
 .panelBotones{
     -fx-background-color: #205f76
