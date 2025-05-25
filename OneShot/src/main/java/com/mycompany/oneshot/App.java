@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import vista.VistaPrincipal;
 
 /**
  * JavaFX App
@@ -17,8 +18,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("prueba"), 640, 480);
+        scene = new Scene(loadFXML("login"), 640, 480);
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -33,6 +35,14 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+        VistaPrincipal vp = new VistaPrincipal();
+        Controller c = new Controller();
+        
+//        try {
+//            c.Botones();
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
     }
 
 }

@@ -1,5 +1,5 @@
 .tab {
-    -fx-pref-width: 200;
+    -fx-pref-width: 220;
     -fx-background-color: #41c85e;
     
 } 
@@ -19,8 +19,11 @@
 }
 
 .tab-pane{
-    -fx-alignment: center;
-    -fx-text-alignment: center;
+    -fx-background-color: #2c9041;
+    -fx-padding: 0 -1 -1 -1
+}
+
+.fondo{
     -fx-background-color: #2c9041;
     -fx-padding: 0 -1 -1 -1
 }

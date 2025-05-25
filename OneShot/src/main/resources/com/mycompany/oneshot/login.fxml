@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.Controller">
+   <children>
+      <Pane layoutY="-2.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #41c85e;">
+         <children>
+            <Pane layoutX="204.0" layoutY="94.0" prefHeight="226.0" prefWidth="233.0" style="-fx-background-color: #2c9041;">
+               <children>
+                  <TextField layoutX="14.0" layoutY="30.0" prefHeight="27.0" prefWidth="207.0" promptText="Nombre" />
+                  <TextField layoutX="15.0" layoutY="76.0" prefHeight="27.0" prefWidth="207.0" promptText="Cotraseña" />
+                  <Button layoutX="21.0" layoutY="135.0" mnemonicParsing="false" onAction="#switchToPrincipal" prefHeight="25.0" prefWidth="88.0" text="Login" />
+                  <Button layoutX="12.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Registrarse" textFill="#1bb5cd" />
+               </children>
+            </Pane>
+            <Button layoutX="382.0" layoutY="331.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ayuda" textFill="#2060bf" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
