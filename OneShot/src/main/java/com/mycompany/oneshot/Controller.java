@@ -9,7 +9,9 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import modelo.TheStrangeRepository;
 
@@ -18,7 +20,11 @@ import modelo.TheStrangeRepository;
  * @author Nestor y Asociados
  */
 public class Controller {
-    TheStrangeRepository tsRepo;
+    TheStrangeRepository tsRepo = new TheStrangeRepository();
+//    private String direc = "piola.cloudns.nz";
+    private String direc = "http://192.168.1.32:8080";
+
+//    private int puerto = 13013;
     
     @FXML
     private GridPane gridMaster;
@@ -31,6 +37,12 @@ public class Controller {
 
     @FXML
     private TabPane tabInicial;
+    
+    @FXML
+    private TextField tNombre;
+    
+    @FXML
+    private PasswordField tPassword;
     
     @FXML
     public void Botones() throws IOException {
@@ -71,7 +83,8 @@ public class Controller {
             b.setMaxHeight(Double.MAX_VALUE);
             GridPane.setMargin(b, new Insets(5));
             b.setOnAction(e -> {
-                System.out.println("Clic en " + b.getText());
+//                System.out.println(tsRepo.Registro(direc+":"+puerto, "Carol", "Carol"));
+                System.out.println(tsRepo.sacarGeneral(direc, 0));
             });
 
             int row = i / columnas;
@@ -79,6 +92,14 @@ public class Controller {
 
             g.add(b, col, row);
         }
+    }
+    
+    @FXML
+    private void login(){
+        String user = tNombre.getText();
+        String pwd = tPassword.getText();
+        
+        System.out.println(tsRepo.Registro(direc, user, pwd));
     }
     
     @FXML

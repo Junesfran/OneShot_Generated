@@ -3,6 +3,7 @@ module com.mycompany.oneshot {
     requires javafx.fxml;
     requires javafx.base;
     requires javafx.graphics;
+    requires json;
 
     opens com.mycompany.oneshot to javafx.fxml;
     exports com.mycompany.oneshot;
