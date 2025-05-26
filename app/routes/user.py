@@ -10,7 +10,7 @@ from app.controllers.user import User_controller
 
 user = Blueprint("user", __name__, url_prefix="/user")
 
-@user.post("/")
+@user.post("")
 def create_user():
     try:
         data = User_creation_body.parse_raw(request.data)

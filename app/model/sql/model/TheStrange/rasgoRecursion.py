@@ -4,8 +4,8 @@ class TheStrange_rasgoRecursion(db.Model):
     __tablename__ = "RasgoRecursion"
     __bind_key__ = "the_strange"
     
-    Recursion_nombre = db.Column(db.String(45), db.ForeignKey("Recursion.nombre"), primarr_key = True)
-    Rasgo_nombre = db.Column(db.String(45), db.ForeignKey("Rasgo.nombre"), primarr_key = True)
+    Recursion_nombre = db.Column(db.String(45), db.ForeignKey("Recursion.nombre"), primary_key = True)
+    Rasgo_nombre = db.Column(db.String(45), db.ForeignKey("Rasgo.nombre"), primary_key = True)
     
     def __init__(self, recursion_nombre: str, rasgo_nombre: str):
         self.Recursion_nombre = recursion_nombre

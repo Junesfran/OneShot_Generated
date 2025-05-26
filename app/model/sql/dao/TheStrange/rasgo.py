@@ -9,4 +9,4 @@ class TheStrange_rasgoDAO:
         self.session = db.session
         
     def get_rasgo_for_recursion(self, recursion_name: str) -> list[TheStrange_rasgo]:
-        return self.session.query(TheStrange_rasgo).join(TheStrange_rasgoRecursion).join(TheStrange_recursion).filter(TheStrange_recursion.nombre==recursion_name).all()
+        return self.session.query(TheStrange_rasgo).join(TheStrange_rasgoRecursion).join(TheStrange_recursion).filter(TheStrange_recursion.nombre == recursion_name).all()

@@ -9,7 +9,7 @@ from app.controllers.manual import Manual_controller
 
 manual = Blueprint("manual", __name__, url_prefix="/manual")
 
-@manual.get("/")
+@manual.get("")
 @user_required
 def manual_list(user: User):
     manual_controller: Manual_controller = Manual_controller()

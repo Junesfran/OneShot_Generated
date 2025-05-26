@@ -1,6 +1,6 @@
 from app.model.sql.dao.TheStrange.rasgo import TheStrange_rasgoDAO
 from app.model.sql.dao.TheStrange.recursion import TheStrange_recursionDAO
-
+from app.model.sql.dao.TheStrange.descriptor import TheStrange_descriptorDAO
 class TheStrange_rasgo_controller:
     def __init__(self):
         self.rasgo_dao = TheStrange_rasgoDAO()

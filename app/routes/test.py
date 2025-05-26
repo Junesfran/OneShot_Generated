@@ -6,7 +6,7 @@ from app.utils.session import user_required
 
 test = Blueprint("test", __name__, url_prefix="/test")
 
-@test.get("/")
+@test.get("")
 def holi():
     return "holi", 200
 
