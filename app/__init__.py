@@ -40,3 +40,6 @@ app.register_blueprint(theStrange_descriptor)
 
 from app.routes.TheStrange.creatura import theStrange_creaturador
 app.register_blueprint(theStrange_creaturador)
+
+from app.routes.campañas import campaña
+app.register_blueprint(campaña)
