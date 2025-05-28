@@ -20,4 +20,4 @@ def get_all_descriptors(user: User):
     if(count == 0):
         return {"error": "no descriptors :("}, 404
     
-    return {"count": count, "data": descriptors}, 200
+    return {"kuantos": count, "datos": descriptors}, 200

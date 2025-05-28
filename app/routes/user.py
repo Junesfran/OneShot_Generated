@@ -15,7 +15,10 @@ def create_user():
     try:
         data = User_creation_body.parse_raw(request.data)
     except ValidationError as ve:
-        return jsonify({"error": ve.errors()}), 422
+        print("ValidationError:", ve.errors())  # DEBUG
+        parsed_errors = [str(error) for error in ve.errors()]
+        # print("parsed:", parsed_errors) 
+        return jsonify({"errors": parsed_errors}), 422
 
     user_controller = User_controller()
 

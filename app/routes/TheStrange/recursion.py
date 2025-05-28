@@ -9,6 +9,8 @@ from app.model.sql.model.TheStrange.recursion import TheStrange_recursion
 from app.controllers.TheStrange.recursion import TheStrange_recursion_controller
 from app.controllers.TheStrange.rasgo import TheStrange_rasgo_controller
 from app.controllers.TheStrange.descriptor import TheStrange_descriptor_controller
+from app.model.sql.model.TheStrange.creatura import TheStrange_Criatura
+from app.controllers.TheStrange.creatura import TheStrange_creatura_creaturador
 
 theStrange_recursion = Blueprint("theStrange_recursion", __name__, url_prefix=f"/{theStrange_id_prefix}/recursion")
 
@@ -24,7 +26,7 @@ def get_recursion_list(user: User):
     if(count == 0):
         return {"error": "no recursion is currently available"}, 404
     else:
-        return {"count": count, "data": recursiones}, 200
+        return {"kuantos": count, "datos": recursiones}, 200
 
 @theStrange_recursion.get("/<name>")    
 @user_required
@@ -51,7 +53,7 @@ def get_rasgos_for_recursion(recursion: str, user: User):
         if(count == 0):
             return {"error": f"no rasgos for {recursion} recursion"}, 404
         
-        return {"count": count, "data": rasgos}, 200
+        return {"kuantos": count, "datos": rasgos}, 200
     except ValueError as ve:
         return {"error": str(ve)}, 422
     
@@ -59,8 +61,21 @@ def get_rasgos_for_recursion(recursion: str, user: User):
 @user_required
 def get_spicy_descriptor(recursion: str, user: User):
     try:
-        spice_master = TheStrange_descriptor_controller().get_spicy_descriptor_for(recursion)
+        spice_master = TheStrange_creatura_creaturador().get_spicy_descriptor_for(recursion)
     except ValueError as ve:
         return {"error": str(ve)}, 404
         
     return spice_master, 200
+    
+@theStrange_recursion.get("/<recursion>/creaturas")
+@user_required
+def get_recursion_creaturas(recursion: str, user: User):
+    
+    count: int
+    creaturas: list[TheStrange_Criatura]
+    count, creaturas = TheStrange_creatura_creaturador().get_all_creaturas_for_recursion(recursion_name=recursion)
+        
+    if(count == 0):
+        return {"error": f"This forsaken land is devoid of life, plant matter and or CREATURAS"}, 404
+    
+    return {"kuantos": count, "datos": creaturas}, 200

@@ -11,6 +11,7 @@ from functools import wraps
 def user_required(function):
     @wraps(function)
     def wrapper(*args, **kwargs):
+        # raise ValueError("pinga")
         auth_header: str = request.headers.get("Authorization")
         
         if(not auth_header):

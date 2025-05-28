@@ -21,7 +21,7 @@ def manual_list(user: User):
     if(count == 0):
         return {"error": "sorry there are no manuals available right now"}, 404
     else:
-        return {"count": count, "data": manuals}, 200
+        return {"kuantos": count, "datos": manuals}, 200
 
 @manual.get("/<id>")
 @user_required
