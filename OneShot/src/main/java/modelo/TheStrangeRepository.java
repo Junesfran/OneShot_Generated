@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import org.json.JSONObject;
-
+import com.mycompany.oneshot.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -23,12 +24,13 @@ import org.json.JSONObject;
  * @author Nestor y Asociados
  */
 public class TheStrangeRepository {
-  public List<String> sacarGeneral(String url, int index){
-        url += "/the_strange/recursion/Ardeyn";
-        List<String> clases = new ArrayList<>();
+    
+    
+    
+    
+    public int numeros(String url){
+        int num = 0;
         int respu;
-        String[] cachos;
-        String fin = "";
         try {
             URL direc = new URI(url).toURL();
             HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
@@ -50,8 +52,85 @@ public class TheStrangeRepository {
                 
                 
                 JSONObject datos = new JSONObject(String.valueOf(info));
-                for (int i = 0; i < index; i++) {
-                    clases.add(datos.getJSONArray("results").getJSONObject(i).getString("index"));
+                respu = datos.getInt("kuantos");
+                
+                sc.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return num;
+    }
+    
+    public List<String> sacarRecursiones(String url){
+        url += "/the_strange/recursion";
+        int num = numeros(url);
+        List<String> clases = new ArrayList<>();
+        int respu;
+        String[] cachos;
+        String fin = "";
+        try {
+            URL direc = new URI(url).toURL();
+            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
+            huc.setRequestMethod("GET");
+            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
+            respu = huc.getResponseCode();
+            
+            if(respu != 200){
+                System.out.println("Ha habido un fallo en la comunicación");
+            }else{
+                StringBuilder info = new StringBuilder();
+                
+                Scanner sc = new Scanner(direc.openStream());
+
+                while (sc.hasNext()) {                    
+                    info.append(sc.nextLine());     
+                }
+                //ME pasan datos, transformar el stringBUilder en datos
+                
+                
+                JSONObject datos = new JSONObject(String.valueOf(info));
+                for (int i = 0; i < num; i++) {
+                    clases.add(datos.getJSONArray("datos").getJSONObject(i).getString("nombre"));
+                }
+                
+                sc.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return clases;
+    } 
+    public List<String> sacarGeneral(String url){
+        url += "/the_strange/recursion";
+        int num = numeros(url);
+        List<String> clases = new ArrayList<>();
+        int respu;
+        String[] cachos;
+        String fin = "";
+        try {
+            URL direc = new URI(url).toURL();
+            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
+            huc.setRequestMethod("GET");
+            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
+            respu = huc.getResponseCode();
+            
+            if(respu != 200){
+                System.out.println("Ha habido un fallo en la comunicación");
+            }else{
+                StringBuilder info = new StringBuilder();
+                
+                Scanner sc = new Scanner(direc.openStream());
+
+                while (sc.hasNext()) {                    
+                    info.append(sc.nextLine());     
+                }
+                //ME pasan datos, transformar el stringBUilder en datos
+                
+                
+                JSONObject datos = new JSONObject(String.valueOf(info));
+                for (int i = 0; i < num; i++) {
+                    clases.add(datos.getJSONArray("data").getJSONObject(i).getString("nombre"));
                 }
                 
                 sc.close();
@@ -62,73 +141,5 @@ public class TheStrangeRepository {
         return clases;
     } 
   
-    public String Registro(String url, String user, String pwd){
-        url += "/user";
-        String aux = "";
-        BufferedReader br = null;
-        OutputStream os = null;
-      try {
-          URL direc = new URI(url).toURL();
-          HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-          huc.setRequestMethod("POST");
-          
-          huc.setRequestProperty("Content-Type", "application/json");
-          huc.setRequestProperty("Accept", "application/json");
-          huc.setDoOutput(true);
-          
-          String inputLine = "{\"username\":"+user+",\"password\":"+pwd+"}";
-          System.out.println(inputLine);
-          os = huc.getOutputStream();
-          byte[] input = inputLine.getBytes("utf-8");
-          os.write(input,0,input.length);
-          
-          
-          br = new BufferedReader(new InputStreamReader(huc.getInputStream(),"utf-8"));
-          
-          StringBuilder respu = new StringBuilder();
-          String linea = null;
-          while((linea = br.readLine())!= null){
-              respu.append(linea.trim());
-          }
-          aux = respu.toString();
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-        return aux;
-    }  
-    
-    public static String Login(String url, String user, String pwd){
-        url += "/user/login";
-        String aux = "";
-        BufferedReader br = null;
-        OutputStream os = null;
-      try {
-          URL direc = new URI(url).toURL();
-          HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-          huc.setRequestMethod("POST");
-          
-          huc.setRequestProperty("Content-Type", "application/json");
-          huc.setRequestProperty("Accept", "application/json");
-          huc.setDoOutput(true);
-          
-          String inputLine = "{\"username\":\""+user+"\",\"password\":\""+pwd+"\"}";
-          
-          os = huc.getOutputStream();
-          byte[] input = inputLine.getBytes("utf-8");
-          os.write(input,0,input.length);
-          
-          
-          br = new BufferedReader(new InputStreamReader(huc.getInputStream(),"utf-8"));
-          
-          StringBuilder respu = new StringBuilder();
-          String linea = null;
-          while((linea = br.readLine())!= null){
-              respu.append(linea.trim());
-          }
-          aux = respu.toString();
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-        return aux;
-    }  
+      
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +16,8 @@
                   <TextField fx:id="tNombre" layoutX="14.0" layoutY="30.0" prefHeight="27.0" prefWidth="207.0" promptText="Nombre" />
                   <PasswordField fx:id="tPassword" layoutX="14.0" layoutY="82.0" prefHeight="25.0" prefWidth="207.0" promptText="Contraseña" />
                   <Button layoutX="21.0" layoutY="135.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="88.0" text="Login" />
-                  <Button layoutX="12.0" layoutY="175.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Registrarse" textFill="#1bb5cd" />
+                  <Button layoutX="12.0" layoutY="175.0" mnemonicParsing="false" onAction="#sign" prefHeight="25.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Registrarse" textFill="#1bb5cd" />
+                  <Label fx:id="lFallo" layoutX="21.0" layoutY="6.0" prefHeight="17.0" prefWidth="185.0" text="Credecinales no admitidas" textFill="#ff5050" visible="false" />
                </children>
             </Pane>
             <Button layoutX="382.0" layoutY="331.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ayuda" textFill="#2060bf" />

@@ -97,9 +97,10 @@
       </TabPane>
       <Pane layoutY="393.0" prefHeight="96.0" prefWidth="646.0" styleClass="panelBotones" stylesheets="@../../../estilos/styles.css">
          <children>
-            <Button layoutX="61.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="125.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="CENTRAR +" />
-            <Button layoutX="261.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="125.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="ARCHIVAR" />
-            <Button layoutX="470.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="125.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="BORRAR -" />
+            <Button layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#editorCampania" prefHeight="42.0" prefWidth="107.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="CENTRAR +" />
+            <Button layoutX="128.0" layoutY="27.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="125.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="ARCHIVAR" />
+            <Button layoutX="261.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="107.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="BORRAR -" />
+            <Button layoutX="556.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="68.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="FICHAS" />
          </children>
       </Pane>
    </children>

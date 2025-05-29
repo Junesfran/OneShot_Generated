@@ -9,21 +9,27 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import modelo.TheStrangeRepository;
+import modelo.*;
 
 /**
  *
  * @author Nestor y Asociados
  */
 public class Controller {
-    TheStrangeRepository tsRepo = new TheStrangeRepository();
-//    private String direc = "piola.cloudns.nz";
-    private String direc = "http://192.168.1.32:8080";
+    private TheStrangeRepository tsRepo = new TheStrangeRepository();
+    private CampaniasRepository cRepo = new CampaniasRepository();
+    private UsuarioRepository uRepo = new UsuarioRepository();
+    private String direc = "http://piola.cloudns.nz:13013";
+    //private String direc = "http://192.168.1.32:8080";
 
+
+    
 //    private int puerto = 13013;
     
     @FXML
@@ -43,6 +49,18 @@ public class Controller {
     
     @FXML
     private PasswordField tPassword;
+    
+    @FXML
+    private Label lFallo;
+    
+    @FXML
+    private TextField textNombreCamp;
+    
+    @FXML
+    private PasswordField textPWDCamp;
+    
+    @FXML
+    private ComboBox cManuales;
     
     @FXML
     public void Botones() throws IOException {
@@ -83,8 +101,7 @@ public class Controller {
             b.setMaxHeight(Double.MAX_VALUE);
             GridPane.setMargin(b, new Insets(5));
             b.setOnAction(e -> {
-//                System.out.println(tsRepo.Registro(direc+":"+puerto, "Carol", "Carol"));
-                System.out.println(tsRepo.sacarGeneral(direc, 0));
+                System.out.println(tsRepo.sacarGeneral(direc));
             });
 
             int row = i / columnas;
@@ -99,17 +116,63 @@ public class Controller {
         String user = tNombre.getText();
         String pwd = tPassword.getText();
         
-        System.out.println(tsRepo.Registro(direc, user, pwd));
+        try{
+            uRepo.Login(direc, user, pwd);
+            App.setRoot("prueba");
+            System.out.println(App.user.getToken());
+        } catch (IOException e) {
+            lFallo.setVisible(true);
+            lFallo.setText("Credenciales no admitidas");
+            tPassword.setText("");
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     @FXML
-    private void switchToPrincipal() throws IOException {
-        App.setRoot("prueba");
+    private void sign(){
+        String user = tNombre.getText();
+        String pwd = tPassword.getText();
+        if(pwd.equalsIgnoreCase("") || user.equalsIgnoreCase("") || pwd.equalsIgnoreCase(" ") || user.equalsIgnoreCase(" ")){
+            tPassword.setText("");
+            lFallo.setVisible(true);
+            tNombre.setText(""); 
+            lFallo.setText("Introduce valores en los campos");
+        }else{
+            int rest= uRepo.registro(direc, user, pwd);
+            System.out.println(rest);
+            tPassword.setText("");
+            lFallo.setVisible(true);
+            if(rest == 200){
+               tNombre.setText(""); 
+               lFallo.setText("Usuario Creado :D");
+            }else{
+                lFallo.setText("Credenciales ya pilladas");
+            }
+        }
+        
+        
+        
+        
+
     }
     
     @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+    public void editorCampania(){
+        try {
+            App.setRoot("createCampain");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void crearCampania() {
+        try {
+            App.setRoot("prueba");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }
 

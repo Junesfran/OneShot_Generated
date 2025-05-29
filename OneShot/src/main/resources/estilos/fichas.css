@@ -1,0 +1,54 @@
+/*
+ * Empty Stylesheet file.
+ */
+.texto{
+    -fx-background-color:  #b8dffa;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+}
+
+.circular{
+    -fx-background-color:  #b8dffa;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+    -fx-background-radius: 20 20 20 20;
+    -fx-border-radius: 20 20 20 20;
+}
+
+SplitPane{
+    -fx-background-color:  #225e87;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+}
+
+.panel{
+    -fx-background-color:  #225e87;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+}
+.custom-checkbox .box {
+    -fx-translate-y: -20;
+    -fx-translate-x: 30;
+}
+
+.custom-checkbox .text {
+    -fx-translate-y: 10;
+}
+.corte{
+    -fx-pref-width: Infinity;
+    -fx-padding: 20;
+    -fx-spacing: 10;
+}
+Button{
+    -fx-background-color:  #114e78;
+    -fx-color: #000000;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+}
+
+.descripcion{
+    -fx-background-color:  #225e87;
+    -fx-opacity: 0.75;
+    -fx-border-color: blue;
+    -fx-border-width: 2;
+}

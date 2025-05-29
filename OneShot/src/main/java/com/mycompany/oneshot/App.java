@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import modelo.Usuario;
 import vista.VistaPrincipal;
 
 /**
@@ -15,7 +16,8 @@ import vista.VistaPrincipal;
 public class App extends Application {
 
     private static Scene scene;
-
+    public static Usuario user = new Usuario();
+    
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"), 640, 480);
