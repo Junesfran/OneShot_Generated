@@ -86,6 +86,8 @@ public class UsuarioRepository {
             App.user.setUser(user);
           }else if(rest == 401){
               throw new IOException();
+          }else if(rest == 404){
+              System.out.println("Página no encontrada");
           }
 
     }

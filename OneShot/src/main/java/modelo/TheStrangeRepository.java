@@ -35,7 +35,7 @@ public class TheStrangeRepository {
             URL direc = new URI(url).toURL();
             HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
             huc.setRequestMethod("GET");
-            huc.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiVkMvM2RpN2tOb3J0K043UktBOTIvN2VuaEM1TkEzL0FraHg4cEN3YmIyR2RYNDVxdHFRc2VsMlhtaFMyMTA5VHRMbWNiOUEvWUU4RjRTR1lVQ0ZkR3o2L3RHNlNuNGFRbHk5NFZwcGxNQ0ZSYmk4aG56YlllcFJKRVJTbnlrU2ZLdFQxcitjU3lHc3FJVmd5VmNlNlZBPT0ifQ.atmxl1oEAH_45l621Lm9u85TxmS9KiHZZp89U9vIkSI");
+            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
             respu = huc.getResponseCode();
             
             if(respu != 200){
