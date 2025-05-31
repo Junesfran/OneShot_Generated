@@ -17,17 +17,24 @@ public class App extends Application {
 
     private static Scene scene;
     public static Usuario user = new Usuario();
+    public static String direc = "http://piola.cloudns.nz:13013";
+    //private String direc = "http://192.168.1.32:8080";
     
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), 640, 480);
+        scene = new Scene(loadFXML("login"));
         stage.setScene(scene);
+        stage.sizeToScene();
         stage.setResizable(false);
         stage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+        Parent root = loadFXML(fxml);
+        scene.setRoot(root);
+
+        Stage stage = (Stage) scene.getWindow();
+        stage.sizeToScene();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

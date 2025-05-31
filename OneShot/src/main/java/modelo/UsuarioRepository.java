@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class UsuarioRepository {
     public int registro(String url, String user, String pwd){
         int rest = 0;
-        url += "/user/";
+        url += "/user";
         String aux = "";
         BufferedReader br = null;
         OutputStream os = null;

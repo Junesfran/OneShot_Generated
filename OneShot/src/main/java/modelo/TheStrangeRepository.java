@@ -26,49 +26,73 @@ import com.mycompany.oneshot.*;
 public class TheStrangeRepository {
     
     
-    
-    
-    public int numeros(String url){
-        int num = 0;
-        int respu;
-        try {
-            URL direc = new URI(url).toURL();
-            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-            huc.setRequestMethod("GET");
-            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
-            respu = huc.getResponseCode();
-            
-            if(respu != 200){
-                System.out.println("Ha habido un fallo en la comunicación");
-            }else{
-                StringBuilder info = new StringBuilder();
-                
-                Scanner sc = new Scanner(direc.openStream());
+        
+    public List<String> sacarCriatura(String url, String criatura) throws NullPointerException{
+        url += "/the_strange/creaturador/"+criatura;
+        String aux = "";
+        List<String> textos = new ArrayList<>();
+ 
+        JSONObject datos = sacarGeneral(url);
+        
+        aux += datos.getString("descripcion")+"\n";
+        aux += "Motivación:\n";
+        aux += datos.getString("motivacion")+"\n";
+        aux += "Entorno:\n";
+        aux += datos.getString("entorno")+"\n";
+        aux += "Salud:\n";
+        aux += datos.getInt("salud")+"\n";
+        aux += "Daño que Inflinge:\n";
+        aux += datos.getInt("daño")+"\n";
+        aux += "Movimiento:\n";
+        aux += datos.getString("movimiento")+"\n";
+        aux += "Combate:\n";
+        aux += datos.getString("combate")+"\n";
+        aux += "Interacción:\n";
+        aux += datos.getString("iteraccion")+"\n";
+        aux += "Uso:\n";
+        aux += datos.getString("uso")+"\n";
+        aux += "Botín:\n";
+        aux += datos.getString("botin")+"\n";
 
-                while (sc.hasNext()) {                    
-                    info.append(sc.nextLine());     
-                }
-                //ME pasan datos, transformar el stringBUilder en datos
-                
-                
-                JSONObject datos = new JSONObject(String.valueOf(info));
-                respu = datos.getInt("kuantos");
-                
-                sc.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        textos.add(datos.getString("nombre"));
+        textos.add(aux);
+        textos.add(datos.getInt("nivel")+" ("+datos.getInt("nivel")*3+")");
+        
+        return textos;
+    }  
+    public List<String> sacarCriaturasRecursion(String url, String recursion) throws NullPointerException{
+        url += "/the_strange/recursion/"+recursion+"/creaturas";
+        int num = 0;
+        List<String> clases = new ArrayList<>();
+        
+        JSONObject datos = sacarGeneral(url);
+        
+        num = datos.getInt("kuantos");
+        for (int i = 0; i < num; i++) {
+            clases.add(datos.getJSONArray("datos").getString(i));
         }
-        return num;
-    }
+
+        return clases;
+    }  
     
     public List<String> sacarRecursiones(String url){
         url += "/the_strange/recursion";
-        int num = numeros(url);
+        int num = 0;
         List<String> clases = new ArrayList<>();
+        
+        JSONObject datos = sacarGeneral(url);
+        
+        num = datos.getInt("kuantos");
+        for (int i = 0; i < num; i++) {
+            clases.add(datos.getJSONArray("datos").getJSONObject(i).getString("nombre"));
+        }
+
+        return clases;
+    }  
+    
+    private JSONObject sacarGeneral(String url){
+        JSONObject datos = null;
         int respu;
-        String[] cachos;
-        String fin = "";
         try {
             URL direc = new URI(url).toURL();
             HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
@@ -76,70 +100,29 @@ public class TheStrangeRepository {
             huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
             respu = huc.getResponseCode();
             
-            if(respu != 200){
-                System.out.println("Ha habido un fallo en la comunicación");
-            }else{
+            if(respu == 200){
                 StringBuilder info = new StringBuilder();
                 
-                Scanner sc = new Scanner(direc.openStream());
+                Scanner scc = new Scanner(huc.getInputStream());
 
-                while (sc.hasNext()) {                    
-                    info.append(sc.nextLine());     
+                while (scc.hasNext()) {                    
+                    info.append(scc.nextLine());     
                 }
-                //ME pasan datos, transformar el stringBUilder en datos
+
+                datos = new JSONObject(String.valueOf(info));
                 
+                scc.close();
+            }else if(respu == 404){
+                System.out.println("Página no encontrada");
+            }else{
+                System.out.println("Ha habido un fallo en la comunicación");
+                System.out.println(respu);
                 
-                JSONObject datos = new JSONObject(String.valueOf(info));
-                for (int i = 0; i < num; i++) {
-                    clases.add(datos.getJSONArray("datos").getJSONObject(i).getString("nombre"));
-                }
-                
-                sc.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return clases;
-    } 
-    public List<String> sacarGeneral(String url){
-        url += "/the_strange/recursion";
-        int num = numeros(url);
-        List<String> clases = new ArrayList<>();
-        int respu;
-        String[] cachos;
-        String fin = "";
-        try {
-            URL direc = new URI(url).toURL();
-            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-            huc.setRequestMethod("GET");
-            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
-            respu = huc.getResponseCode();
-            
-            if(respu != 200){
-                System.out.println("Ha habido un fallo en la comunicación");
-            }else{
-                StringBuilder info = new StringBuilder();
-                
-                Scanner sc = new Scanner(direc.openStream());
-
-                while (sc.hasNext()) {                    
-                    info.append(sc.nextLine());     
-                }
-                //ME pasan datos, transformar el stringBUilder en datos
-                
-                
-                JSONObject datos = new JSONObject(String.valueOf(info));
-                for (int i = 0; i < num; i++) {
-                    clases.add(datos.getJSONArray("data").getJSONObject(i).getString("nombre"));
-                }
-                
-                sc.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return clases;
-    } 
-  
-      
+        return datos;
+    }
+    
 }

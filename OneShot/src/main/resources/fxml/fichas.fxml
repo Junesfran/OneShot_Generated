@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="772.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="772.0" prefWidth="779.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.FichasController">
    <children>
-      <SplitPane dividerPositions="0.7609649122807017" prefHeight="772.0" prefWidth="918.0" stylesheets="@../estilos/fichas.css">
+      <SplitPane dividerPositions="0.7741228070175439" prefHeight="772.0" prefWidth="918.0" stylesheets="@../estilos/fichas.css">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -26,18 +26,18 @@
                      <children>
                         <Pane layoutX="423.0" layoutY="17.0" prefHeight="68.0" prefWidth="170.0">
                            <children>
-                              <TextField layoutX="58.0" layoutY="21.0" prefHeight="41.0" prefWidth="42.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
-                              <TextField layoutX="114.0" layoutY="21.0" prefHeight="41.0" prefWidth="42.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
+                              <TextField fx:id="tEsfuerzo" layoutX="58.0" layoutY="21.0" prefHeight="41.0" prefWidth="42.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
+                              <TextField fx:id="tExp" layoutX="114.0" layoutY="21.0" prefHeight="41.0" prefWidth="42.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
                               <Label layoutX="4.0" layoutY="6.0" text="Rango" textFill="WHITE" />
                               <Label layoutX="57.0" layoutY="6.0" text="Esfuerzo" textFill="WHITE" />
                               <Label layoutX="126.0" layoutY="6.0" prefHeight="17.0" prefWidth="19.0" text="PX" textFill="WHITE" />
-                              <TextField layoutX="4.0" layoutY="21.0" prefHeight="41.0" prefWidth="42.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
+                              <TextField fx:id="tRango" layoutX="4.0" layoutY="21.0" prefHeight="41.0" prefWidth="42.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
                            </children>
                         </Pane>
-                        <TextField layoutX="14.0" layoutY="22.0" prefHeight="29.0" prefWidth="378.0" promptText="Nombre" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                        <TextField layoutX="67.0" layoutY="64.0" prefHeight="29.0" prefWidth="146.0" promptText="Tipo" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                        <TextField layoutX="227.0" layoutY="64.0" prefHeight="29.0" prefWidth="129.0" promptText="Descriptor" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                        <TextField layoutX="14.0" layoutY="103.0" prefHeight="29.0" prefWidth="193.0" promptText="Rasgo" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                        <TextField fx:id="tNombre" layoutX="14.0" layoutY="22.0" prefHeight="29.0" prefWidth="378.0" promptText="Nombre" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                        <TextField fx:id="tTipo" layoutX="67.0" layoutY="64.0" prefHeight="29.0" prefWidth="146.0" promptText="Tipo" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                        <TextField fx:id="tDescriptor" layoutX="227.0" layoutY="64.0" prefHeight="29.0" prefWidth="129.0" promptText="Descriptor" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                        <TextField fx:id="tRasgo" layoutX="14.0" layoutY="103.0" prefHeight="29.0" prefWidth="193.0" promptText="Rasgo" styleClass="texto" stylesheets="@../estilos/fichas.css" />
                         <Label layoutX="14.0" layoutY="69.0" text="ES UN " textFill="WHITE">
                            <font>
                               <Font size="14.0" />
@@ -62,12 +62,12 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <TextField styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.rowIndex="2" />
-                                    <TextField prefHeight="29.0" prefWidth="61.0" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tReservaVigor" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tVentajaVigor" prefHeight="29.0" prefWidth="61.0" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="21.0" prefWidth="88.0" style="-fx-alignment: center; -fx-background-color: #225e87;" styleClass="texto" stylesheets="@../estilos/fichas.css" text="Vigor" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
-                              <TextField layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
+                              <TextField fx:id="tVigorAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
                            </children>
                         </Pane>
                         <Pane layoutX="341.0" layoutY="215.0" prefHeight="116.0" prefWidth="129.0" styleClass="texto" stylesheets="@../estilos/fichas.css">
@@ -84,12 +84,12 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.rowIndex="2" />
-                                    <TextField prefHeight="29.0" prefWidth="61.0" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tReservaVelocidad" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tVentajaVelocidad" prefHeight="29.0" prefWidth="61.0" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="21.0" prefWidth="97.0" style="-fx-alignment: center; -fx-background-color: #225e87;" styleClass="texto" stylesheets="@../estilos/fichas.css" text="Velocidad" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
-                              <TextField layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
+                              <TextField fx:id="tVelocidadAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
                            </children>
                         </Pane>
                         <Pane layoutX="470.0" layoutY="215.0" prefHeight="116.0" prefWidth="129.0" styleClass="texto" stylesheets="@../estilos/fichas.css">
@@ -106,12 +106,12 @@
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.rowIndex="2" />
-                                    <TextField prefHeight="29.0" prefWidth="61.0" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tReservaInteligencia" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.rowIndex="2" />
+                                    <TextField fx:id="tVentajaInteligencia" prefHeight="29.0" prefWidth="61.0" styleClass="texto" stylesheets="@../estilos/fichas.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="21.0" prefWidth="97.0" style="-fx-alignment: center; -fx-background-color: #225e87;" styleClass="texto" stylesheets="@../estilos/fichas.css" text="Inteligencia" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
-                              <TextField layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
+                              <TextField fx:id="tIntelegenciaAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
                            </children>
                         </Pane>
                         <Label layoutX="213.0" layoutY="108.0" text="EN" textFill="WHITE">
@@ -119,14 +119,14 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox layoutX="239.0" layoutY="105.0" prefWidth="150.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                        <ComboBox fx:id="cbRecursion" layoutX="239.0" layoutY="105.0" prefWidth="150.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
                         <Pane layoutX="14.0" layoutY="215.0" prefHeight="116.0" prefWidth="193.0" styleClass="panel" stylesheets="@../estilos/fichas.css">
                            <children>
-                              <TextField layoutX="114.0" layoutY="44.0" prefHeight="53.0" prefWidth="65.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
-                              <CheckBox layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="1 Acción" textFill="WHITE" />
-                              <CheckBox layoutX="13.0" layoutY="89.0" mnemonicParsing="false" text="10 Horas" textFill="WHITE" />
-                              <CheckBox layoutX="13.0" layoutY="37.0" mnemonicParsing="false" text="1 Hora" textFill="WHITE" />
-                              <CheckBox layoutX="14.0" layoutY="62.0" mnemonicParsing="false" text="10 Minutos" textFill="WHITE" />
+                              <TextField fx:id="tRecuperacion" layoutX="114.0" layoutY="44.0" prefHeight="53.0" prefWidth="65.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
+                              <CheckBox fx:id="chAccion" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="1 Acción" textFill="WHITE" />
+                              <CheckBox fx:id="chHoras" layoutX="13.0" layoutY="89.0" mnemonicParsing="false" text="10 Horas" textFill="WHITE" />
+                              <CheckBox fx:id="chHora" layoutX="13.0" layoutY="37.0" mnemonicParsing="false" text="1 Hora" textFill="WHITE" />
+                              <CheckBox fx:id="chMinutos" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" text="10 Minutos" textFill="WHITE" />
                               <Label layoutX="111.0" layoutY="23.0" text="Recuperación" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
@@ -136,14 +136,14 @@
                         </Pane>
                         <Pane layoutX="20.0" layoutY="141.0" prefHeight="68.0" prefWidth="387.0" styleClass="panel" stylesheets="@../estilos/fichas.css">
                            <children>
-                              <CheckBox layoutX="-14.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Aumentar &#10;Capacidades" textAlignment="CENTER" textFill="WHITE" />
-                              <CheckBox layoutX="70.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Hacia la&#10;Perfección" textAlignment="CENTER" textFill="WHITE" />
-                              <CheckBox layoutX="150.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Esfuerzo&#10;Extra" textAlignment="CENTER" textFill="WHITE" />
-                              <CheckBox layoutX="214.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Competencia&#10;En habilidad" textAlignment="CENTER" textFill="WHITE" />
-                              <CheckBox layoutX="311.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="68.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Otros" textAlignment="CENTER" textFill="WHITE" />
+                              <CheckBox fx:id="chAumentar" layoutX="-14.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Aumentar &#10;Capacidades" textAlignment="CENTER" textFill="WHITE" />
+                              <CheckBox fx:id="chPerfeccion" layoutX="70.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Hacia la&#10;Perfección" textAlignment="CENTER" textFill="WHITE" />
+                              <CheckBox fx:id="chEsfuerzo" layoutX="150.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Esfuerzo&#10;Extra" textAlignment="CENTER" textFill="WHITE" />
+                              <CheckBox fx:id="chCompetencia" layoutX="214.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="97.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Competencia&#10;En habilidad" textAlignment="CENTER" textFill="WHITE" />
+                              <CheckBox fx:id="chOtros" layoutX="311.0" layoutY="7.0" lineSpacing="1.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="68.0" styleClass="custom-checkbox" stylesheets="@../estilos/fichas.css" text="Otros" textAlignment="CENTER" textFill="WHITE" />
                            </children>
                         </Pane>
-                        <SplitPane dividerPositions="0.5421348314606742" layoutX="20.0" layoutY="340.0" prefHeight="416.0" prefWidth="362.0" styleClass="panel" stylesheets="@../estilos/fichas.css">
+                        <SplitPane dividerPositions="0.5" layoutX="20.0" layoutY="340.0" prefHeight="416.0" prefWidth="362.0" styleClass="panel" stylesheets="@../estilos/fichas.css">
                           <items>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="410.0" prefWidth="273.0">
                                  <children>
@@ -154,9 +154,9 @@
                                     </Label>
                                     <Button layoutX="239.0" layoutY="88.0" mnemonicParsing="false" stylesheets="@../estilos/fichas.css" text="Asignar" />
                                     <TextField layoutX="35.0" layoutY="88.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                                    <ListView layoutX="28.0" layoutY="128.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                                    <TextField layoutX="233.0" layoutY="25.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
-                                    <TextField layoutX="20.0" layoutY="25.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../estilos/fichas.css">
+                                    <ListView fx:id="lbEquipo" layoutX="28.0" layoutY="128.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                                    <TextField fx:id="tDinero" layoutX="233.0" layoutY="25.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
+                                    <TextField fx:id="tArmadura" layoutX="20.0" layoutY="25.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../estilos/fichas.css">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -174,8 +174,8 @@
                                     </Label>
                                     <Button layoutX="238.0" layoutY="71.0" mnemonicParsing="false" stylesheets="@../estilos/fichas.css" text="Asignar" />
                                     <TextField layoutX="31.0" layoutY="71.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                                    <ListView layoutX="31.0" layoutY="117.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                                    <TextField layoutX="22.0" layoutY="23.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
+                                    <ListView fx:id="lbDispositivos" layoutX="31.0" layoutY="117.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                                    <TextField fx:id="tDispositivos" layoutX="22.0" layoutY="23.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../estilos/fichas.css" />
                                     <Label layoutX="33.0" layoutY="6.0" text="Max" textFill="WHITE" />
                                  </children>
                               </AnchorPane>
@@ -214,7 +214,7 @@
                                     </Label>
                                     <Button layoutX="221.0" layoutY="48.0" mnemonicParsing="false" stylesheets="@../estilos/fichas.css" text="Asignar" />
                                     <TextField layoutX="14.0" layoutY="48.0" prefHeight="29.0" prefWidth="201.0" promptText="Habilidad" styleClass="texto" stylesheets="@../estilos/fichas.css" />
-                                    <ListView layoutX="14.0" layoutY="87.0" prefHeight="276.0" prefWidth="267.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                                    <ListView fx:id="lbCapacidadesEsp" layoutX="14.0" layoutY="87.0" prefHeight="276.0" prefWidth="267.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
                                  </children>
                               </AnchorPane>
                           </items>
@@ -231,7 +231,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <TextArea layoutX="415.0" layoutY="49.0" prefHeight="688.0" prefWidth="362.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
+                  <TextArea fx:id="taTrasfondo" layoutX="415.0" layoutY="49.0" prefHeight="688.0" prefWidth="362.0" styleClass="texto" stylesheets="@../estilos/fichas.css" />
                </children>
             </AnchorPane>
         </items>

@@ -1,0 +1,23 @@
+.fondo{
+    -fx-background-color:  #225e87;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+}
+
+.botones{
+    -fx-background-color:  #b8dffa;
+    -fx-border-color: #51114a;
+    -fx-border-width: 2;
+}
+
+.texto{
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.label-fijo {
+    -fx-min-width: 480;
+    -fx-pref-width: 480;
+    -fx-max-width: 480;
+    -fx-text-fill: white;
+}

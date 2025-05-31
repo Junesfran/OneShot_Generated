@@ -25,8 +25,7 @@ public class Controller {
     private TheStrangeRepository tsRepo = new TheStrangeRepository();
     private CampaniasRepository cRepo = new CampaniasRepository();
     private UsuarioRepository uRepo = new UsuarioRepository();
-    private String direc = "http://piola.cloudns.nz:13013";
-    //private String direc = "http://192.168.1.32:8080";
+
 
 
     
@@ -101,7 +100,7 @@ public class Controller {
             b.setMaxHeight(Double.MAX_VALUE);
             GridPane.setMargin(b, new Insets(5));
             b.setOnAction(e -> {
-                System.out.println(tsRepo.sacarGeneral(direc));
+                System.out.println("Puta");
             });
 
             int row = i / columnas;
@@ -117,9 +116,9 @@ public class Controller {
         String pwd = tPassword.getText();
         
         try{
-            uRepo.Login(direc, user, pwd);
-            App.setRoot("prueba");
-            System.out.println(App.user.getToken());
+            uRepo.Login(App.direc, user, pwd);
+            System.out.println(App.user);
+            App.setRoot("Separador");
         } catch (IOException e) {
             lFallo.setVisible(true);
             lFallo.setText("Credenciales no admitidas");
@@ -139,7 +138,7 @@ public class Controller {
             tNombre.setText(""); 
             lFallo.setText("Introduce valores en los campos");
         }else{
-            int rest= uRepo.registro(direc, user, pwd);
+            int rest= uRepo.registro(App.direc, user, pwd);
             System.out.println(rest);
             tPassword.setText("");
             lFallo.setVisible(true);

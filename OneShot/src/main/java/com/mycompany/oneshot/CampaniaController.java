@@ -27,8 +27,6 @@ public class CampaniaController {
     private TheStrangeRepository tsRepo = new TheStrangeRepository();
     private CampaniasRepository cRepo = new CampaniasRepository();
     private UsuarioRepository uRepo = new UsuarioRepository();
-    private String direc = "http://piola.cloudns.nz:13013";
-    //private String direc = "http://192.168.1.32:8080";
 
 
     
@@ -104,7 +102,7 @@ public class CampaniaController {
             b.setMaxHeight(Double.MAX_VALUE);
             GridPane.setMargin(b, new Insets(5));
             b.setOnAction(e -> {
-                System.out.println(tsRepo.sacarGeneral(direc));
+                System.out.println("puta");
             });
 
             int row = i / columnas;

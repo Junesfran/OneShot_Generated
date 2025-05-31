@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author Nestor y Asociados
  */
-public class Fichas {
+public class Ficha {
     private String nombre;
     private String tipo;
     private String rasgo;
@@ -51,11 +51,46 @@ public class Fichas {
     private List<String> dispositivo;
     private int maxDispositivo;
     
-    private List<String> notas;
+    private String trasfondo;
 
-    public Fichas() {
+    public Ficha() {
+    }
+
+    public Ficha(String nombre, String tipo, String rasgo, String descriptor, String recursion, int rango, int esfuerzo, int exp, boolean aumentarC, boolean perfeccion, boolean esfuerzoExt, boolean competenciaH, boolean otros, String recuperacion, int reservaVigorMax, int reservaVigorAct, int ventajaVigor, int reservaVelocidadMax, int reservaVelocidadAct, int ventajaVelocidad, int reservaInteligenciaMax, int reservaInteligenciaAct, int ventajaInteligencia, int armadura, int dinero, HashMap<String, Boolean> competencias, List<String> Habilidades, List<String> equipo, List<String> dispositivo, int maxDispositivo, String trasfondo) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.rasgo = rasgo;
+        this.descriptor = descriptor;
+        this.recursion = recursion;
+        this.rango = rango;
+        this.esfuerzo = esfuerzo;
+        this.exp = exp;
+        this.aumentarC = aumentarC;
+        this.perfeccion = perfeccion;
+        this.esfuerzoExt = esfuerzoExt;
+        this.competenciaH = competenciaH;
+        this.otros = otros;
+        this.recuperacion = recuperacion;
+        this.reservaVigorMax = reservaVigorMax;
+        this.reservaVigorAct = reservaVigorAct;
+        this.ventajaVigor = ventajaVigor;
+        this.reservaVelocidadMax = reservaVelocidadMax;
+        this.reservaVelocidadAct = reservaVelocidadAct;
+        this.ventajaVelocidad = ventajaVelocidad;
+        this.reservaInteligenciaMax = reservaInteligenciaMax;
+        this.reservaInteligenciaAct = reservaInteligenciaAct;
+        this.ventajaInteligencia = ventajaInteligencia;
+        this.armadura = armadura;
+        this.dinero = dinero;
+        this.competencias = competencias;
+        this.Habilidades = Habilidades;
+        this.equipo = equipo;
+        this.dispositivo = dispositivo;
+        this.maxDispositivo = maxDispositivo;
+        this.trasfondo = trasfondo;
     }
     
+                
     //GETTERS Y SETTERS
 
     public String getNombre() {
@@ -298,12 +333,12 @@ public class Fichas {
         this.maxDispositivo = maxDispositivo;
     }
 
-    public List<String> getNotas() {
-        return notas;
+    public String gettrasfondo() {
+        return trasfondo;
     }
 
-    public void setNotas(List<String> notas) {
-        this.notas = notas;
+    public void settrasfondo(String trasfondo) {
+        this.trasfondo = trasfondo;
     }
 
     @Override
@@ -316,7 +351,7 @@ public class Fichas {
             + "\"espe\":\""+val+"\"}";
         }
         aux += "]";
-        return "Fichas{" + "nombre\"=\"" + nombre + ", \"tipo\"=\"" + tipo + ", \"rasgo\"=\"" + rasgo + ", \"descriptor\"=\"" + descriptor + ", \"recursion\"=\"" + recursion + ", \"rango\"=\"" + rango + ", \"esfuerzo\"=\"" + esfuerzo + ", \"exp\"=\"" + exp + ", \"aumentarC\"=\"" + aumentarC + ", \"perfeccion\"=\"" + perfeccion + ", \"esfuerzoExt\"=\"" + esfuerzoExt + ", \"competenciaH\"=\"" + competenciaH + ", \"otros\"=\"" + otros + ", \"recuperacion\"=\"" + recuperacion + ", \"reservaVigorMax\"=\"" + reservaVigorMax + ", \"reservaVigorAct\"=\"" + reservaVigorAct + ", \"ventajaVigor\"=\"" + ventajaVigor + ", \"reservaVelocidadMax\"=\"" + reservaVelocidadMax + ", \"reservaVelocidadAct\"=\"" + reservaVelocidadAct + ", \"ventajaVelocidad\"=\"" + ventajaVelocidad + ", \"reservaInteligenciaMax\"=\"" + reservaInteligenciaMax + ", \"reservaInteligenciaAct\"=\"" + reservaInteligenciaAct + ", \"ventajaInteligencia\"=\"" + ventajaInteligencia + ", \"armadura\"=\"" + armadura + ", \"dinero\"=\"" + dinero + ", \"competencias\"=\"" + aux + ", \"Habilidades\"=\"" + Habilidades + ", \"equipo\"=\"" + equipo + ", \"dispositivo\"=\"" + dispositivo + ", \"maxDispositivo\"=\"" + maxDispositivo + ", \"notas\"=\"" + notas + "\"}";
+        return "Fichas{" + "nombre\"=\"" + nombre + ", \"tipo\"=\"" + tipo + ", \"rasgo\"=\"" + rasgo + ", \"descriptor\"=\"" + descriptor + ", \"recursion\"=\"" + recursion + ", \"rango\"=\"" + rango + ", \"esfuerzo\"=\"" + esfuerzo + ", \"exp\"=\"" + exp + ", \"aumentarC\"=\"" + aumentarC + ", \"perfeccion\"=\"" + perfeccion + ", \"esfuerzoExt\"=\"" + esfuerzoExt + ", \"competenciaH\"=\"" + competenciaH + ", \"otros\"=\"" + otros + ", \"recuperacion\"=\"" + recuperacion + ", \"reservaVigorMax\"=\"" + reservaVigorMax + ", \"reservaVigorAct\"=\"" + reservaVigorAct + ", \"ventajaVigor\"=\"" + ventajaVigor + ", \"reservaVelocidadMax\"=\"" + reservaVelocidadMax + ", \"reservaVelocidadAct\"=\"" + reservaVelocidadAct + ", \"ventajaVelocidad\"=\"" + ventajaVelocidad + ", \"reservaInteligenciaMax\"=\"" + reservaInteligenciaMax + ", \"reservaInteligenciaAct\"=\"" + reservaInteligenciaAct + ", \"ventajaInteligencia\"=\"" + ventajaInteligencia + ", \"armadura\"=\"" + armadura + ", \"dinero\"=\"" + dinero + ", \"competencias\"=\"" + aux + ", \"Habilidades\"=\"" + Habilidades + ", \"equipo\"=\"" + equipo + ", \"dispositivo\"=\"" + dispositivo + ", \"maxDispositivo\"=\"" + maxDispositivo + ", \"trasfondo\"=\"" + trasfondo + "\"}";
     }
     
     
