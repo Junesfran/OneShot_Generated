@@ -8,5 +8,11 @@ class TheStrange_rasgoDAO:
     def __init__(self):
         self.session = db.session
         
+    def get_by_name(self, name: str):
+        return self.session.query(TheStrange_rasgo).filter_by(nombre=name).first()
+        
+    def get_all(self):
+        return self.session.query(TheStrange_rasgo).all()
+        
     def get_rasgo_for_recursion(self, recursion_name: str) -> list[TheStrange_rasgo]:
         return self.session.query(TheStrange_rasgo).join(TheStrange_rasgoRecursion).join(TheStrange_recursion).filter(TheStrange_recursion.nombre == recursion_name).all()

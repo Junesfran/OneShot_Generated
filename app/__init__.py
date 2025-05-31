@@ -43,3 +43,12 @@ app.register_blueprint(theStrange_creaturador)
 
 from app.routes.campañas import campaña
 app.register_blueprint(campaña)
+
+from app.routes.TheStrange.rasgo import rasgo
+app.register_blueprint(rasgo)
+
+from app.routes.TheStrange.clase import clase
+app.register_blueprint(clase)
+
+from app.routes.TheStrange.ficha import ficha
+app.register_blueprint(ficha)
