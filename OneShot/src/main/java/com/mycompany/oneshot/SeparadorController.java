@@ -24,6 +24,6 @@ public class SeparadorController{
     
     @FXML
     public void desastre() throws IOException{
-        App.setRoot("nueva");
+        App.setRoot("principal");
     }
 }

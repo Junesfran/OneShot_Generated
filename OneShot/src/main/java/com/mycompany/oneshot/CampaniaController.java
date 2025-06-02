@@ -62,6 +62,20 @@ public class CampaniaController {
     @FXML
     private ComboBox cManuales;
     
+    @FXML
+    private Label lNombreUser;
+    
+    @FXML
+    public void volver() throws IOException{
+        App.user.logout();
+        App.setRoot("login");
+    }
+    
+    @FXML
+    public void initialize() {
+        lNombreUser.setText(App.user.getUser());
+    }
+    
     //Mostrar
     @FXML
     public void Botones() throws IOException {
@@ -102,7 +116,7 @@ public class CampaniaController {
             b.setMaxHeight(Double.MAX_VALUE);
             GridPane.setMargin(b, new Insets(5));
             b.setOnAction(e -> {
-                System.out.println("puta");
+                entrarCampania();
             });
 
             int row = i / columnas;
@@ -112,6 +126,14 @@ public class CampaniaController {
         }
     }
 
+    @FXML
+    public void entrarCampania(){
+        try {
+            App.setRoot("campania");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     
     @FXML
     public void editorCampania(){

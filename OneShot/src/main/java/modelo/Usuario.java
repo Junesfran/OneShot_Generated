@@ -38,6 +38,11 @@ public class Usuario {
         this.token = token;
     }
 
+    public void logout(){
+        this.User = "";
+        this.token = "";
+    }
+    
     @Override
     public String toString() {
         return "Usuario{" + "User=" + User + ", token=" + token + '}';

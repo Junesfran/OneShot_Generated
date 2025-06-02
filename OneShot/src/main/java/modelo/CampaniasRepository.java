@@ -23,7 +23,7 @@ import org.json.JSONObject;
  * @author Nestor y Asociados
  */
 public class CampaniasRepository {
-    
+ 
     public int MandarCampaña(String url, String nombre, String pwd, String descripcion, String manual, int imagen){
         int res = 0;
         url += "/campania";

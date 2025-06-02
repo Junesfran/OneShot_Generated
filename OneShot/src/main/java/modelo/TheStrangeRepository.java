@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Scanner;
 import org.json.JSONObject;
 import com.mycompany.oneshot.*;
+import org.json.JSONArray;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -25,8 +26,128 @@ import com.mycompany.oneshot.*;
  */
 public class TheStrangeRepository {
     
-    
+    public List<String> sacarRasgo(String url, String recursion, int num) throws NullPointerException{
+        url += "/the_strange/recursion/"+recursion+"/rasgos";
+        System.out.println(url);
+        System.out.println("AQUI");
+        String aux = "";
+        List<String> textos = new ArrayList<>();
+ 
+        JSONObject datos = sacarGeneral(url);
         
+        JSONObject dato = datos.getJSONArray("datos").getJSONObject(num);
+        
+        aux += dato.getString("descripcion")+"\n";
+        aux += "TRASFERIBLE\n";
+        aux += dato.getBoolean("transferible")+"\n";
+
+        textos.add(dato.getString("nombre"));
+        textos.add(aux);
+        
+        return textos;
+    }  
+    
+    public List<String> sacarRasgoRecursion(String url, String recursion) throws NullPointerException{
+        url += "/the_strange/recursion/"+recursion+"/rasgos";
+        
+        int num = 0;
+        List<String> rasgos = new ArrayList<>();
+        JSONObject datos = sacarGeneral(url);
+        
+        num = datos.getInt("kuantos");
+        for (int i = 0; i < num; i++) {
+            rasgos.add(datos.getJSONArray("datos").getJSONObject(i).getString("nombre"));
+        }
+
+        return rasgos;
+    }
+    
+    public List<String> sacarDescriptores(String url) throws NullPointerException{
+        url += "/the_strange/descriptor";
+        int num = 0;
+        List<String> clases = new ArrayList<>();
+        
+        JSONObject datos = sacarGeneral(url);
+        
+        num = datos.getInt("kuantos");
+        for (int i = 0; i < num; i++) {
+            clases.add(datos.getJSONArray("datos").getJSONObject(i).getString("nombre"));
+        }
+
+        return clases;
+    }
+    
+    public List<String> sacarClases(String url) throws NullPointerException{
+        url += "/the_strange/clase";
+        int num = 0;
+        List<String> clases = new ArrayList<>();
+        
+        JSONObject datos = sacarGeneral(url);
+        
+        num = datos.getInt("kuantos");
+        for (int i = 0; i < num; i++) {
+            clases.add(datos.getJSONArray("datos").getJSONObject(i).getString("nombre"));
+        }
+
+        return clases;
+    }  
+    
+    
+    public List<String> sacarClase(String url, int clase) throws NullPointerException{
+        url += "/the_strange/clase";
+        System.out.println(url);
+        System.out.println(clase);
+        String aux = "";
+        List<String> textos = new ArrayList<>();
+ 
+        JSONObject datos = sacarGeneral(url);
+        
+        JSONObject dato = datos.getJSONArray("datos").getJSONObject(clase);
+        
+        aux += dato.getString("descripcion")+"\n";
+        aux += "CANTIDAD DE DISPOSITIVOS BASE\n";
+        aux += dato.getInt("minimoDispositivos")+"\n";
+        aux += "TRASLACIÓN\n";
+        aux += dato.getString("traslacion")+"\n";
+        aux += "VINCULO INICIAL\n";
+        
+        String vinculos = dato.getString("vinculos").replace("/", "\n");
+        vinculos = vinculos.replace("_", ". ");
+        
+        aux += vinculos;
+        
+        textos.add(dato.getString("nombre"));
+        textos.add(aux);
+        
+        return textos;
+    }  
+    
+    
+    public List<String> sacarRecursion(String url, String recursion) throws NullPointerException{
+        url += "/the_strange/recursion/"+recursion;
+        String aux = "";
+        List<String> textos = new ArrayList<>();
+ 
+        JSONObject datos = sacarGeneral(url);
+        
+        aux += datos.getString("resumen")+"\n";
+        aux += "FORMA\n";
+        aux += datos.getString("forma")+"\n";
+        aux += "CHISPA\n";
+        aux += datos.getString("chispa")+"\n";
+        aux += "CONEXIÓN THE STRANGE\n";
+        aux += datos.getString("conexion_the_strange")+"\n";
+        aux += "CONEXIÓN CON LA TIERRA\n";
+        aux += datos.getString("conexion_tierra")+"\n";
+
+        textos.add(datos.getString("nombre"));
+        textos.add(aux);
+        textos.add(datos.getInt("nivel")+" ("+datos.getInt("nivel")*3+")");
+        
+        return textos;
+    }  
+    
+    
     public List<String> sacarCriatura(String url, String criatura) throws NullPointerException{
         url += "/the_strange/creaturador/"+criatura;
         String aux = "";
@@ -35,23 +156,23 @@ public class TheStrangeRepository {
         JSONObject datos = sacarGeneral(url);
         
         aux += datos.getString("descripcion")+"\n";
-        aux += "Motivación:\n";
+        aux += "MOTIVACIÓN\n";
         aux += datos.getString("motivacion")+"\n";
-        aux += "Entorno:\n";
+        aux += "ENTORNO\n";
         aux += datos.getString("entorno")+"\n";
-        aux += "Salud:\n";
+        aux += "SALUD\n";
         aux += datos.getInt("salud")+"\n";
-        aux += "Daño que Inflinge:\n";
+        aux += "DAÑO QUE INFLINGE\n";
         aux += datos.getInt("daño")+"\n";
-        aux += "Movimiento:\n";
+        aux += "MOVIMIENTO\n";
         aux += datos.getString("movimiento")+"\n";
-        aux += "Combate:\n";
+        aux += "COMBATE\n";
         aux += datos.getString("combate")+"\n";
-        aux += "Interacción:\n";
+        aux += "INTERRACIÓN\n";
         aux += datos.getString("iteraccion")+"\n";
-        aux += "Uso:\n";
+        aux += "USO\n";
         aux += datos.getString("uso")+"\n";
-        aux += "Botín:\n";
+        aux += "BOTÍN\n";
         aux += datos.getString("botin")+"\n";
 
         textos.add(datos.getString("nombre"));
@@ -60,11 +181,16 @@ public class TheStrangeRepository {
         
         return textos;
     }  
+    
+      
     public List<String> sacarCriaturasRecursion(String url, String recursion) throws NullPointerException{
-        url += "/the_strange/recursion/"+recursion+"/creaturas";
+            url += "/the_strange/recursion/"+recursion+"/creaturas";
+
+        
         int num = 0;
         List<String> clases = new ArrayList<>();
         
+
         JSONObject datos = sacarGeneral(url);
         
         num = datos.getInt("kuantos");
@@ -93,8 +219,9 @@ public class TheStrangeRepository {
     private JSONObject sacarGeneral(String url){
         JSONObject datos = null;
         int respu;
+        String ruta = url.replaceAll(" ", "%20");
         try {
-            URL direc = new URI(url).toURL();
+            URL direc = new URI(ruta).toURL();
             HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
             huc.setRequestMethod("GET");
             huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());

@@ -1,5 +1,5 @@
 .tab {
-    -fx-pref-width: 220;
+    -fx-pref-width: 333;
     -fx-background-color: #41c85e;
     
 } 
@@ -28,6 +28,21 @@
     -fx-padding: 0 -1 -1 -1;
 }
 
+.imagen{
+    -fx-background-color: #2c9041;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 -1 -1 -1;
+}
+
+.panelSuperior{
+    -fx-background-color: #41c85e;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-border-color: #41c85e;
+    -fx-border-width: 2;
+    -fx-border-radius: 2 2 2 2;
+}
 
 .panelBotones{
     -fx-background-color: #205f76
@@ -36,4 +51,11 @@
 .botones{
     -fx-background-color: #8e5d16;
     -fx-font-weight: bold;
+}
+
+.titulo{
+    -fx-text-fill: black;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(255,255,255,0.75), 2, 2, 2, 2);
 }

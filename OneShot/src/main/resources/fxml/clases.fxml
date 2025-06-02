@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="722.0" prefWidth="918.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.ConsultasController">
+   <children>
+      <ScrollPane prefHeight="722.0" prefWidth="918.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2000.0" prefWidth="903.0">
+               <children>
+                  <Pane prefHeight="2000.0" prefWidth="904.0" styleClass="fondo" stylesheets="@../../../estilos/consultas.css">
+                     <children>
+                        <Label layoutX="25.0" layoutY="20.0" styleClass="texto" stylesheets="@../../../estilos/consultas.css" text="Clases" />
+                        <ComboBox fx:id="cbClases" layoutX="25.0" layoutY="45.0" onAction="#textoClase" prefWidth="150.0" styleClass="botones" stylesheets="@../../../estilos/consultas.css" />
+                        <Label fx:id="lNombreClase" contentDisplay="CENTER" layoutX="240.0" layoutY="28.0" prefHeight="35.0" prefWidth="514.0" styleClass="titulo" stylesheets="@../../../estilos/consultas.css" textAlignment="CENTER">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <TextFlow fx:id="tfTextoClase" layoutX="254.0" layoutY="94.0" prefHeight="200.0" prefWidth="598.0" stylesheets="@../../../estilos/consultas.css" textAlignment="CENTER" />
+                        <Pane layoutX="14.0" layoutY="160.0" prefHeight="267.0" prefWidth="240.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" styleClass="texto" stylesheets="@../../../estilos/consultas.css" text="Habilidades" />
+                              <ListView fx:id="lbHabilidades" layoutX="14.0" layoutY="52.0" onMouseClicked="#textoCriatura" prefHeight="200.0" prefWidth="166.0" styleClass="botones" stylesheets="@../../../estilos/consultas.css" />
+                           </children>
+                        </Pane>
+                        <Label layoutX="25.0" layoutY="94.0" styleClass="texto" stylesheets="@../../../estilos/consultas.css" text="Rango" />
+                        <ComboBox fx:id="cbRango" layoutX="25.0" layoutY="119.0" onAction="#listaCriatura" prefWidth="150.0" styleClass="botones" stylesheets="@../../../estilos/consultas.css" />
+                        <Pane layoutX="14.0" layoutY="438.0" prefHeight="267.0" prefWidth="240.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" styleClass="texto" stylesheets="@../../../estilos/consultas.css" text="Proeza" />
+                              <ListView fx:id="lbProeza" layoutX="14.0" layoutY="52.0" onMouseClicked="#textoCriatura" prefHeight="200.0" prefWidth="166.0" styleClass="botones" stylesheets="@../../../estilos/consultas.css" />
+                           </children>
+                        </Pane>
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
