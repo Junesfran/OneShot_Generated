@@ -1,7 +1,7 @@
 # Estado Actual:
 <ul>
-  <li>Base de Datos: 90%</li>
-  <li>API: 55%</li>
-  <li>BackEnd: 15%</li>
-  <li>FrontEnd: 25%</li>
+  <li>Base de Datos: 95%</li>
+  <li>API: 80%</li>
+  <li>BackEnd: 50%</li>
+  <li>FrontEnd: 65%</li>
 </ul>
