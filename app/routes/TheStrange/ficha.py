@@ -25,17 +25,36 @@ def get_all(user):
     based_fichas = [{"id": ficha.id, "nombre": ficha.nombre, "clase": ficha.clase} for ficha in fichas]
     return {"kuantos": total, "datos": based_fichas}, 200
 
+@ficha.delete("/<id>")
+@user_required
+def fetus_deletus(user, id: str):
+    fichador = FichaDAO()
+    ficha = fichador.get_by_id(user.idUsuario, id)
+    if(ficha == None):
+        return {"error", "nonnonon"}, 404
+    
+    try:
+        FichaDAO().yeet(id)
+        return {"success": "borrindada"}, 200
+    except Exception as e:
+        return {"error": f"no se: {str(e)}"}, 500
+
 @ficha.get("/<id>")
 @user_required
 def get_by_name(user, id: str):
     try:
-        ficha = FichaDAO().get_by_id(user.idUsuario, id)
+        ficha, capacidades, competencias, dispositivos, equipo = FichaDAO().get_by_id(user.idUsuario, id)
     except Exception as e:
         print(traceback.format_exc())
     if(ficha == None):
         return {"error": f"no {id} ficha"}, 404
     
-    return ficha.to_json(), 200
+    datardo = ficha.to_json()
+    datardo["capacidades_especiales"] = [capacidad.to_json() for capacidad in capacidades]
+    datardo["competencias"] = [competencia.to_json() for competencia in competencias]
+    datardo["dispositivos"] = [dispositivo.to_json() for dispositivo in dispositivos]
+    datardo["equipo"] = [equipo.to_json() for equipo in equipo]
+    return datardo, 200
 
 @ficha.post("")
 @user_required
@@ -57,4 +76,16 @@ def crear(user):
     if(result == None):
         return {"error": "Failed to create"}, 422
     else:
-        return result.to_json(), 200
+        try:
+            ficha, capacidades, competencias, dispositivos, equipo = FichaDAO().get_by_id(user.idUsuario, result.id)
+        except Exception as e:
+            print(traceback.format_exc())
+        if(ficha == None):
+            return {"error": f"no {id} ficha"}, 404
+        
+        datardo = ficha.to_json()
+        datardo["capacidades_especiales"] = [capacidad.to_json() for capacidad in capacidades]
+        datardo["competencias"] = [competencia.to_json() for competencia in competencias]
+        datardo["dispositivos"] = [dispositivo.to_json() for dispositivo in dispositivos]
+        datardo["equipo"] = [equipo.to_json() for equipo in equipo]
+        return datardo, 200

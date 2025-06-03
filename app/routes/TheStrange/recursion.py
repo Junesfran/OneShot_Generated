@@ -4,6 +4,8 @@ from app.utils.session import user_required
 
 from app.routes.TheStrange import theStrange_id_prefix
 
+from app.model.sql.dao.TheStrange.recursion import TheStrange_recursionDAO
+
 from app.model.sql.model.user import User
 from app.model.sql.model.TheStrange.recursion import TheStrange_recursion
 from app.controllers.TheStrange.recursion import TheStrange_recursion_controller
@@ -38,7 +40,19 @@ def get_recursion_by_name(name: str, user: User):
     if(recursion == None):
         return {"error": f"recursion {name} does not exist"}, 404
     else:
-        return recursion.to_json(), 200
+        recursion_data = recursion.to_json()
+        
+        datador = TheStrange_recursionDAO()
+        tipos = {tipo.idTipos: tipo.tipo for tipo in datador.get_tipos_apartado()}
+        apartados = [apartado.to_json() for apartado in datador.get_apartados_recursion(recursion.nombre)]
+        
+        for apartado in apartados:
+            apartado["tipo"] = tipos[apartado["listaTipos_idTipos"]]
+            del apartado["listaTipos_idTipos"]
+            del apartado["Recursion_nombre"]
+        
+        recursion_data["apartados"] = apartados
+        return recursion_data, 200
     
 @theStrange_recursion.get("/<recursion>/rasgos")
 @user_required
@@ -61,7 +75,7 @@ def get_rasgos_for_recursion(recursion: str, user: User):
 @user_required
 def get_spicy_descriptor(recursion: str, user: User):
     try:
-        spice_master = TheStrange_creatura_creaturador().get_spicy_descriptor_for(recursion)
+        spice_master = TheStrange_descriptor_controller().get_spicy_descriptor_for(recursion)
     except ValueError as ve:
         return {"error": str(ve)}, 404
         
