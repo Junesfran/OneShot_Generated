@@ -14,10 +14,13 @@ class CampañaDAO:
         return self.session.query(Campaña).all()
     
     def get_all_for_user(self, user_id: int) -> list[Campaña]:
-        return self.session.query(Campaña).join(UsuarioCampaña).filter(UsuarioCampaña.Usuario_idUsuario==user_id).all()
+        print(user_id)
+        # webardos = self.session.query(Campaña).join(UsuarioCampaña).all()
+        webardos = self.session.query(Campaña).join(UsuarioCampaña).filter(UsuarioCampaña.Usuario_idUsuario==user_id).all()
+        return webardos
     
     def get_by_id(self, id: int) -> Campaña|None:
-        return self.session.query(Campaña).filter_by(id=id).first()
+        return self.session.query(Campaña).filter_by(idCampaña=id).first()
     
     def delete(self, id: int) -> bool:
         campaña = self.get_by_id(id)

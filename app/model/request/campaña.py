@@ -6,3 +6,7 @@ class CampañaRequestModel(BaseModel):
     manual: str
     idImagen: int
     contrasenyn: str
+    
+class UnirmeACampaña(BaseModel):
+    id_campaña: int
+    contrasenyan: str

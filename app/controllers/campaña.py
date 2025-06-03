@@ -7,8 +7,8 @@ class Campaña_controller:
     def __init__(self):
         self.campaña_dao = CampañaDAO()
     
-    def get_camaña(self, manual_id: str) -> dict|None:
-        campaña: Campaña = self.campaña_dao.get_by_id(id=manual_id)
+    def get_camaña(self, id: str) -> dict|None:
+        campaña: Campaña = self.campaña_dao.get_by_id(id=id)
         
         return campaña.to_json()
     
@@ -20,7 +20,7 @@ class Campaña_controller:
         return len(campañas), adapted_campaña
     
     def get_all_camapaña_for_user(self, user_id: int) -> tuple[int, list[dict]]:
-        campañas: list[Campaña] = self.campaña_dao.get_all_for_user(user_id=id)
+        campañas: list[Campaña] = self.campaña_dao.get_all_for_user(user_id=user_id)
         
         adapted_manueles = [microplastik.to_json() for microplastik in campañas]
         
