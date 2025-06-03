@@ -22,7 +22,23 @@ python3 run.py
 
 congratualtions
 ## Pa windows
-No es mi puto problema, es lo mismo pero el .venv se activa distinto porque soy windows miradme
+Primero por ser limpito y ordenado, el venv:
+```bash
+python3 -m venv .venv
+```
+activarlo:
+```bash
+.venv\Scripts\activate
+```
+instalar la paketeria:
+```bash
+pip install -r requirements.txt
+```
+y lanzar la API sin miedo al exito:
+```bash
+python3 run.py
+```
+El único cambio real es no añadir source cuando vayas a actvar el venv
 
 ## ADVERTENCIA QUE DE ADVIERTE DE LO QUE DEBES SER ADVERTIDO
 <div align="center">
