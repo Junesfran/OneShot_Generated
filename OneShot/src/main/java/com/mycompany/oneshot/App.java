@@ -7,7 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import modelo.FichaRepository;
 import modelo.Usuario;
+import modelo.UsuarioRepository;
 
 /**
  * JavaFX App
@@ -43,7 +46,19 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        // launch();
+        
+        try {
+            UsuarioRepository.Login(direc, "juan", "juan");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (URISyntaxException ex) {
+            ex.printStackTrace();
+        }
+        
+        FichaRepository fRep = new FichaRepository();
+        
+        fRep.listarFichas(direc);
         
 //        try {
 //            c.Botones();
