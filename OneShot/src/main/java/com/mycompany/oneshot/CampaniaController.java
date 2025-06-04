@@ -17,7 +17,9 @@ import javafx.scene.text.Font;
 import modelo.*;
 
 /**
- *
+ * Clase encargada de la gestión y llamado de todos los métodos relacionados
+ * con las campañas.
+ * 
  * @author Nestor y Asociados
  */
 public class CampaniaController {
@@ -27,8 +29,8 @@ public class CampaniaController {
     private UsuarioRepository uRepo = new UsuarioRepository();
 
     private String message = "Se advierte de que se ha advertido de lo que se tiene que advertir";
-//    private int puerto = 13013;
     
+    //Mostrar mis campañas
     @FXML
     private GridPane gridMaster;
     
@@ -83,17 +85,47 @@ public class CampaniaController {
     private Label lUser3;
     
     
+/**
+ * Método encargado de mover la pestaña actual a la de login,
+ * eliminando tambien las credenciales del usuario así como su
+ * token de sesión para que no pueda acceder de nuevo por error
+ * con un token invalido
+ * 
+ */
     @FXML
-    public void volver() throws IOException{
-        App.user.logout();
-        App.setRoot("login");
+    public void volver(){
+        try{
+            App.user.logout();
+            App.setRoot("login");  
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
     }
    
+/**
+ * Método encargado de mover la pestaña actual a la vista principal de
+ * las campañas del usuario.
+ * 
+ */
     @FXML
-    public void volverPrincipal() throws IOException{
-        App.setRoot("principal");
+    public void volverPrincipal(){
+        try{
+            App.setRoot("principal");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
     
+/**
+ *  Método que es llamado cada vez que se carga una nueva ventana fxml.
+ * Como este controlador sirve para muchas ventanas, para evitar que haya
+ * problemas de nulos, esta clase comprueba la existencia de cada elemento
+ * antes de trabajar con el.
+ * Se encarga en concreto de colocar el nombre del usuario en las distintas
+ * ventanas y de llamar al método que nos muestra nuestras campañas.
+ * 
+ */
     @FXML
     public void initialize() {
         if(lUser2 != null){
@@ -122,7 +154,16 @@ public class CampaniaController {
             listadoCampanias();
         }
     }
-    
+/**
+ * Este método llama al método del repositorio para campañas que nos 
+ * devuelve una lista de objetos campaña con las campañas existentes.
+ * Luego recorre en la lista de campañas y va instanciando en la vista dentro de un Pane
+ * cada campaña existente, con un pequeño formulario con un Button y un PasswordField
+ * para poder permitir el unirnos a esa campaña introduciendo su contraseña.
+ * Podamos meternos o no en la campaña se nos notificará del resultado a través
+ * de un popUp.
+ * 
+ */
     public void listadoCampanias(){
         List<Campanias> listaC = cRepo.listaCampañas(App.direc);
         int x = 10;
@@ -174,7 +215,14 @@ public class CampaniaController {
         }
     }
     
-    //Mostrar
+/**
+ * Método que es llamado cada vez que carga un tab en la vista principal con todas tus 
+ * campañas.
+ * Este muestra dependiendo del tab tus campañas actuales o las archivadas, desplegandolas
+ * en botones que al pulsarse llamen al método que nos mueva a la campaña solicitada.
+ * 
+ * @exception IOException
+ */
     @FXML
     public void Botones() throws IOException {
         //Cambiar el valor inicial por el llamado a un método que me diga el
@@ -263,11 +311,7 @@ public class CampaniaController {
         }
     }
 
-//    @FXML
-//    public void unirteCampania(Campanias c){
-//
-//
-//    }
+
     
     @FXML
     public void entrarCampania(){
@@ -325,4 +369,3 @@ public class CampaniaController {
 }
 
     
-
