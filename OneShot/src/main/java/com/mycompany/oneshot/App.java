@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import modelo.Usuario;
-import vista.VistaPrincipal;
 
 /**
  * JavaFX App
@@ -17,7 +16,9 @@ public class App extends Application {
 
     private static Scene scene;
     public static Usuario user = new Usuario();
+//    public static String direc = "http://82.199.59.159:13013";
     public static String direc = "http://piola.cloudns.nz:13013";
+    public static final String manualID = "the_stange";
     //private String direc = "http://192.168.1.32:8080";
     
     @Override
@@ -43,8 +44,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
-        VistaPrincipal vp = new VistaPrincipal();
-        Controller c = new Controller();
         
 //        try {
 //            c.Botones();

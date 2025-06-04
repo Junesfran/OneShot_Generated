@@ -23,10 +23,28 @@ import org.json.JSONObject;
  * @author Nestor y Asociados
  */
 public class CampaniasRepository {
- 
-    public int MandarCampaña(String url, String nombre, String pwd, String descripcion, String manual, int imagen){
+
+    public List<Manual> listarManuales(String url){
+        List<Manual> manuales = new ArrayList<Manual>();
+        url += "/manual";
+        int num = 0;
+        
+        JSONObject datos = sacarGeneral(url);
+        num = datos.getInt("kuantos");
+        
+        Manual m = null;
+        for (int i = 0; i < num; i++) {
+            JSONObject dato = datos.getJSONArray("datos").getJSONObject(i);
+            m = new Manual(dato.getString("id"), dato.getString("nombre"));
+            manuales.add(m);
+        }
+
+        return manuales;
+    }
+    
+    public int MandarCampaña(String url,Campanias c, String pwd){
         int res = 0;
-        url += "/campania";
+        url += "/campanyan";
         String aux = "";
         BufferedReader br = null;
         OutputStream os = null;
@@ -44,19 +62,15 @@ public class CampaniasRepository {
 
           huc.setDoOutput(true);
           
-          String inputLine = "{\"nombre\":\""+nombre+"\","
-                  + "\"descripcion\":\""+descripcion+"\""
-                  + "\"manual\":\""+manual+"\""
-                  + "\"idImagen\":\""+imagen+"\""
-                  + "\"contrasenyn\":\""+pwd+"\""
-                  + "}";
-          
+          String inputLine = c.toString() + ", \"contrasenyn\":\""+pwd+"\"}";
+            System.out.println(inputLine);
+            
           os = huc.getOutputStream();
           byte[] input = inputLine.getBytes("utf-8");
           os.write(input,0,input.length);
           
-          int rest = huc.getResponseCode();
-          if(rest == 200){
+           res = huc.getResponseCode();
+          if(res == 200){
             br = new BufferedReader(new InputStreamReader(huc.getInputStream(),"utf-8"));
           
             StringBuilder respu = new StringBuilder();
@@ -72,7 +86,7 @@ public class CampaniasRepository {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return 0;
+        return res;
     }
     
     public int ArchivarCampaña(String url, int id){
@@ -120,51 +134,50 @@ public class CampaniasRepository {
         }
         return 0;
     }
-    
-    public List<String> listaCampañas(String url){
-        List<String> campañas = new ArrayList<String>();
-
-        url += "/campañas";
-        int num = numeros(url);
-        List<String> clases = new ArrayList<>();
-        int respu;
-        String[] cachos;
-        String fin = "";
-        try {
-            URL direc = new URI(url).toURL();
-            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-            huc.setRequestMethod("GET");
-            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
-            respu = huc.getResponseCode();
-
-            if(respu != 200){
-                System.out.println("Ha habido un fallo en la comunicación");
-            }else{
-                StringBuilder info = new StringBuilder();
-
-                Scanner sc = new Scanner(direc.openStream());
-
-                while (sc.hasNext()) {                    
-                    info.append(sc.nextLine());     
-                }
-
-                JSONObject datos = new JSONObject(String.valueOf(info));
-                for (int i = 0; i < num; i++) {
-                    clases.add(datos.getJSONArray("data").getJSONObject(i).getString("nombre"));
-                }
-
-                sc.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+        
+ 
+    public List<Campanias> listaCampañas(String url){
+        List<Campanias> campañas = new ArrayList<Campanias>();
+        url += "/campanyan";
+        int num = 0;
+        
+        JSONObject datos = sacarGeneral(url);
+        num = datos.getInt("kuantos");
+        
+        Campanias c = null;
+        for (int i = 0; i < num; i++) {
+            JSONObject dato = datos.getJSONArray("datos").getJSONObject(i);
+            
+            Manual m = new Manual(dato.getString("manual_id"), "The Strange");
+            c = new Campanias(dato.getInt("idCampaña"), dato.getString("nombre"), dato.getString("descripcion"),m, dato.getBoolean("archivada"), dato.getInt("imagen"));
+            campañas.add(c);
         }
+
+        return campañas;
+    }
+    public List<Campanias> listaTusCampañas(String url){
+        List<Campanias> campañas = new ArrayList<Campanias>();
+        url += "/campanyan/mine";
+        int num = 0;
+        
+        JSONObject datos = sacarGeneral(url);
+        num = datos.getInt("kuantos");
+        
+        Campanias c = null;
+        for (int i = 0; i < num; i++) {
+            JSONObject dato = datos.getJSONArray("datos").getJSONObject(i);
+            Manual m = new Manual(dato.getString("manual_id"), "The Strange");
+            c = new Campanias(dato.getInt("idCampaña"), dato.getString("nombre"), dato.getString("descripcion"),m, dato.getBoolean("archivada"), dato.getInt("imagen"));
+            campañas.add(c);
+        }
+
         return campañas;
     }
     
-    public int unirmeCampañas(String url, int id){
-        int res = 0;
+    public String unirmeCampañas(String url, Campanias c, String pwd){
+        String res = "";
          //Pendiente de saber la ruta
-        url += "/campania";
+        url += "/campanyan/unirme";
         String aux = "";
         BufferedReader br = null;
         OutputStream os = null;
@@ -182,13 +195,16 @@ public class CampaniasRepository {
 
           huc.setDoOutput(true);
           
-          String inputLine = "{\"idCampaña\":\""+id+"\"}";
+          String inputLine = c.join() + ", \"contrasenyan\":\""+pwd+"\"}";
+          
+            System.out.println(inputLine);
           
           os = huc.getOutputStream();
           byte[] input = inputLine.getBytes("utf-8");
           os.write(input,0,input.length);
           
           int rest = huc.getResponseCode();
+            System.out.println(rest);
           if(rest == 200){
             br = new BufferedReader(new InputStreamReader(huc.getInputStream(),"utf-8"));
           
@@ -198,46 +214,50 @@ public class CampaniasRepository {
                 respu.append(linea.trim());
             }
             aux = respu.toString();
+              System.out.println(aux);
             JSONObject jobject = new JSONObject(aux);
-            //Pendiente de ver que me devuelve;
+            res = jobject.getString("success");
           }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return 0;
+        return res;
     }
 
-    public int numeros(String url){
-            int num = 0;
-            int respu;
-            try {
-                URL direc = new URI(url).toURL();
-                HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-                huc.setRequestMethod("GET");
-                huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
-                respu = huc.getResponseCode();
+   
+private JSONObject sacarGeneral(String url){
+        JSONObject datos = null;
+        int respu;
+        String ruta = url.replaceAll(" ", "%20");
+        try {
+            URL direc = new URI(ruta).toURL();
+            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
+            huc.setRequestMethod("GET");
+            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
+            respu = huc.getResponseCode();
+            System.out.println(respu);
+            if(respu == 200){
+                StringBuilder info = new StringBuilder();
+                
+                Scanner scc = new Scanner(huc.getInputStream());
 
-                if(respu != 200){
-                    System.out.println("Ha habido un fallo en la comunicación");
-                }else{
-                    StringBuilder info = new StringBuilder();
-
-                    Scanner sc = new Scanner(direc.openStream());
-
-                    while (sc.hasNext()) {                    
-                        info.append(sc.nextLine());     
-                    }
-                    //ME pasan datos, transformar el stringBUilder en datos
-
-
-                    JSONObject datos = new JSONObject(String.valueOf(info));
-                    respu = datos.getInt("kuantos");
-
-                    sc.close();
+                while (scc.hasNext()) {                    
+                    info.append(scc.nextLine());     
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+
+                datos = new JSONObject(String.valueOf(info));
+                
+                scc.close();
+            }else if(respu == 404){
+                System.out.println("Página no encontrada");
+            }else{
+                System.out.println("Ha habido un fallo en la comunicación");
+                System.out.println(respu);
+                
             }
-            return num;
-        }  
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return datos;
     }
+}

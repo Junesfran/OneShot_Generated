@@ -9,19 +9,40 @@ package modelo;
  * @author Nestor y Asociados
  */
 public class Campanias {
-    private int id;
-    private String nombre;
-    private String rutaImagen;
-    private String manual;
-    private boolean master;
+   private int id;
+   private String nombre;
+   private String descripcion;
+   private Manual manual;
+   private boolean archivada;
+   private int imagen;
+   
+    public Campanias() {
+    }
 
-    public Campanias(int id, String nombre, String rutaImagen, String manual, boolean master) {
+    public Campanias(int id, String nombre, String descripcion,Manual manual, boolean archivada, int imagen) {
         this.id = id;
         this.nombre = nombre;
-        this.rutaImagen = rutaImagen;
+        this.descripcion = descripcion;
         this.manual = manual;
-        this.master = master;
+        this.archivada = archivada;
+        this.imagen = imagen;
     }
+
+    public Campanias(String nombre, String descripcion, Manual manual, int imagen) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.manual = manual;
+        this.imagen = imagen;
+    }
+
+    public Campanias(String nombre, Manual manual) {
+        this.nombre = nombre;
+        this.manual = manual;
+    }
+    
+    
+   
+   //GETTERS Y SETTERS
 
     public int getId() {
         return id;
@@ -39,35 +60,47 @@ public class Campanias {
         this.nombre = nombre;
     }
 
-    public String getRutaImagen() {
-        return rutaImagen;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
-    public String getManual() {
+    public boolean isArchivada() {
+        return archivada;
+    }
+
+    public void setArchivada(boolean archivada) {
+        this.archivada = archivada;
+    }
+
+    public int getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(int imagen) {
+        this.imagen = imagen;
+    }
+
+    public Manual getManual() {
         return manual;
     }
 
-    public void setManual(String manual) {
+    public void setManual(Manual manual) {
         this.manual = manual;
     }
 
-    public boolean isMaster() {
-        return master;
-    }
-
-    public void setMaster(boolean master) {
-        this.master = master;
-    }
-
-    @Override
-    public String toString() {
-        return "Campanias{" + "id=" + id + ", nombre=" + nombre + ", rutaImagen=" + rutaImagen + ", manual=" + manual + ", master=" + master + '}';
+    
+    public String join(){
+        return "{\"id_campaña\":"+id;
     }
     
-     
+    @Override
+    public String toString() {
+        return "{\"nombre\":\"" + nombre + "\", \"descripcion\":\"" + descripcion +"\", \"manual\":\"" + manual.getId() + "\", \"idImagen\":" + imagen;
+    }
+    
     
 }

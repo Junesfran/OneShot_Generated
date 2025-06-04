@@ -4,6 +4,7 @@
  */
 package com.mycompany.oneshot;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -81,6 +82,15 @@ public class ConsultasController {
         if(cbClases != null){
             List<String> lista = tsRepo.sacarClases(App.direc);
             cbClases.setItems(FXCollections.observableArrayList(lista));
+        }
+    }
+    
+    @FXML
+    public void volver(){
+        try {
+            App.setRoot("principal");
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
     

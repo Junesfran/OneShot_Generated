@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane id="AnchorPane" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.Controller">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.Controller">
    <children>
-      <Pane layoutY="-2.0" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #41c85e;">
+      <Pane layoutY="-2.0" prefHeight="815.0" prefWidth="1000.0" style="-fx-background-color: #41c85e;">
          <children>
-            <Pane layoutX="204.0" layoutY="94.0" prefHeight="226.0" prefWidth="233.0" style="-fx-background-color: #2c9041;">
+            <Pane layoutX="384.0" layoutY="277.0" prefHeight="226.0" prefWidth="233.0" style="-fx-background-color: #2c9041;">
                <children>
                   <TextField fx:id="tNombre" layoutX="14.0" layoutY="30.0" prefHeight="27.0" prefWidth="207.0" promptText="Nombre" />
                   <PasswordField fx:id="tPassword" layoutX="14.0" layoutY="82.0" prefHeight="25.0" prefWidth="207.0" promptText="Contraseña" />
@@ -20,7 +20,7 @@
                   <Label fx:id="lFallo" layoutX="21.0" layoutY="6.0" prefHeight="17.0" prefWidth="185.0" text="Credecinales no admitidas" textFill="#ff5050" visible="false" />
                </children>
             </Pane>
-            <Button layoutX="382.0" layoutY="331.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ayuda" textFill="#2060bf" />
+            <Button layoutX="562.0" layoutY="514.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Ayuda" textFill="#2060bf" />
          </children>
       </Pane>
    </children>

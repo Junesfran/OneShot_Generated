@@ -5,18 +5,16 @@
 package com.mycompany.oneshot;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import modelo.CampaniasRepository;
-import modelo.TheStrangeRepository;
-import modelo.UsuarioRepository;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import modelo.*;
 
 /**
  *
@@ -28,8 +26,7 @@ public class CampaniaController {
     private CampaniasRepository cRepo = new CampaniasRepository();
     private UsuarioRepository uRepo = new UsuarioRepository();
 
-
-    
+    private String message = "Se advierte de que se ha advertido de lo que se tiene que advertir";
 //    private int puerto = 13013;
     
     @FXML
@@ -53,27 +50,128 @@ public class CampaniaController {
     @FXML
     private Label lFallo;
     
+        
+    //Creación campaña
+    @FXML
+    private Label lUser2;
+    
     @FXML
     private TextField textNombreCamp;
     
     @FXML
-    private PasswordField textPWDCamp;
+    private PasswordField passContrasenia;
     
     @FXML
-    private ComboBox cManuales;
+    private ComboBox cbManual;
+    
+    @FXML
+    private ComboBox cbImagen;
+    
+    @FXML
+    private TextArea taDescripcion;
+    
+    
     
     @FXML
     private Label lNombreUser;
+    
+    @FXML
+    private Pane pListaC;
+    
+    //Listar campañas
+    @FXML
+    private Label lUser3;
+    
     
     @FXML
     public void volver() throws IOException{
         App.user.logout();
         App.setRoot("login");
     }
+   
+    @FXML
+    public void volverPrincipal() throws IOException{
+        App.setRoot("principal");
+    }
     
     @FXML
     public void initialize() {
-        lNombreUser.setText(App.user.getUser());
+        if(lUser2 != null){
+            lUser2.setText(App.user.getUser());
+            
+            List<Integer> imagenes = new ArrayList<>();
+            imagenes.add(1);
+            imagenes.add(2);
+            imagenes.add(3);
+            imagenes.add(4);
+            cbImagen.setItems(FXCollections.observableArrayList(imagenes));
+            
+            
+            List<Manual> manuales = cRepo.listarManuales(App.direc);
+            cbManual.setItems(FXCollections.observableArrayList(manuales));
+            
+
+        }else if(lUser3 != null){
+            lUser3.setText(App.user.getUser());
+        }
+        
+        if(lNombreUser != null){
+            lNombreUser.setText(App.user.getUser());
+        }
+        if(pListaC != null){
+            listadoCampanias();
+        }
+    }
+    
+    public void listadoCampanias(){
+        List<Campanias> listaC = cRepo.listaCampañas(App.direc);
+        int x = 10;
+        int y = 14;
+        
+        for (Campanias c : listaC) {
+            Pane pane = new Pane();
+                pane.setLayoutX(x);
+                pane.setLayoutY(y);
+                pane.setPrefHeight(55.0);
+                pane.setPrefWidth(980.0);
+                pane.setStyle("-fx-background-color: #18425a;");
+
+            Label label = new Label(c.getId()+" | "+c.getNombre());
+                label.setLayoutX(14.0);
+                label.setLayoutY(10.0);
+                label.setTextFill(javafx.scene.paint.Color.WHITE);
+                label.setFont(Font.font("System Bold", 25.0));
+
+
+            PasswordField passwordField = new PasswordField();
+                passwordField.setLayoutX(721.0);
+                passwordField.setLayoutY(15.0);
+                passwordField.setPrefHeight(25.0);
+                passwordField.setPrefWidth(163.0);
+                passwordField.setPromptText("Contraseña");
+                passwordField.setId("lContrasenia");
+            
+                
+            Button button = new Button("Entrar");
+                button.setLayoutX(901.0);
+                button.setLayoutY(15.0);
+                button.getStyleClass().add("botones");
+                button.getStylesheets().add(getClass().getResource("/estilos/styles.css").toExternalForm());
+                button.setOnAction(e -> {
+                        String aux = cRepo.unirmeCampañas(App.direc, c, passwordField.getText());
+                        
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Advertencia");
+                        alert.setHeaderText(null);
+                        alert.setContentText(aux);
+                        alert.showAndWait();
+                        
+                        passwordField.setText("");
+                    });
+            pane.getChildren().addAll(label, button, passwordField);
+            pListaC.getChildren().add(pane);
+            y += 55;
+        }
     }
     
     //Mostrar
@@ -83,51 +181,97 @@ public class CampaniaController {
         //número de elementos
         int valorInicial = 10;
         int tab = tabInicial.getSelectionModel().getSelectedIndex();
+        List<Campanias> listaC = cRepo.listaTusCampañas(App.direc);
         
         GridPane g = null;
+        for (Campanias campanyas : listaC) {
+            if(tab == 0 || tab == 1){
+                if(!campanyas.isArchivada()){
+                    valorInicial++;
+                }
+            }else if(tab == 2){
+                if(campanyas.isArchivada()){
+                    valorInicial++;
+                }
+            }
+        }
+        
         if(tab == 0){
             g = gridMaster;
-            valorInicial = 8;
         }else if(tab == 1){
             g = gridJugador;
-            valorInicial = 5;
         }else if(tab == 2){
             g = gridArchivado;
-            valorInicial = 10;
-        }else{
-            System.out.println("POr ahí no amiga");
         }
+        
         // Calcular columnas y filas para una cuadrícula lo más cuadrada posible
         int columnas = (int) Math.ceil(Math.sqrt(valorInicial));
         int filas = (int) Math.ceil((double) valorInicial / columnas);
 
         g.getChildren().clear(); // Limpiar el grid antes de agregar nuevos botones
 
-        for (int i = 0; i < valorInicial; i++) {
-            Button b = new Button("Botón " + (i + 1));
+        int i = 0;
+        for (Campanias campanyas : listaC) {
+            if(tab == 0 || tab == 1){
+                if(!campanyas.isArchivada()){
+                    Button b = new Button(campanyas.getNombre());
 
-            b.setPrefWidth(200);
-            b.setStyle(
-                "-fx-background-color: #8e5d16;"+
-                "-fx-border-radius: 5;"+
-                "-fx-margin: 10;"
-            );
-            b.setMaxWidth(Double.MAX_VALUE);
-            b.setMaxHeight(Double.MAX_VALUE);
-            GridPane.setMargin(b, new Insets(5));
-            b.setOnAction(e -> {
-                entrarCampania();
-            });
+                    b.setPrefWidth(200);
+                    b.setStyle(
+                        "-fx-background-color: #8e5d16;"+
+                        "-fx-border-radius: 5;"+
+                        "-fx-margin: 20;"
+                    );
+                    b.setMaxWidth(Double.MAX_VALUE);
+                    b.setMaxHeight(Double.MAX_VALUE);
+                    GridPane.setMargin(b, new Insets(5));
+                    b.setOnAction(e -> {
+                        entrarCampania();
+                    });
 
-            int row = i / columnas;
-            int col = i % filas;
+                    int row = i / columnas;
+                    int col = i % filas;
 
-            g.add(b, col, row);
+                    g.add(b, col, row);
+                    i++;
+                }
+            }else if(tab == 2){
+                if(campanyas.isArchivada()){
+                    Button b = new Button(campanyas.getNombre());
+
+                    b.setPrefWidth(200);
+                    b.setStyle(
+                        "-fx-background-color: #8e5d16;"+
+                        "-fx-border-radius: 5;"+
+                        "-fx-margin: 20;"
+                    );
+                    b.setMaxWidth(Double.MAX_VALUE);
+                    b.setMaxHeight(Double.MAX_VALUE);
+                    GridPane.setMargin(b, new Insets(5));
+                    b.setOnAction(e -> {
+                        entrarCampania();
+                    });
+
+                    int row = i / columnas;
+                    int col = i % filas;
+
+                    g.add(b, col, row);
+                    i++;
+                }
+            }
+            
         }
     }
 
+//    @FXML
+//    public void unirteCampania(Campanias c){
+//
+//
+//    }
+    
     @FXML
     public void entrarCampania(){
+        
         try {
             App.setRoot("campania");
         } catch (IOException ex) {
@@ -146,8 +290,34 @@ public class CampaniaController {
     
     @FXML
     public void crearCampania() {
+        Campanias c = new Campanias(textNombreCamp.getText(), taDescripcion.getText(),
+                (Manual) cbManual.getSelectionModel().getSelectedItem() ,
+                cbImagen.getSelectionModel().getSelectedIndex()+1);
+        
+        int aux = cRepo.MandarCampaña(App.direc, c, passContrasenia.getText());
+        
+        System.out.println(aux);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+        if(aux == 200){
+            alert.setContentText("Campaña creada");
+        }else{
+            alert.setContentText("Ha habido un error");
+        }
+        alert.showAndWait();
+        
         try {
             App.setRoot("prueba");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void buscar(){
+        try {
+            App.setRoot("busadorCampanias");
         } catch (IOException ex) {
             ex.printStackTrace();
         }

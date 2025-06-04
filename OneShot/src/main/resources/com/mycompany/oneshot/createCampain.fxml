@@ -4,46 +4,70 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="284.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.Controller">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.CampaniaController">
    <children>
-      <Pane prefHeight="286.0" prefWidth="600.0" style="-fx-border-color: #8e5d16; -fx-border-width: 2;" styleClass="fondo" stylesheets="@../../../estilos/styles.css">
+      <Pane prefHeight="800.0" prefWidth="1000.0" style="-fx-border-color: #8e5d16; -fx-border-width: 2;" styleClass="fondo" stylesheets="@../../../estilos/styles.css">
          <children>
-            <Pane layoutX="14.0" layoutY="21.0" prefHeight="170.0" prefWidth="311.0" styleClass="panelBotones" stylesheets="@../estilos/styles.css">
+            <Pane layoutX="14.0" layoutY="21.0" prefHeight="753.0" prefWidth="960.0" styleClass="panelBotones" stylesheets="@../estilos/styles.css">
                <children>
-                  <TextField fx:id="textNombreCamp" layoutX="16.0" layoutY="47.0" prefHeight="25.0" prefWidth="281.0" promptText="Nombre" stylesheets="@../estilos/styles.css" />
-                  <Label layoutX="16.0" layoutY="14.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="Nombre de la campaña">
+                  <TextField fx:id="textNombreCamp" layoutX="26.0" layoutY="136.0" prefHeight="25.0" prefWidth="281.0" promptText="Nombre" stylesheets="@../estilos/styles.css" />
+                  <PasswordField fx:id="passContrasenia" layoutX="24.0" layoutY="206.0" prefHeight="25.0" prefWidth="168.0" promptText="Contraseña" />
+                  <ComboBox fx:id="cbManual" layoutX="23.0" layoutY="293.0" prefWidth="150.0" />
+                  <Label layoutX="26.0" layoutY="256.0" stylesheets="@../estilos/styles.css" text="Manual a usar">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <PasswordField layoutX="14.0" layoutY="117.0" promptText="Contraseña" />
-                  <Label layoutX="16.0" layoutY="86.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="Contraseña">
+                  <Label layoutX="26.0" layoutY="176.0" stylesheets="@../estilos/styles.css" text="Contraseña">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="23.0" layoutY="103.0" stylesheets="@../estilos/styles.css" text="Nombre de la Campaña">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="bCrearCamp" layoutX="23.0" layoutY="553.0" mnemonicParsing="false" onAction="#crearCampania" prefHeight="47.0" prefWidth="119.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="Crear">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="403.0" layoutY="103.0" stylesheets="@../estilos/styles.css" text="Descripción">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="taDescripcion" layoutX="403.0" layoutY="131.0" prefHeight="355.0" prefWidth="535.0" promptText="Descripción">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </TextArea>
+                  <ComboBox fx:id="cbImagen" layoutX="25.0" layoutY="380.0" prefWidth="150.0" />
+                  <Label layoutX="28.0" layoutY="343.0" stylesheets="@../estilos/styles.css" text="Imagen Campaña">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="13.0" layoutY="14.0" stylesheets="@../estilos/styles.css" text="CREACIÓN CAMPAÑA">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="869.0" layoutY="14.0" mnemonicParsing="false" onAction="#volverPrincipal" prefHeight="36.0" prefWidth="77.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="Volver" />
+                  <Label fx:id="lUser2" alignment="TOP_RIGHT" contentDisplay="TOP" layoutX="451.0" layoutY="22.0" prefHeight="20.0" prefWidth="410.0" stylesheets="@../estilos/styles.css" text="Nombre User">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane layoutX="386.0" layoutY="21.0" prefHeight="170.0" prefWidth="200.0" styleClass="panelBotones" stylesheets="@../estilos/styles.css">
-               <children>
-                  <ComboBox layoutX="36.0" layoutY="48.0" prefWidth="150.0" />
-                  <Label layoutX="100.0" layoutY="14.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="Manual a usar">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Button fx:id="bCrearCamp" layoutX="467.0" layoutY="212.0" mnemonicParsing="false" onAction="#crearCampania" prefHeight="47.0" prefWidth="119.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="Crear">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
          </children>
       </Pane>
    </children>

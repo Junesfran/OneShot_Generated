@@ -107,7 +107,7 @@
          <children>
             <Button layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#editorCampania" prefHeight="42.0" prefWidth="107.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="CENTRAR +" />
             <Button layoutX="128.0" layoutY="27.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="125.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="ARCHIVAR" />
-            <Button layoutX="261.0" layoutY="28.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="107.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="BORRAR -" />
+            <Button layoutX="261.0" layoutY="28.0" mnemonicParsing="false" onAction="#buscar" prefHeight="42.0" prefWidth="107.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="BUSCAR" />
             <Button layoutX="483.0" layoutY="27.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="68.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="FICHAS" />
             <Button layoutX="918.0" layoutY="35.0" mnemonicParsing="false" onAction="#volver" prefHeight="31.0" prefWidth="68.0" styleClass="botones" stylesheets="@../estilos/styles.css" text="Volver" />
             <Label fx:id="lNombreUser" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="709.0" layoutY="35.0" prefHeight="17.0" prefWidth="187.0" text="Label" textAlignment="RIGHT">
