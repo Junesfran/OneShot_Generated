@@ -21,7 +21,8 @@ import org.json.JSONObject;
  * @author Nestor y Asociados
  */
 public class FichaRepository {
-    //pendiente de cambiar como se guarda en la API
+
+
    public int mandarFicha(String url, Ficha f){
        int res = 0;
         url += "/ficha";
@@ -67,8 +68,10 @@ public class FichaRepository {
         }
         return 0;
    }
+
    public int AsignarFichaCampania(String url, Ficha f){
        int res = 0;
+       //Pendiente de saber la ruta
         url += "/ficha";
         String aux = "";
         BufferedReader br = null;
@@ -87,14 +90,13 @@ public class FichaRepository {
 
           huc.setDoOutput(true);
           
-          //Pendiente a ver que le tengo que mandar
           String inputLine = f.toString();
           
           os = huc.getOutputStream();
           byte[] input = inputLine.getBytes("utf-8");
           os.write(input,0,input.length);
           
-          int rest = huc.getResponseCode();
+          res = huc.getResponseCode();
           if(rest == 200){
             br = new BufferedReader(new InputStreamReader(huc.getInputStream(),"utf-8"));
           
@@ -111,120 +113,84 @@ public class FichaRepository {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return 0;
+        return res;
    }
    
-   public int numeros(String url){
-            int num = 0;
-            int respu;
-            try {
-                URL direc = new URI(url).toURL();
-                HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-                huc.setRequestMethod("GET");
-                huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
-                respu = huc.getResponseCode();
-
-                if(respu != 200){
-                    System.out.println("Ha habido un fallo en la comunicación");
-                }else{
-                    StringBuilder info = new StringBuilder();
-
-                    Scanner sc = new Scanner(direc.openStream());
-
-                    while (sc.hasNext()) {                    
-                        info.append(sc.nextLine());     
-                    }
-                    //ME pasan datos, transformar el stringBUilder en datos
-
-
-                    JSONObject datos = new JSONObject(String.valueOf(info));
-                    respu = datos.getInt("kuantos");
-
-                    sc.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return num;
-        }  
    
    
    public List<String> listarFichas(String url){
-       List<String> fichas = new ArrayList<String>();
-
+        int num = 0;
+       List<Ficha> fichas = new ArrayList<Ficha>();
+       //No se sabe la ruta concreta
         url += "/ficha";
-        int num = numeros(url);
-        List<String> clases = new ArrayList<>();
+       JSONObject datos = sacarGeneral(url);
+
+       num = datos.getInt("kuantos");
+       Ficha f = null;
+       for(int i = 0; i < num; i++){
+           JSONObject dato = datos.getJSONArray("datos").getJSONObject(i);
+
+            //Pendiende de saber que devuelve y como está el constructor
+           f = new Ficha();
+           fichas.add(f);
+       }
+        return fichas;
+   }
+
+
+   public List<Ficha> listarFichasCampanias(String url){
+       int num = 0;
+       List<Ficha> fichas = new ArrayList<Ficha>();
+       //No se sabe la ruta concreta
+        url += "/ficha";
+       JSONObject datos = sacarGeneral(url);
+
+       num = datos.getInt("kuantos");
+       Ficha f = null;
+       for(int i = 0; i < num; i++){
+           JSONObject dato = datos.getJSONArray("datos").getJSONObject(i);
+
+            //Pendiende de saber que devuelve y como está el constructor
+           f = new Ficha();
+           fichas.add(f);
+       }
+        return fichas;
+   }
+    
+    private JSONObject sacarGeneral(String url){
+        JSONObject datos = null;
         int respu;
-        String[] cachos;
-        String fin = "";
+        String ruta = url.replaceAll(" ", "%20");
         try {
-            URL direc = new URI(url).toURL();
+            URL direc = new URI(ruta).toURL();
             HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
             huc.setRequestMethod("GET");
             huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
             respu = huc.getResponseCode();
-
-            if(respu != 200){
-                System.out.println("Ha habido un fallo en la comunicación");
-            }else{
+            System.out.println(respu);
+            if(respu == 200){
                 StringBuilder info = new StringBuilder();
+                
+                Scanner scc = new Scanner(huc.getInputStream());
 
-                Scanner sc = new Scanner(direc.openStream());
-
-                while (sc.hasNext()) {                    
-                    info.append(sc.nextLine());     
+                while (scc.hasNext()) {                    
+                    info.append(scc.nextLine());     
                 }
 
-                JSONObject datos = new JSONObject(String.valueOf(info));
-                for (int i = 0; i < num; i++) {
-                    clases.add(datos.getJSONArray("data").getJSONObject(i).getString("nombre"));
-                }
-
-                sc.close();
+                datos = new JSONObject(String.valueOf(info));
+                
+                scc.close();
+            }else if(respu == 404){
+                System.out.println("Página no encontrada");
+            }else{
+                System.out.println("Ha habido un fallo en la comunicación");
+                System.out.println(respu);
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fichas;
-   }
-   public List<String> listarFichasCampanias(String url){
-       List<String> fichas = new ArrayList<String>();
-
-        url += "/ficha";
-        int num = numeros(url);
-        List<String> clases = new ArrayList<>();
-        int respu;
-        String[] cachos;
-        String fin = "";
-        try {
-            URL direc = new URI(url).toURL();
-            HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
-            huc.setRequestMethod("GET");
-            huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
-            respu = huc.getResponseCode();
-
-            if(respu != 200){
-                System.out.println("Ha habido un fallo en la comunicación");
-            }else{
-                StringBuilder info = new StringBuilder();
-
-                Scanner sc = new Scanner(direc.openStream());
-
-                while (sc.hasNext()) {                    
-                    info.append(sc.nextLine());     
-                }
-
-                JSONObject datos = new JSONObject(String.valueOf(info));
-                for (int i = 0; i < num; i++) {
-                    clases.add(datos.getJSONArray("data").getJSONObject(i).getString("nombre"));
-                }
-
-                sc.close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return fichas;
-   }
+        return datos;
+    }
+}
 }
