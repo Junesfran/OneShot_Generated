@@ -8,9 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import modelo.FichaRepository;
-import modelo.Usuario;
-import modelo.UsuarioRepository;
+import modelo.*;
 
 /**
  * Esta clase es generada automáticamente por Netbeans al crear
@@ -22,11 +20,18 @@ import modelo.UsuarioRepository;
 public class App extends Application {
 
     private static Scene scene;
+    //Datos generales
     public static Usuario user = new Usuario();
-//    public static String direc = "http://82.199.59.159:13013";
+    
+    //Las conexiones
+    //public static String direc = "http://82.199.59.159:13013";
     public static String direc = "http://piola.cloudns.nz:13013";
-    public static final String manualID = "the_stange";
-    //private String direc = "http://192.168.1.32:8080";
+    
+    //Datos a la hora de entrar en campaña
+    public static Campanias campañaAct;
+    public static Ficha fichaACt;
+    
+    
 /**
  *
  * Método que se escarga del cargar la primera vista de la 
@@ -63,19 +68,19 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        // launch();
+         launch();
         
-        try {
-            UsuarioRepository.Login(direc, "juan", "juan");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (URISyntaxException ex) {
-            ex.printStackTrace();
-        }
-        
-        FichaRepository fRep = new FichaRepository();
-        
-        fRep.listarFichas(direc);
+//        try {
+//            UsuarioRepository.Login(direc, "juan", "juan");
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        } catch (URISyntaxException ex) {
+//            ex.printStackTrace();
+//        }
+//        
+//        FichaRepository fRep = new FichaRepository();
+//        
+//        fRep.listarFichas(direc);
         
     }
 

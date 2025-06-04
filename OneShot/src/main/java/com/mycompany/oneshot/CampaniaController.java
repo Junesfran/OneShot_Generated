@@ -29,6 +29,7 @@ public class CampaniaController {
     private UsuarioRepository uRepo = new UsuarioRepository();
 
     private String message = "Se advierte de que se ha advertido de lo que se tiene que advertir";
+    private boolean archivar = false;
     
     //Mostrar mis campañas
     @FXML
@@ -116,6 +117,16 @@ public class CampaniaController {
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    public void fichas(){
+        try{
+            App.setRoot("ficha");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
     
 /**
  *  Método que es llamado cada vez que se carga una nueva ventana fxml.
@@ -154,6 +165,21 @@ public class CampaniaController {
             listadoCampanias();
         }
     }
+    
+    /**
+     * Este método cambia el estado en el que se encuentra el booleano archivar
+     * que cambia la funcionalidad de los botones de acceso de las campañas 
+     * a archivar estas.
+     */
+    @FXML
+    public void archivar(){
+        if(archivar){
+            archivar = false;
+        }else{
+            archivar = true;
+        }
+    }
+    
 /**
  * Este método llama al método del repositorio para campañas que nos 
  * devuelve una lista de objetos campaña con las campañas existentes.
@@ -219,7 +245,9 @@ public class CampaniaController {
  * Método que es llamado cada vez que carga un tab en la vista principal con todas tus 
  * campañas.
  * Este muestra dependiendo del tab tus campañas actuales o las archivadas, desplegandolas
- * en botones que al pulsarse llamen al método que nos mueva a la campaña solicitada.
+ * en botones que al pulsarse llamen al método que nos mueva a la campaña solicitada,
+ * en caso de que el atrubito archivar este a false, en caso de que esté a true 
+ * archivará la campaña si eres master de está.
  * 
  * @exception IOException
  */
@@ -274,7 +302,20 @@ public class CampaniaController {
                     b.setMaxHeight(Double.MAX_VALUE);
                     GridPane.setMargin(b, new Insets(5));
                     b.setOnAction(e -> {
-                        entrarCampania();
+                        if(archivar){
+                            String aux = cRepo.archivar(App.direc, campanyas.getId());
+                            
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Advertencia");
+                            alert.setHeaderText(null);
+                            alert.setContentText(aux);
+                            alert.showAndWait();
+                            
+                            archivar = false;
+                        }else{
+                            entrarCampania(campanyas);
+                        }
+                        
                     });
 
                     int row = i / columnas;
@@ -297,7 +338,7 @@ public class CampaniaController {
                     b.setMaxHeight(Double.MAX_VALUE);
                     GridPane.setMargin(b, new Insets(5));
                     b.setOnAction(e -> {
-                        entrarCampania();
+                        entrarCampania(campanyas);
                     });
 
                     int row = i / columnas;
@@ -314,11 +355,13 @@ public class CampaniaController {
 
     
     @FXML
-    public void entrarCampania(){
+    public void entrarCampania(Campanias c){
         
         try {
+            App.campañaAct = c;
             App.setRoot("campania");
         } catch (IOException ex) {
+            App.campañaAct = null;
             ex.printStackTrace();
         }
     }

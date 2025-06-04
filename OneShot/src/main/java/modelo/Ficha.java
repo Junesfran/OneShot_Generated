@@ -13,10 +13,14 @@ import java.util.Map;
  * @author Nestor y Asociados
  */
 public class Ficha {
+    private int id;
+    private String manual;
+    
     private String nombre;
     private String tipo;
     private String rasgo;
     private String descriptor;
+    private String vinculoD;
     private String recursion;
     
     private int rango;
@@ -30,6 +34,11 @@ public class Ficha {
     private boolean otros;
     
     private String recuperacion;
+    
+    private boolean accion;
+    private boolean minutos;
+    private boolean hora;
+    private boolean horas;
     
     
     private int reservaVigorMax;
@@ -45,8 +54,8 @@ public class Ficha {
     private int armadura;
     private int dinero;
     
-    private HashMap<String, Boolean> competencias;
-    private List<String> Habilidades;
+    private List<Competencia> competencias;
+    private List<String> habilidades;
     private List<String> equipo;
     private List<String> dispositivo;
     private int maxDispositivo;
@@ -56,11 +65,13 @@ public class Ficha {
     public Ficha() {
     }
 
-    public Ficha(String nombre, String tipo, String rasgo, String descriptor, String recursion, int rango, int esfuerzo, int exp, boolean aumentarC, boolean perfeccion, boolean esfuerzoExt, boolean competenciaH, boolean otros, String recuperacion, int reservaVigorMax, int reservaVigorAct, int ventajaVigor, int reservaVelocidadMax, int reservaVelocidadAct, int ventajaVelocidad, int reservaInteligenciaMax, int reservaInteligenciaAct, int ventajaInteligencia, int armadura, int dinero, HashMap<String, Boolean> competencias, List<String> Habilidades, List<String> equipo, List<String> dispositivo, int maxDispositivo, String trasfondo) {
+    public Ficha(String manual, String nombre, String tipo, String rasgo, String descriptor, String vinculoD, String recursion, int rango, int esfuerzo, int exp, boolean aumentarC, boolean perfeccion, boolean esfuerzoExt, boolean competenciaH, boolean otros, String recuperacion, boolean accion, boolean minutos, boolean hora, boolean horas, int reservaVigorMax, int reservaVigorAct, int ventajaVigor, int reservaVelocidadMax, int reservaVelocidadAct, int ventajaVelocidad, int reservaInteligenciaMax, int reservaInteligenciaAct, int ventajaInteligencia, int armadura, int dinero, List<Competencia> competencias, List<String> habilidades, List<String> equipo, List<String> dispositivo, int maxDispositivo, String trasfondo) {
+        this.manual = manual;
         this.nombre = nombre;
         this.tipo = tipo;
         this.rasgo = rasgo;
         this.descriptor = descriptor;
+        this.vinculoD = vinculoD;
         this.recursion = recursion;
         this.rango = rango;
         this.esfuerzo = esfuerzo;
@@ -71,6 +82,10 @@ public class Ficha {
         this.competenciaH = competenciaH;
         this.otros = otros;
         this.recuperacion = recuperacion;
+        this.accion = accion;
+        this.minutos = minutos;
+        this.hora = hora;
+        this.horas = horas;
         this.reservaVigorMax = reservaVigorMax;
         this.reservaVigorAct = reservaVigorAct;
         this.ventajaVigor = ventajaVigor;
@@ -83,15 +98,38 @@ public class Ficha {
         this.armadura = armadura;
         this.dinero = dinero;
         this.competencias = competencias;
-        this.Habilidades = Habilidades;
+        this.habilidades = habilidades;
         this.equipo = equipo;
         this.dispositivo = dispositivo;
         this.maxDispositivo = maxDispositivo;
         this.trasfondo = trasfondo;
     }
+
+    public Ficha(int id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+    }
+
     
-                
-    //GETTERS Y SETTERS
+    
+
+    //GETTERS & SETTERS
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getManual() {
+        return manual;
+    }
+
+    public void setManual(String manual) {
+        this.manual = manual;
+    }
 
     public String getNombre() {
         return nombre;
@@ -123,6 +161,14 @@ public class Ficha {
 
     public void setDescriptor(String descriptor) {
         this.descriptor = descriptor;
+    }
+
+    public String getVinculoD() {
+        return vinculoD;
+    }
+
+    public void setVinculoD(String vinculoD) {
+        this.vinculoD = vinculoD;
     }
 
     public String getRecursion() {
@@ -293,20 +339,20 @@ public class Ficha {
         this.dinero = dinero;
     }
 
-    public HashMap<String, Boolean> getCompetencias() {
+    public List<Competencia> getCompetencias() {
         return competencias;
     }
 
-    public void setCompetencias(HashMap<String, Boolean> competencias) {
+    public void setCompetencias(List<Competencia> competencias) {
         this.competencias = competencias;
     }
 
     public List<String> getHabilidades() {
-        return Habilidades;
+        return habilidades;
     }
 
-    public void setHabilidades(List<String> Habilidades) {
-        this.Habilidades = Habilidades;
+    public void setHabilidades(List<String> habilidades) {
+        this.habilidades = habilidades;
     }
 
     public List<String> getEquipo() {
@@ -333,26 +379,133 @@ public class Ficha {
         this.maxDispositivo = maxDispositivo;
     }
 
-    public String gettrasfondo() {
+    public String getTrasfondo() {
         return trasfondo;
     }
 
-    public void settrasfondo(String trasfondo) {
+    public void setTrasfondo(String trasfondo) {
         this.trasfondo = trasfondo;
+    }
+
+    public boolean isAccion() {
+        return accion;
+    }
+
+    public void setAccion(boolean accion) {
+        this.accion = accion;
+    }
+
+    public boolean isMinutos() {
+        return minutos;
+    }
+
+    public void setMinutos(boolean minutos) {
+        this.minutos = minutos;
+    }
+
+    public boolean isHora() {
+        return hora;
+    }
+
+    public void setHora(boolean hora) {
+        this.hora = hora;
+    }
+
+    public boolean isHoras() {
+        return horas;
+    }
+
+    public void setHoras(boolean horas) {
+        this.horas = horas;
     }
 
     @Override
     public String toString() {
-        String aux = "[";
-        for (Map.Entry<String, Boolean> entry : competencias.entrySet()) {
-            Object key = entry.getKey();
-            Object val = entry.getValue();
-            aux += "{\"nombre\":\""+key+"\","
-            + "\"espe\":\""+val+"\"}";
-        }
-        aux += "]";
-        return "Fichas{" + "nombre\"=\"" + nombre + ", \"tipo\"=\"" + tipo + ", \"rasgo\"=\"" + rasgo + ", \"descriptor\"=\"" + descriptor + ", \"recursion\"=\"" + recursion + ", \"rango\"=\"" + rango + ", \"esfuerzo\"=\"" + esfuerzo + ", \"exp\"=\"" + exp + ", \"aumentarC\"=\"" + aumentarC + ", \"perfeccion\"=\"" + perfeccion + ", \"esfuerzoExt\"=\"" + esfuerzoExt + ", \"competenciaH\"=\"" + competenciaH + ", \"otros\"=\"" + otros + ", \"recuperacion\"=\"" + recuperacion + ", \"reservaVigorMax\"=\"" + reservaVigorMax + ", \"reservaVigorAct\"=\"" + reservaVigorAct + ", \"ventajaVigor\"=\"" + ventajaVigor + ", \"reservaVelocidadMax\"=\"" + reservaVelocidadMax + ", \"reservaVelocidadAct\"=\"" + reservaVelocidadAct + ", \"ventajaVelocidad\"=\"" + ventajaVelocidad + ", \"reservaInteligenciaMax\"=\"" + reservaInteligenciaMax + ", \"reservaInteligenciaAct\"=\"" + reservaInteligenciaAct + ", \"ventajaInteligencia\"=\"" + ventajaInteligencia + ", \"armadura\"=\"" + armadura + ", \"dinero\"=\"" + dinero + ", \"competencias\"=\"" + aux + ", \"Habilidades\"=\"" + Habilidades + ", \"equipo\"=\"" + equipo + ", \"dispositivo\"=\"" + dispositivo + ", \"maxDispositivo\"=\"" + maxDispositivo + ", \"trasfondo\"=\"" + trasfondo + "\"}";
+        return nombre;
     }
     
+    
+    
+    public String DevolverJSON() {
+        String auxDispo = "[";
+        for (int i = 0; i < dispositivo.size(); i++) {
+            auxDispo += "{\"nombre\":\"" + dispositivo.get(i) + "\"}";
+            if (i < dispositivo.size() - 1) {
+                auxDispo += ",";
+            }
+        }
+        auxDispo += "]";
+
+        String auxEquipo = "[";
+        for (int i = 0; i < equipo.size(); i++) {
+            auxDispo += "{\"nombre\":\"" + equipo.get(i) + "\"}";
+            if (i < equipo.size() - 1) {
+                auxEquipo += ",";
+            }
+        }
+        auxEquipo += "]";
+        
+        String auxHabi = "[";
+        for (int i = 0; i < habilidades.size(); i++) {
+            auxDispo += "{\"nombre\":\"" + habilidades.get(i) + "\"}";
+            if (i < habilidades.size() - 1) {
+                auxHabi += ",";
+            }
+        }
+        auxHabi += "]";
+
+        String auxComp = "[";
+        for (int i = 0; i < competencias.size(); i++) {
+            auxComp += competencias.get(i).toString();
+            if (i < competencias.size() - 1) {
+                auxHabi += ",";
+            }
+        }
+        auxComp += "]";
+        
+        return "{"
+            + "\"Manual_id\" : \"" + manual + "\","
+            + "\"accion\" : " + accion + ","
+            + "\"armadura\" : " + armadura + ","
+            + "\"aumentarC\" : " + aumentarC + ","
+            + "\"clase\" : \"" + tipo + "\","
+            + "\"competenciaH\" : " + competenciaH + ","
+            + "\"descriptor\" : \"" + descriptor + "\","
+            + "\"dinero\" : " + dinero + ","
+            + "\"esfuerzo\" : " + esfuerzo + ","
+            + "\"esfuerzoExtra\" : " + esfuerzoExt + ","
+            + "\"experiencia\" : " + exp + ","
+            + "\"hora\" : " + hora + ","
+            + "\"horas\" : " + horas + ","
+            + "\"inteligenciaAct\" : " + reservaInteligenciaAct + ","
+            + "\"limiteDispositivos\" : " + maxDispositivo + ","
+            + "\"maxDispositivos\" : " + maxDispositivo + ","
+            + "\"minutos\" : " + minutos + ","
+            + "\"nombre\" : \"" + nombre + "\","
+            + "\"otros\" : " + otros + ","
+            + "\"perfeccion\" : " + perfeccion + ","
+            + "\"rango\" : " + rango + ","
+            + "\"rasgo\" : \"" + rasgo + "\","
+            + "\"recuperacion\" : \"" + recuperacion + "\","
+            + "\"recursion\" : \"" + recursion + "\","
+            + "\"reservaInteligenciaMax\" : " + reservaInteligenciaMax + ","
+            + "\"reservaVelocidadMax\" : " + reservaVelocidadMax + ","
+            + "\"reservaVigorMax\" : " + reservaVigorMax + ","
+            + "\"tipo\" : \"" + tipo + "\","
+            + "\"trasfondo\" : \"" + trasfondo + "\","
+            + "\"velocidadAct\" : " + reservaVelocidadAct + ","
+            + "\"ventajaInteligenciaMax\" : " + ventajaInteligencia + ","
+            + "\"ventajaVelocidadMax\" : " + ventajaVelocidad + ","
+            + "\"ventajaVigorMax\" : " + ventajaVigor + ","
+            + "\"vigorAct\" : " + reservaVigorAct + ","
+            + "\"vinculoDescriptor\" : \"" + vinculoD + "\","
+            + "\"dispositivos\" : " + auxDispo + ","
+            + "\"equipo\" : " + auxEquipo + ","
+            + "\"capacidadesEspeciales\" : " + auxHabi + ","
+            + "\"competencias\" : " + auxComp
+            + "}";
+
+    }
+
     
 }

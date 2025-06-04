@@ -24,6 +24,51 @@ import org.json.JSONObject;
  */
 public class CampaniasRepository {
 
+    
+    public String archivar(String url, int id){
+        String respuesta = "";
+        int res = 0;
+        url += "/campanyan/"+id+"/archivar";
+        String aux = "";
+        BufferedReader br = null;
+        OutputStream os = null;
+        
+          URL direc;
+        try {
+            direc = new URI(url).toURL();
+        
+          HttpURLConnection huc = (HttpURLConnection)direc.openConnection();
+          huc.setRequestMethod("POST");
+          
+          huc.setRequestProperty("Content-Type", "application/json");
+          huc.setRequestProperty("Accept", "application/json");
+          huc.setRequestProperty("Authorization", "Bearer "+App.user.getToken());
+
+          huc.setDoOutput(true);
+          os = huc.getOutputStream();
+          
+           res = huc.getResponseCode();
+          if(res == 200){
+            br = new BufferedReader(new InputStreamReader(huc.getInputStream(),"utf-8"));
+          
+            StringBuilder respu = new StringBuilder();
+            String linea = null;
+            while((linea = br.readLine())!= null){
+                respu.append(linea.trim());
+            }
+            aux = respu.toString();
+            
+            JSONObject jobject = new JSONObject(aux);
+            respuesta = jobject.getString("success");
+          }else{
+              respuesta = "Campaña no encontrada";
+          }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return respuesta;
+    }
+    
     public List<Manual> listarManuales(String url){
         List<Manual> manuales = new ArrayList<Manual>();
         url += "/manual";

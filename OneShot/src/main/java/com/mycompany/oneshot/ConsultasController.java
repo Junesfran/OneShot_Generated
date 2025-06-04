@@ -30,9 +30,23 @@ public class ConsultasController {
     private CampaniasRepository cRepo = new CampaniasRepository();
     private UsuarioRepository uRepo = new UsuarioRepository();
     
+    
     //Datos generales
     @FXML
     private Label lNombreUser;
+    
+    @FXML
+    private Label lManual;
+    
+    @FXML
+    private Label lFuncion;
+    
+    @FXML
+    private Label lPersonaje;
+    
+    @FXML
+    private Label lCampania;
+    
     
     //Recursion
     @FXML
@@ -73,7 +87,9 @@ public class ConsultasController {
     @FXML
     public void initialize() {
         lNombreUser.setText(App.user.getUser());
-        
+        lManual.setText(App.campañaAct.getManual().getNombre());
+        lFuncion.setText("Funcionar");
+        lCampania.setText(App.campañaAct.getNombre());
         
         if (cbRecursionCreatura != null) {
             List<String> lista = tsRepo.sacarRecursiones(App.direc);

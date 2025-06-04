@@ -6,36 +6,78 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+//    {
+//	"Manual_id": "the_stange",
+//	"accion": true,
+//	"armadura": 16,
+//	"aumentarC": true,
+//	"clase": "arkero",
+//	"competenciaH": false,
+//	"descriptor": "describeme esta",
+//	"dinero": 200,
+//	"esfuerzo": 420,
+//	"esfuerzoExtra": true,
+//	"experiencia": 69,
+//	"hora": true,
+//	"horas": true,
+//	"inteligenciaAct": 12,
+//	"limiteDispositivos": 5,
+//	"maxDispositivos": 1,
+//	"minutos": true,
+//	"nombre": "yuan el arkero",
+//	"otros": false,
+//	"perfeccion": true,
+//	"rango": 60,
+//	"rasgo": "no",
+//	"recuperacion": "no >:(",
+//	"recursion": "Ruk",
+//	"reservaInteligenciaMax": 20,
+//	"reservaVelocidadMax": 20,
+//	"reservaVigorMax": 20,
+//	"tipo": "malote",
+//	"trasfondo": "muy muy malote",
+//	"velocidadAct": 20,
+//	"ventajaInteligenciaMax": 20,
+//	"ventajaVelocidadMax": 20,
+//	"ventajaVigorMax": 20,
+//	"vigorAct": 20,
+//	"vinculoDescriptor": "no me describes no me vinuclo",
+//	"dispositivos": [{"nombre": "motumbo"}],
+//	"equipo": [{"nombre": "pajillator plus evolution 2019 edition"}],
+//	"capacidadesEspeciales": [{"nombre": "Mamada con los pies"}],
+//	"competencias": [{"nombre": "muy capaz", "especializado": true}]39
+//}
+   
 // Tipos de datos complejos de la ficha
-class Competencia {
-
-    private String nombre;
-    private boolean especializado;
-
-    public Competencia() {
-    }
-
-    public Competencia(String nombre, boolean especializado) {
-        this.nombre = nombre;
-        this.especializado = especializado;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public boolean isEspecializado() {
-        return especializado;
-    }
-
-    public void setEspecializado(boolean especializado) {
-        this.especializado = especializado;
-    }
-}
+//class Competencia {
+//
+//    private String nombre;
+//    private boolean especializado;
+//
+//    public Competencia() {
+//    }
+//
+//    public Competencia(String nombre, boolean especializado) {
+//        this.nombre = nombre;
+//        this.especializado = especializado;
+//    }
+//
+//    public String getNombre() {
+//        return nombre;
+//    }
+//
+//    public void setNombre(String nombre) {
+//        this.nombre = nombre;
+//    }
+//
+//    public boolean isEspecializado() {
+//        return especializado;
+//    }
+//
+//    public void setEspecializado(boolean especializado) {
+//        this.especializado = especializado;
+//    }
+//}
 
 public class FichaDTO {
 
