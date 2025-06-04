@@ -10,7 +10,11 @@ import java.io.IOException;
 import modelo.Usuario;
 
 /**
- * JavaFX App
+ * Esta clase es generada automáticamente por Netbeans al crear
+ * un proyecto con javax. 
+ * Este funcionaria como principal que gestiona tanto el arranque
+ * la aplicación así como de tener valores publicos estaticos que
+ * se utilizan en todo el programa y se necesita que san accesible.
  */
 public class App extends Application {
 
@@ -20,7 +24,13 @@ public class App extends Application {
     public static String direc = "http://piola.cloudns.nz:13013";
     public static final String manualID = "the_stange";
     //private String direc = "http://192.168.1.32:8080";
-    
+/**
+ *
+ * Método que se escarga del cargar la primera vista de la 
+ * aplicación así como de fijar las dimensiones de la aplicación
+ * y evitar la redimensión de las ventanas.
+ *
+ */
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("login"),1000,800);
@@ -29,6 +39,13 @@ public class App extends Application {
         stage.show();
     }
 
+/**
+*
+* Este método cuando es llamado cierra la ventana actual y abre la 
+* la que le hayas especificado en el parámetro
+* @param fxml - fxml de la ventana que es abierta por el programa
+* @exception IOEXception - Este puede ser lanzado al no encontrar el fxml especificado o bien porque no existe o porque no está en 
+ */
     static void setRoot(String fxml) throws IOException {
         Parent root = loadFXML(fxml);
         scene.setRoot(root);
@@ -45,11 +62,6 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
         
-//        try {
-//            c.Botones();
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//        }
     }
 
 }
