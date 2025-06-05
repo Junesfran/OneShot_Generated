@@ -11,7 +11,8 @@ package modelo;
 public class Usuario {
     private String User;
     private String token;
-
+    private int id;
+    
     public Usuario() {
     }
 
@@ -22,6 +23,15 @@ public class Usuario {
     
     //GETTER Y SETTERS
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public String getUser() {
         return User;
     }

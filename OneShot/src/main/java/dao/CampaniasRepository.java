@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package dao;
 
 import com.mycompany.oneshot.App;
 import java.io.BufferedReader;
@@ -16,6 +16,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import modelo.Campanias;
+import modelo.Manual;
 import org.json.JSONObject;
 
 /**
@@ -24,7 +26,13 @@ import org.json.JSONObject;
  */
 public class CampaniasRepository {
 
-    
+    /**
+     * Archiva una campaña enviando una petición POST a la URL especificada con el ID de la campaña.
+     *
+     * @param url URL base de la API.
+     * @param id ID de la campaña a archivar.
+     * @return Una cadena indicando el resultado de la operación ("success" o mensaje de error).
+     */    
     public String archivar(String url, int id){
         String respuesta = "";
         int res = 0;
@@ -68,7 +76,12 @@ public class CampaniasRepository {
         }
         return respuesta;
     }
-    
+        /**
+     * Recupera una lista de manuales desde la API.
+     *
+     * @param url URL base de la API.
+     * @return Una lista de objetos Manual obtenidos de la API.
+     */
     public List<Manual> listarManuales(String url){
         List<Manual> manuales = new ArrayList<Manual>();
         url += "/manual";
@@ -86,7 +99,13 @@ public class CampaniasRepository {
 
         return manuales;
     }
-    
+    /* * Envía una campaña al servidor realizando una petición POST con los datos de la campaña y la contraseña.
+     *
+     * @param url URL base de la API.
+     * @param c Objeto Campanias con los datos de la campaña.
+     * @param pwd Contraseña requerida para la operación.
+     * @return Código de respuesta HTTP del servidor.
+     */
     public int MandarCampaña(String url,Campanias c, String pwd){
         int res = 0;
         url += "/campanyan";
@@ -107,7 +126,7 @@ public class CampaniasRepository {
 
           huc.setDoOutput(true);
           
-          String inputLine = c.toString() + ", \"contrasenyn\":\""+pwd+"\"}";
+          String inputLine = c.mandarJSON()+ ", \"contrasenyn\":\""+pwd+"\"}";
             System.out.println(inputLine);
             
           os = huc.getOutputStream();
@@ -133,7 +152,13 @@ public class CampaniasRepository {
         }
         return res;
     }
-    
+        /**
+     * Archiva una campaña enviando una petición POST con el ID de la campaña.
+     *
+     * @param url URL base de la API.
+     * @param id ID de la campaña a archivar.
+     * @return Código de respuesta HTTP del servidor.
+     */
     public int ArchivarCampaña(String url, int id){
          int res = 0;
          //Pendiente de saber la ruta
@@ -180,7 +205,12 @@ public class CampaniasRepository {
         return 0;
     }
         
- 
+     /**
+     * Recupera una lista de todas las campañas desde la API.
+     *
+     * @param url URL base de la API.
+     * @return Una lista de objetos Campanias que representan todas las campañas.
+     */
     public List<Campanias> listaCampañas(String url){
         List<Campanias> campañas = new ArrayList<Campanias>();
         url += "/campanyan";
@@ -200,6 +230,12 @@ public class CampaniasRepository {
 
         return campañas;
     }
+        /**
+     * Recupera una lista de campañas que pertenecen al usuario actual desde la API.
+     *
+     * @param url URL base de la API.
+     * @return Una lista de objetos Campanias que representan las campañas del usuario.
+     */
     public List<Campanias> listaTusCampañas(String url){
         List<Campanias> campañas = new ArrayList<Campanias>();
         url += "/campanyan/mine";
@@ -219,6 +255,14 @@ public class CampaniasRepository {
         return campañas;
     }
     
+        /**
+     * Permite unirse a una campaña enviando una petición POST con los datos de la campaña y la contraseña.
+     *
+     * @param url URL base de la API.
+     * @param c Objeto Campanias con los datos de la campaña.
+     * @param pwd Contraseña requerida para unirse a la campaña.
+     * @return Una cadena indicando el resultado de la operación ("success" o mensaje de error).
+     */
     public String unirmeCampañas(String url, Campanias c, String pwd){
         String res = "";
          //Pendiente de saber la ruta
@@ -269,7 +313,12 @@ public class CampaniasRepository {
         return res;
     }
 
-   
+    /**
+     * Método auxiliar para realizar una petición GET a la URL especificada y parsear la respuesta como JSONObject.
+     *
+     * @param url URL a la que se envía la petición GET.
+     * @return Un JSONObject con los datos de la respuesta, o null si ocurre un error.
+     */
 private JSONObject sacarGeneral(String url){
         JSONObject datos = null;
         int respu;

@@ -2,6 +2,7 @@
  * Empty Stylesheet file.
  */
 .texto{
+    -fx-background-color: #b8dffa;
     -fx-background-color:  #b8dffa;
     -fx-border-color: #51114a;
     -fx-border-width: 2;

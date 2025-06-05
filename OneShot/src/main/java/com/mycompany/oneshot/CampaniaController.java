@@ -4,13 +4,19 @@
  */
 package com.mycompany.oneshot;
 
+import dao.UsuarioRepository;
+import dao.TheStrangeRepository;
+import dao.CampaniasRepository;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
@@ -258,6 +264,7 @@ public class CampaniaController {
         int valorInicial = 10;
         int tab = tabInicial.getSelectionModel().getSelectedIndex();
         List<Campanias> listaC = cRepo.listaTusCampañas(App.direc);
+
         
         GridPane g = null;
         for (Campanias campanyas : listaC) {
@@ -285,14 +292,34 @@ public class CampaniaController {
         int filas = (int) Math.ceil((double) valorInicial / columnas);
 
         g.getChildren().clear(); // Limpiar el grid antes de agregar nuevos botones
-
+        Image imagenCampania = null;
         int i = 0;
         for (Campanias campanyas : listaC) {
+            int imagen = campanyas.getImagen();
+//            if(imagen == 1){
+//                imagenCampania = new Image("file:src/resources/uno.jpg");
+//            }else if(imagen == 2){
+//                imagenCampania = new Image("file:src/resources/dos.jpg");
+//            }
             if(tab == 0 || tab == 1){
                 if(!campanyas.isArchivada()){
                     Button b = new Button(campanyas.getNombre());
-
-                    b.setPrefWidth(200);
+//                    if(imagenCampania != null){
+//                    ImageView iv = new ImageView(imagenCampania);
+//                        iv.setFitWidth(150);
+//                        iv.setFitHeight(150);
+//                        iv.setPreserveRatio(false);
+//                        iv.setSmooth(true);
+//
+//                        iv.fitWidthProperty().bind(b.widthProperty());
+//                        iv.fitHeightProperty().bind(b.heightProperty());
+//
+//
+//                        b.setGraphic(iv);
+//                    }
+                b.setPrefSize(150, 150);
+                b.setMinSize(150, 150);
+                b.setMaxSize(150, 150);
                     b.setStyle(
                         "-fx-background-color: #8e5d16;"+
                         "-fx-border-radius: 5;"+
@@ -353,7 +380,11 @@ public class CampaniaController {
     }
 
 
-    
+    /**
+     * Método encargado de entrar a la vista de la campaña que se le este pasando.
+     * Guardando el estado de la campaña actual en una variable estática.
+     * @param c -Campaña actual que se va a utilizar
+     */
     @FXML
     public void entrarCampania(Campanias c){
         
@@ -366,6 +397,12 @@ public class CampaniaController {
         }
     }
     
+    /**
+     * Método que se ocupa de abrir la ventana de creación de campañas
+     * @param 
+     * @return 
+     * @exception 
+     */
     @FXML
     public void editorCampania(){
         try {
@@ -375,6 +412,15 @@ public class CampaniaController {
         }
     }
     
+    /**
+     * Método encargado de crear una nueva campaña con los datos ingresados por el usuario.
+     * Crea una instancia de Campanias.
+     * Luego, envía la campaña a la API y muestra un mensaje indicando si la 
+     * operación fue exitosa o no.
+     * Finalmente, redirige a la ventana principal.
+     * 
+     * 
+     */
     @FXML
     public void crearCampania() {
         Campanias c = new Campanias(textNombreCamp.getText(), taDescripcion.getText(),
@@ -395,12 +441,16 @@ public class CampaniaController {
         alert.showAndWait();
         
         try {
-            App.setRoot("prueba");
+            App.setRoot("principal");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
     
+    /**
+     * Método que abre la ventana de búsqueda de campañas.
+     * 
+     */
     @FXML
     public void buscar(){
         try {

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package dao;
 
 import com.mycompany.oneshot.App;
 import java.io.BufferedReader;
@@ -20,6 +20,13 @@ import org.json.JSONObject;
  * @author Nestor y Asociados
  */
 public class UsuarioRepository {
+    /** Registra un nuevo usuario enviando una solicitud POST al endpoint /user.
+ *
+ * @param url  La URL base del servicio.
+ * @param user El nombre de usuario a registrar.
+ * @param pwd  La contraseña del usuario.
+ * @return El código de respuesta HTTP de la solicitud.
+ */
     public int registro(String url, String user, String pwd){
         int rest = 0;
         url += "/user";
@@ -51,6 +58,16 @@ public class UsuarioRepository {
         return rest;
     }  
     
+    /**
+ * Realiza el inicio de sesión de un usuario enviando una solicitud POST al endpoint /user/login.
+ * Si la autenticación es exitosa, almacena el token recibido en la instancia de usuario de la aplicación.
+ *
+ * @param url  La URL base del servicio.
+ * @param user El nombre de usuario.
+ * @param pwd  La contraseña del usuario.
+ * @throws IOException         si las credenciales son incorrectas.
+ * @throws URISyntaxException  Si la URL no es válida.
+ */
     public static void Login(String url, String user, String pwd) throws IOException, URISyntaxException{
         url += "/user/login";
         String aux = "";

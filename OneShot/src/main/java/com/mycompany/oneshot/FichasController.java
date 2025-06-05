@@ -4,6 +4,9 @@
  */
 package com.mycompany.oneshot;
 
+import dao.TheStrangeRepository;
+import dao.FichaRepository;
+import dao.CampaniasRepository;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,11 +33,29 @@ import modelo.*;
  */
 public class FichasController {
     FichaRepository fRepo = new FichaRepository();
-    
+    TheStrangeRepository tsRepo = new TheStrangeRepository();
+    CampaniasRepository cRepo = new CampaniasRepository();
     
     //funcionalidad
     @FXML
     private ComboBox cbFichas;
+
+    @FXML
+    private ComboBox cbCampanias;
+    
+    @FXML
+    private TextField lCompetencias;
+    
+    @FXML
+    private TextField lHabilidades;
+    
+    @FXML
+    private TextField lEquipo;
+    
+    @FXML
+    private TextField lDispo;
+    
+    
     
     //Generales
     @FXML
@@ -50,7 +71,7 @@ public class FichasController {
     private TextField tDescriptor;
     
     @FXML
-    private ComboBox cbRecursion;
+    private TextField cbRecursion;
     
     
     //Marcadores
@@ -159,18 +180,139 @@ public class FichasController {
     @FXML
     private TextArea taNotas;
     
+    /**
+ * Inicializa el controlador, cargando las listas de fichas y campañas en los ComboBox correspondientes.
+ */
     @FXML
     public void initialize() {
         if(cbFichas != null){
             List<Ficha> fichas = fRepo.listarFichas(App.direc);
             cbFichas.setItems(FXCollections.observableArrayList(fichas));
         }
+        if(cbCampanias != null){
+            List<Campanias> listaC = cRepo.listaTusCampañas(App.direc);
+            cbCampanias.setItems(FXCollections.observableArrayList(listaC));
+        }
     }
+    /**
+ * Asigna la ficha seleccionada a la campaña seleccionada.
+ */
+     @FXML
+     public void asignarCampania(){
+        Campanias c = (Campanias)cbCampanias.getSelectionModel().getSelectedItem();
+        Ficha fTemp = (Ficha)cbFichas.getSelectionModel().getSelectedItem();
+        
+        if(c == null || fTemp == null){
+            return;
+        }
+         
+        int num = fRepo.fichaCampania(App.direc, c.getId(), fTemp.getId());
+         
+        if(num == 200){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Asignada");
+            alert.showAndWait();
+        }else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText(null);
+            alert.setContentText("Algo ha salido mal");
+            alert.showAndWait();
+        }
+     }
     
+     /**
+ * Limpia todos los campos del formulario y deselecciona la ficha actual.
+ */
+    @FXML
+    public void limpiar(){
+        // Generales
+        tNombre.clear();
+        tTipo.clear();
+        tRasgo.clear();
+        tDescriptor.clear();
+        taVinculo.clear();
+        cbRecursion.clear();
+
+        // Marcadores
+        tRango.clear();
+        tEsfuerzo.clear();
+        tExp.clear();
+
+        // Subida de nivel
+        chAumentar.setSelected(false);
+        chPerfeccion.setSelected(false);
+        chEsfuerzo.setSelected(false);
+        chCompetencia.setSelected(false);
+        chOtros.setSelected(false);
+
+        // Recuperación / descanso
+        chAccion.setSelected(false);
+        chHora.setSelected(false);
+        chMinutos.setSelected(false);
+        chHoras.setSelected(false);
+        tRecuperacion.clear();
+
+        // Estadísticas
+        tReservaVigor.clear();
+        tVigorAct.clear();
+        tVentajaVigor.clear();
+
+        tReservaVelocidad.clear();
+        tVelocidadAct.clear();
+        tVentajaVelocidad.clear();
+
+        tReservaInteligencia.clear();
+        tInteligenciaAct.clear();
+        tVentajaInteligencia.clear();
+
+        // Equipo
+        tArmadura.clear();
+        tDinero.clear();
+        lbEquipo.getItems().clear();
+
+        // Dispositivos
+        tDispositivos.clear();
+        lbDispositivos.getItems().clear();
+
+        // Capacidades especiales
+        lbCapacidadesEsp.getItems().clear();
+
+        // Trasfondo
+        taTrasfondo.clear();
+
+        // Competencias
+        gridComp.getChildren().clear();
+    
+        cbFichas.getSelectionModel().clearSelection();
+        System.out.println(cbFichas.getSelectionModel().getSelectedItem());
+    }
+    /**
+ * Parsea un String a int de forma segura, devolviendo un valor por defecto si hay error.
+ * @param texto Texto a convertir.
+ * @param valorPorDefecto Valor a devolver si el texto no es válido.
+ * @return El número parseado o el valor por defecto.
+ */
+    private int parseIntSeguro(String texto, int valorPorDefecto) {
+        if (texto == null || texto.trim().isEmpty()) {
+            return valorPorDefecto;
+        }
+        try {
+            return Integer.parseInt(texto.trim());
+        } catch (NumberFormatException e) {
+            return valorPorDefecto;
+        }
+    }
+/**
+ * Crea una nueva ficha con los datos del formulario y la guarda en el repositorio.
+ * Si hay una ficha seleccionada, la elimina antes de guardar la nueva.
+ */
     @FXML
     public void CrearFicha(){
         //Se crea una clase ficha con los datos
-        String recursion = ((Manual) cbRecursion.getValue()).getId();
+        String recursion = cbRecursion.getText();
         List<String> habilidades = new ArrayList<>(lbCapacidadesEsp.getItems());
         List<String> equipo = new ArrayList<>(lbEquipo.getItems());
         List<String> dispositivo = new ArrayList<>(lbDispositivos.getItems());
@@ -189,26 +331,26 @@ public class FichasController {
         String recuperacion = tRecuperacion.getText();
         String trasfondo = taTrasfondo.getText(); // nuevo parámetro
 
-        // Enteros
-        int rango = Integer.parseInt(tRango.getText());
-        int esfuerzo = Integer.parseInt(tEsfuerzo.getText());
-        int experiencia = Integer.parseInt(tExp.getText());
+        int rango = parseIntSeguro(tRango.getText(), 0);
+        int esfuerzo = parseIntSeguro(tEsfuerzo.getText(), 0);
+        int experiencia = parseIntSeguro(tExp.getText(), 0);
 
-        int reservaVigorMax = Integer.parseInt(tReservaVigor.getText());
-        int reservaVigorAct = Integer.parseInt(tVigorAct.getText());
-        int ventajaVigor = Integer.parseInt(tVentajaVigor.getText());
+        int reservaVigorMax = parseIntSeguro(tReservaVigor.getText(), 0);
+        int reservaVigorAct = parseIntSeguro(tVigorAct.getText(), 0);
+        int ventajaVigor = parseIntSeguro(tVentajaVigor.getText(), 0);
 
-        int reservaVelocidadMax = Integer.parseInt(tReservaVelocidad.getText());
-        int reservaVelocidadAct = Integer.parseInt(tVelocidadAct.getText());
-        int ventajaVelocidad = Integer.parseInt(tVentajaVelocidad.getText());
+        int reservaVelocidadMax = parseIntSeguro(tReservaVelocidad.getText(), 0);
+        int reservaVelocidadAct = parseIntSeguro(tVelocidadAct.getText(), 0);
+        int ventajaVelocidad = parseIntSeguro(tVentajaVelocidad.getText(), 0);
 
-        int reservaInteligenciaMax = Integer.parseInt(tReservaInteligencia.getText());
-        int reservaInteligenciaAct = Integer.parseInt(tInteligenciaAct.getText());
-        int ventajaInteligencia = Integer.parseInt(tVentajaInteligencia.getText());
+        int reservaInteligenciaMax = parseIntSeguro(tReservaInteligencia.getText(), 0);
+        int reservaInteligenciaAct = parseIntSeguro(tInteligenciaAct.getText(), 0);
+        int ventajaInteligencia = parseIntSeguro(tVentajaInteligencia.getText(), 0);
 
-        int armadura = Integer.parseInt(tArmadura.getText());
-        int dinero = Integer.parseInt(tDinero.getText());
-        int maxDispositivos = Integer.parseInt(tDispositivos.getText());
+        int armadura = parseIntSeguro(tArmadura.getText(), 0);
+        int dinero = parseIntSeguro(tDinero.getText(), 0);
+        int maxDispositivos = parseIntSeguro(tDispositivos.getText(), 0);
+
 
         // Booleans
         boolean aumentarC = chAumentar.isSelected();
@@ -236,10 +378,19 @@ public class FichasController {
             listaC, habilidades, equipo, dispositivo, maxDispositivos,
             trasfondo
         );
+        Ficha fTemp = (Ficha)cbFichas.getSelectionModel().getSelectedItem();
+        if(fTemp != null){
+           fRepo.borrarFicha(App.direc, fTemp); 
+        }
         
         int num = fRepo.mandarFicha(App.direc, f);
         
         if(num == 200){
+            List<Ficha> fichas = fRepo.listarFichas(App.direc);
+            cbFichas.setItems(FXCollections.observableArrayList(fichas));
+            
+            cbFichas.getSelectionModel().selectLast();
+            
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Advertencia");
             alert.setHeaderText(null);
@@ -255,7 +406,11 @@ public class FichasController {
         
     }
 
-   
+   /**
+ * Añade una competencia al GridPane de competencias.
+ * @param c Competencia a añadir.
+ * @throws IOException Si ocurre un error al añadir.
+ */
     public void añadirCompetencias(Competencia c) throws IOException {
         CheckBox check = new CheckBox(c.getNombre());
         
@@ -279,10 +434,15 @@ public class FichasController {
             e.printStackTrace();
         }
     }
-    
+/**
+ * Carga los datos de la ficha seleccionada en el formulario.
+ */
     @FXML
     public void cargarDatos(){
         Ficha f = (Ficha) cbFichas.getSelectionModel().getSelectedItem();
+        if(f == null){
+            return;
+        }
         Ficha ficha = fRepo.buscarFichaPorId(App.direc, f.getId());
         
         System.out.println(ficha.DevolverJSON());
@@ -292,7 +452,7 @@ public class FichasController {
         tRasgo.setText(ficha.getRasgo());
         tDescriptor.setText(ficha.getDescriptor());
         taVinculo.setText(ficha.getVinculoD());
-        cbRecursion.setValue(ficha.getRecursion());
+        cbRecursion.setText(ficha.getRecursion());
 
         // Marcadores
         tRango.setText(String.valueOf(ficha.getRango()));
@@ -353,11 +513,59 @@ public class FichasController {
             //Label nombre = new Label(comp.getNombre());
             CheckBox check = new CheckBox(comp.getNombre());
             check.setSelected(comp.isEspecializado());
-            check.setDisable(true); // Opcional: si solo es visual
             gridComp.addRow(row++,check);
         }
 
 
+    }
+    /**
+ * Añade un nuevo dispositivo a la lista de dispositivos.
+ */
+    @FXML
+    private void nuevoDispo(){
+        String texto = lDispo.getText();
+        if (!texto.isEmpty()) {
+            lbDispositivos.getItems().add(texto);
+            lDispo.clear();
+        }
+    }
+    /**
+    * Lo mismo que nuevoDispo
+    */
+    @FXML
+    private void nuevoEquipo(){
+        String texto = lEquipo.getText();
+        if (!texto.isEmpty()) {
+            lbEquipo.getItems().add(texto);
+            lEquipo.clear();
+        }
+    }
+        /**
+    * Lo mismo que nuevoDispo
+    */
+    @FXML
+    private void nuevaHabilidad(){
+        String texto = lHabilidades.getText().trim();
+        if (!texto.isEmpty()) {
+            lbCapacidadesEsp.getItems().add(texto);
+            lHabilidades.clear();
+        }
+    }
+    /**
+    * Lo mismo que nuevoDispo
+    */
+    @FXML
+    private void nuevaCompetencia(){
+        String texto = lCompetencias.getText().trim();
+        if (!texto.isEmpty()) {
+            Competencia c = new Competencia(texto, false);
+            try {
+                añadirCompetencias(c);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            lCompetencias.clear();
+        }
     }
 }
 

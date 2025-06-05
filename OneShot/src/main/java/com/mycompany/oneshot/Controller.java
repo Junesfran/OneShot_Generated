@@ -4,6 +4,9 @@
  */
 package com.mycompany.oneshot;
 
+import dao.UsuarioRepository;
+import dao.TheStrangeRepository;
+import dao.CampaniasRepository;
 import com.mycompany.oneshot.App;
 import java.io.IOException;
 import java.util.List;
@@ -62,7 +65,17 @@ public class Controller {
     @FXML
     private ComboBox cManuales;
     
-    
+    /**
+     * Método que gestiona el inicio de sesión del usuario.
+     * Obtiene el nombre de usuario y la contraseña desde los campos de texto.
+     * Si las credenciales manadadas a la API son válidas, cambia a la vista principal.
+     * Ademas se guarda en una variable estatica del principal un token de sesión
+     * que irá en todas las cabeceras de las peticiones, permitiendo saber que 
+     * usuario está haciendo cada petición.
+     * En caso de error de autenticación, muestra un mensaje de fallo en pantalla
+     * 
+     * 
+     */
     @FXML
     private void login(){
         String user = tNombre.getText();
@@ -81,6 +94,13 @@ public class Controller {
         }
     }
     
+    /**
+     * Método que gestiona el registro de un nuevo usuario.
+     * Verifica que los campos de usuario y contraseña no estén vacíos.
+     * Si los campos son válidos, intenta registrar al usuario mediante uRepo.
+     * Muestra un mensaje dependiendo del resultado del intento de registro.
+     *
+     */
     @FXML
     private void sign(){
         String user = tNombre.getText();

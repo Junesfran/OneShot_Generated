@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package dao;
 
 import com.mycompany.oneshot.App;
 import java.io.BufferedReader;
@@ -17,6 +17,8 @@ import java.util.Scanner;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
+import modelo.Competencia;
+import modelo.Ficha;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -26,6 +28,11 @@ import org.json.JSONObject;
  */
 public class FichaRepository {
 
+        /**
+     * Extrae una lista de competencias desde un GridPane, buscando los CheckBox seleccionados.
+     * @param gp GridPane que contiene los CheckBox de competencias.
+     * @return Lista de objetos Competencia.
+     */
     public List<Competencia> sacarCompetencias(GridPane gp){
         List<Competencia> listC = new ArrayList<>();
         for (Node node : gp.getChildren()) {
@@ -39,10 +46,76 @@ public class FichaRepository {
         return listC;
     }
     
-    
+        /**
+     * Asocia una ficha a una campaña enviando una petición POST a la URL indicada.
+     * @param url URL base del servicio.
+     * @param idCamp ID de la campaña.
+     * @param idFicha ID de la ficha.
+     * @return Código de respuesta HTTP.
+     */
+    public int fichaCampania(String url, int idCamp, int idFicha) {
+        int res = 0;
+        url += "/campanyan/"+idCamp+"/fichas/"+idFicha;
+        String aux = "";
+
+        URL direc;
+        try {
+            direc = new URI(url).toURL();
+
+            HttpURLConnection huc = (HttpURLConnection) direc.openConnection();
+            huc.setRequestMethod("POST");
+
+            huc.setRequestProperty("Content-Type", "application/json");
+            huc.setRequestProperty("Accept", "application/json");
+            huc.setRequestProperty("Authorization", "Bearer " + App.user.getToken());
+
+            res = huc.getResponseCode();
+            System.out.println(res);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return res;
+    }
+        /**
+     * Elimina una ficha enviando una petición DELETE a la URL indicada.
+     * @param url URL base del servicio.
+     * @param f Ficha a eliminar.
+     */
+    public void borrarFicha(String url, Ficha f) {
+        if(f == null){
+            return;
+        }
+        int res = 0;
+        System.out.println(f.getId());
+        url += "/the_strange/ficha/"+f.getId();
+        String aux = "";
+
+        URL direc;
+        try {
+            direc = new URI(url).toURL();
+
+            HttpURLConnection huc = (HttpURLConnection) direc.openConnection();
+            huc.setRequestMethod("DELETE");
+
+            huc.setRequestProperty("Content-Type", "application/json");
+            huc.setRequestProperty("Accept", "application/json");
+            huc.setRequestProperty("Authorization", "Bearer " + App.user.getToken());
+
+            res = huc.getResponseCode();
+            System.out.println(res);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    /**
+     * Envía una ficha al servidor mediante una petición POST.
+     * @param url URL base del servicio.
+     * @param f Ficha a enviar.
+     * @return Código de respuesta HTTP.
+     */
     public int mandarFicha(String url, Ficha f) {
         int res = 0;
-        url += "/ficha";
+        url += "/the_strange/ficha";
         String aux = "";
         BufferedReader br = null;
         OutputStream os = null;
@@ -61,12 +134,15 @@ public class FichaRepository {
             huc.setDoOutput(true);
 
             String inputLine = f.DevolverJSON();
-
+            
+            System.out.println(inputLine);
+            
             os = huc.getOutputStream();
             byte[] input = inputLine.getBytes("utf-8");
             os.write(input, 0, input.length);
 
             res = huc.getResponseCode();
+            System.out.println(res);
             if (res == 200) {
                 br = new BufferedReader(new InputStreamReader(huc.getInputStream(), "utf-8"));
 
@@ -76,6 +152,8 @@ public class FichaRepository {
                     respu.append(linea.trim());
                 }
                 aux = respu.toString();
+                JSONObject jobject = new JSONObject(aux);
+                f.setId(jobject.getInt("id"));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -83,7 +161,12 @@ public class FichaRepository {
         return res;
     }
 
-    //HACER
+        /**
+     * Asigna una ficha a una campaña. (Método pendiente de implementación completa)
+     * @param url URL base del servicio.
+     * @param f Ficha a asignar.
+     * @return Código de respuesta HTTP.
+     */
     public int AsignarFichaCampania(String url, Ficha f) {
         int res = 0;
         //Pendiente de saber la ruta
@@ -130,13 +213,20 @@ public class FichaRepository {
         }
         return res;
     }
-
+    /**
+     * Obtiene la lista de todas las fichas desde el servidor.
+     * @param url URL base del servicio.
+     * @return Lista de objetos Ficha.
+     */
     public List<Ficha> listarFichas(String url){
         List<Ficha> fichas = new ArrayList<Ficha>();
         url += "/the_strange/ficha";
         int num = 0;
         
         JSONObject datos = sacarGeneral(url);
+        if(datos == null){
+            return fichas;
+        }
         num = datos.getInt("kuantos");
         
         Ficha f = null;
@@ -148,7 +238,12 @@ public class FichaRepository {
 
         return fichas;
     }
-    
+        /**
+     * Busca una ficha por su ID y la construye a partir de los datos recibidos del servidor.
+     * @param url URL base del servicio.
+     * @param id ID de la ficha a buscar.
+     * @return Objeto Ficha con los datos obtenidos.
+     */
     public Ficha buscarFichaPorId(String url, int id) {
         url += "/the_strange/ficha/"+id;
             
@@ -238,42 +333,13 @@ public class FichaRepository {
         return ficha;
 
     }
-    //Raul
-//    public FichaDTO buscarFichaPorId(String url, int id) {
-//        String urlCopy = url + "/" + id;
-//        JSONObject json = sacarGeneral(urlCopy);
-//
-//        int contador = 0;
-//
-//        while (json == null && contador++ < 10) {
-//            try {
-//                Thread.sleep(100);
-//                json = sacarGeneral(url);
-//
-//                if (json != null && json.getInt("id") != id) {
-//                    json = null; // No es nuestra ficha, reintentamos
-//                }
-//            } catch (InterruptedException ex) {
-//                /* ignoramos */
-//            }
-//        }
-//
-//        
-//        if (json != null) {
-//            try {
-//                return new FichaDTO(json);
-//            } catch (org.json.JSONException jsonE) {
-//                System.err.println(jsonE.getMessage());
-//                System.err.println("EL JSON CULERO");
-//                System.err.println(json.toString(2));
-//            }
-//        }
-//        
-//        // Lloramos por nuestra ficha
-//        return null;
-//
-//    }
-
+    
+    
+    /**
+     * Lista las fichas asociadas a campañas. (Método pendiente de implementación completa)
+     * @param url URL base del servicio.
+     * @return Lista de objetos Ficha.
+     */
     public List<Ficha> listarFichasCampanias(String url) {
         int num = 0;
         List<Ficha> fichas = new ArrayList<Ficha>();
@@ -325,7 +391,6 @@ public class FichaRepository {
 
             }
             
-            // Cerrar incluso si tenemos != 200
             huc.disconnect();
         } catch (Exception e) {
             e.printStackTrace();

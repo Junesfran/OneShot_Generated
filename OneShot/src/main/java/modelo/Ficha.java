@@ -7,6 +7,7 @@ package modelo;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONObject;
 
 /**
  *
@@ -438,7 +439,7 @@ public class Ficha {
 
         String auxEquipo = "[";
         for (int i = 0; i < equipo.size(); i++) {
-            auxDispo += "{\"nombre\":\"" + equipo.get(i) + "\"}";
+            auxEquipo += "{\"nombre\":\"" + equipo.get(i) + "\"}";
             if (i < equipo.size() - 1) {
                 auxEquipo += ",";
             }
@@ -447,7 +448,7 @@ public class Ficha {
         
         String auxHabi = "[";
         for (int i = 0; i < habilidades.size(); i++) {
-            auxDispo += "{\"nombre\":\"" + habilidades.get(i) + "\"}";
+            auxHabi += "{\"nombre\":\"" + habilidades.get(i) + "\"}";
             if (i < habilidades.size() - 1) {
                 auxHabi += ",";
             }
@@ -458,12 +459,13 @@ public class Ficha {
         for (int i = 0; i < competencias.size(); i++) {
             auxComp += competencias.get(i).toString();
             if (i < competencias.size() - 1) {
-                auxHabi += ",";
+                auxComp += ",";
             }
         }
         auxComp += "]";
+       
         
-        return "{"
+        String result = "{"
             + "\"Manual_id\" : \"" + manual + "\","
             + "\"accion\" : " + accion + ","
             + "\"armadura\" : " + armadura + ","
@@ -504,6 +506,8 @@ public class Ficha {
             + "\"capacidadesEspeciales\" : " + auxHabi + ","
             + "\"competencias\" : " + auxComp
             + "}";
+        
+        return result;
 
     }
 

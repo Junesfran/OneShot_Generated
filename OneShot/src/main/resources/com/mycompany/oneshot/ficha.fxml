@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.mycompany.oneshot.FichasController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.oneshot.FichasController">
     <stylesheets>
         <URL value="@/estilos/fichas.css" />
     </stylesheets>
@@ -120,7 +120,7 @@
                                              </children>
                                           </GridPane>
                                           <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="21.0" prefWidth="97.0" style="-fx-alignment: center; -fx-background-color: #225e87;" styleClass="texto" stylesheets="@../../../estilos/fichas.css" text="Inteligencia" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
-                                          <TextField fx:id="tIntelegenciaAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
+                                          <TextField fx:id="tInteligenciaAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
                                        </children>
                                     </Pane>
                                     <Label layoutX="521.0" layoutY="110.0" text="EN" textFill="WHITE">
@@ -128,7 +128,6 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="cbRecursion" layoutX="558.0" layoutY="105.0" prefWidth="150.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                     <Pane layoutX="633.0" layoutY="147.0" prefHeight="116.0" prefWidth="193.0" styleClass="panel" stylesheets="@../../../estilos/fichas.css">
                                        <children>
                                           <TextField fx:id="tRecuperacion" layoutX="114.0" layoutY="44.0" prefHeight="53.0" prefWidth="65.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css" />
@@ -159,8 +158,8 @@
                                                 <Font name="System Bold" size="18.0" />
                                              </font>
                                           </Label>
-                                          <Button layoutX="230.0" layoutY="91.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                          <TextField layoutX="23.0" layoutY="91.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                          <Button layoutX="230.0" layoutY="91.0" mnemonicParsing="false" onAction="#nuevoDispo" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                          <TextField fx:id="lDispo" layoutX="23.0" layoutY="91.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                           <ListView fx:id="lbDispositivos" layoutX="23.0" layoutY="137.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                           <TextField fx:id="tDispositivos" layoutX="14.0" layoutY="43.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css" />
                                           <Label layoutX="25.0" layoutY="26.0" text="Max" textFill="WHITE" />
@@ -173,8 +172,8 @@
                                                 <Font name="System Bold" size="18.0" />
                                              </font>
                                           </Label>
-                                          <Button layoutX="235.0" layoutY="94.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                          <TextField layoutX="31.0" layoutY="94.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                          <Button layoutX="235.0" layoutY="94.0" mnemonicParsing="false" onAction="#nuevoEquipo" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                          <TextField fx:id="lEquipo" layoutX="31.0" layoutY="94.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                           <ListView fx:id="lbEquipo" layoutX="24.0" layoutY="134.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                           <TextField fx:id="tDinero" layoutX="229.0" layoutY="31.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css" />
                                           <TextField fx:id="tArmadura" layoutX="16.0" layoutY="31.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css">
@@ -196,6 +195,19 @@
                                                 <Font name="System Bold" size="18.0" />
                                              </font>
                                           </Label>
+                                          <Button layoutX="38.0" layoutY="140.0" mnemonicParsing="false" onAction="#limpiar" prefHeight="29.0" prefWidth="124.0" text="Limpiar" />
+                                       </children>
+                                    </Pane>
+                                    <TextField fx:id="cbRecursion" layoutX="559.0" layoutY="108.0" styleClass="texto" stylesheets="@../../../estilos/styles.css" />
+                                    <Pane layoutX="12.0" layoutY="294.0" prefHeight="184.0" prefWidth="197.0" styleClass="panel">
+                                       <children>
+                                          <Button layoutX="39.0" layoutY="122.0" mnemonicParsing="false" onAction="#asignarCampania" prefHeight="29.0" prefWidth="124.0" text="Asignar" />
+                                          <ComboBox fx:id="cbCampanias" layoutX="26.0" layoutY="75.0" prefWidth="150.0" styleClass="texto" />
+                                          <Label layoutX="26.0" layoutY="14.0" text="Añadir campañas&#10;a fichas" textAlignment="CENTER" textFill="WHITE">
+                                             <font>
+                                                <Font name="System Bold" size="18.0" />
+                                             </font>
+                                          </Label>
                                        </children>
                                     </Pane>
                                  </children>
@@ -207,8 +219,8 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="230.0" layoutY="44.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                    <TextField layoutX="23.0" layoutY="44.0" prefHeight="29.0" prefWidth="201.0" promptText="Habilidad" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                    <Button layoutX="230.0" layoutY="44.0" mnemonicParsing="false" onAction="#nuevaHabilidad" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                    <TextField fx:id="lHabilidades" layoutX="23.0" layoutY="44.0" prefHeight="29.0" prefWidth="201.0" promptText="Habilidad" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                     <ListView fx:id="lbCapacidadesEsp" layoutX="23.0" layoutY="92.0" prefHeight="308.0" prefWidth="267.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                  </children>
                               </Pane>
@@ -219,19 +231,27 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <Button layoutX="215.0" layoutY="47.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                    <TextField layoutX="14.0" layoutY="47.0" prefHeight="29.0" prefWidth="185.0" promptText="Competencias" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
-                                    <GridPane fx:id="gridComp" layoutX="14.0" layoutY="90.0" prefHeight="308.0" prefWidth="260.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                    </GridPane>
+                                    <Button layoutX="215.0" layoutY="47.0" mnemonicParsing="false" onAction="#nuevaCompetencia" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                    <TextField fx:id="lCompetencias" layoutX="14.0" layoutY="47.0" prefHeight="29.0" prefWidth="185.0" promptText="Competencias" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                    <ScrollPane layoutX="18.0" layoutY="104.0" prefHeight="302.0" prefWidth="260.0">
+                                      <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="546.0" prefWidth="246.0">
+                                             <children>
+                                                <GridPane fx:id="gridComp" layoutY="-12.0" prefHeight="566.0" prefWidth="268.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css">
+                                                   <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                   </columnConstraints>
+                                                   <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                   </rowConstraints>
+                                                </GridPane>
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </ScrollPane>
                                  </children>
                               </Pane>
                            </children>

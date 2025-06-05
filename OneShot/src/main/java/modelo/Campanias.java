@@ -97,10 +97,16 @@ public class Campanias {
         return "{\"id_campaña\":"+id;
     }
     
-    @Override
-    public String toString() {
+    
+    public String mandarJSON() {
         return "{\"nombre\":\"" + nombre + "\", \"descripcion\":\"" + descripcion +"\", \"manual\":\"" + manual.getId() + "\", \"idImagen\":" + imagen;
     }
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
+    
     
     
 }

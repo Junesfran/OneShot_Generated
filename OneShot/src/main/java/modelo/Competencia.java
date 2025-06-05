@@ -37,7 +37,7 @@ public class Competencia {
     }
         @Override
     public String toString() {
-        return "{\"nombre\"=\"" + nombre + "\",\"especializado\"=" + especializado + "}";
+        return "{\"nombre\":\"" + nombre + "\",\"especializado\":" + especializado + "}";
     }
     
 }

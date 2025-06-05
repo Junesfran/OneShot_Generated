@@ -13,6 +13,8 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -28,14 +30,17 @@
    <children>
       <Pane prefHeight="150.0" prefWidth="1000.0" styleClass="imagen" stylesheets="@../../../estilos/styles.css">
          <children>
+            <ImageView fx:id="ivCampaña" fitHeight="188.0" fitWidth="1000.0" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../../../../../resources/tres.jpg" />
+               </image>
+            </ImageView>
             <Pane layoutX="20.0" layoutY="14.0" prefHeight="80.0" prefWidth="250.0" styleClass="panelSuperior" stylesheets="@../../../estilos/styles.css">
                <children>
                   <Label layoutX="14.0" layoutY="1.0" prefHeight="26.0" prefWidth="58.0" text="Manual:" />
                   <Label layoutX="14.0" layoutY="27.0" prefHeight="26.0" prefWidth="58.0" text="Función:" />
-                  <Label layoutX="14.0" layoutY="53.0" prefHeight="26.0" prefWidth="67.0" text="Personaje:" />
                   <Label fx:id="lManual" layoutX="72.0" layoutY="1.0" prefHeight="26.0" prefWidth="174.0" />
                   <Label fx:id="lFuncion" layoutX="72.0" layoutY="27.0" prefHeight="26.0" prefWidth="174.0" />
-                  <Label fx:id="lPersonaje" layoutX="81.0" layoutY="53.0" prefHeight="26.0" prefWidth="155.0" />
                </children>
             </Pane>
             <Label fx:id="lCampania" alignment="TOP_RIGHT" layoutX="383.0" layoutY="105.0" prefHeight="45.0" prefWidth="593.0" styleClass="titulo" stylesheets="@../../../estilos/styles.css" text="Label" />
@@ -117,7 +122,7 @@
                                                 <Pane layoutX="14.0" layoutY="80.0" prefHeight="267.0" prefWidth="240.0">
                                                    <children>
                                                       <Label layoutX="15.0" layoutY="15.0" styleClass="texto" stylesheets="@../../../../../estilos/consultas.css" text="Apartados" />
-                                                      <ListView fx:id="lbApartados" layoutX="14.0" layoutY="52.0" onMouseClicked="#textoCriatura" prefHeight="200.0" prefWidth="166.0" styleClass="botones" stylesheets="@../../../../../estilos/consultas.css" />
+                                                      <ListView fx:id="lbApartados" layoutX="14.0" layoutY="52.0" onMouseClicked="#textoApartados" prefHeight="200.0" prefWidth="166.0" styleClass="botones" stylesheets="@../../../../../estilos/consultas.css" />
                                                    </children>
                                                 </Pane>
                                                 <Pane layoutX="14.0" layoutY="600.0" prefHeight="267.0" prefWidth="240.0">
@@ -134,7 +139,7 @@
                               </ScrollPane>
                            </children>
                         </Pane>
-                        <Pane fx:id="consultarRecursion1" layoutX="10.0" layoutY="78.0" prefHeight="555.0" prefWidth="1000.0" visible="false">
+                        <Pane fx:id="consultaDescriptor" layoutX="10.0" layoutY="78.0" prefHeight="555.0" prefWidth="1000.0" visible="false">
                            <children>
                               <ScrollPane layoutY="-8.0" prefHeight="584.0" prefWidth="1000.0">
                                  <content>
@@ -143,30 +148,46 @@
                                           <Pane layoutY="-1.0" prefHeight="2001.0" prefWidth="985.0" styleClass="fondo" stylesheets="@../../../../../estilos/consultas.css">
                                              <children>
                                                 <Label layoutX="25.0" layoutY="20.0" styleClass="texto" stylesheets="@../../../../../estilos/consultas.css" text="Descriptor" />
-                                                <ComboBox fx:id="cbRecursionCreatura1" layoutX="25.0" layoutY="45.0" onAction="#listaCriatura" prefWidth="150.0" promptText="GENERAL" styleClass="botones" stylesheets="@../../../../../estilos/consultas.css" />
-                                                <Pane layoutX="14.0" layoutY="347.0" prefHeight="267.0" prefWidth="240.0">
-                                                   <children>
-                                                      <Label layoutX="15.0" layoutY="15.0" styleClass="texto" stylesheets="@../../../../../estilos/consultas.css" text="Lista Criaturas" />
-                                                      <ListView fx:id="lbListaCriaturas1" layoutX="14.0" layoutY="52.0" onMouseClicked="#textoCriatura" prefHeight="200.0" prefWidth="166.0" styleClass="botones" stylesheets="@../../../../../estilos/consultas.css" />
-                                                   </children>
-                                                </Pane>
-                                                <Label fx:id="lNombre1" layoutX="289.0" layoutY="20.0" prefHeight="35.0" prefWidth="514.0" styleClass="titulo" stylesheets="@../../../../../estilos/consultas.css" textAlignment="CENTER">
+                                                <ComboBox fx:id="cbDescriptor" layoutX="25.0" layoutY="45.0" onAction="#textoDescriptor" prefWidth="150.0" promptText="GENERAL" styleClass="botones" stylesheets="@../../../../../estilos/consultas.css" />
+                                                <Label fx:id="lNombreD" layoutX="289.0" layoutY="20.0" prefHeight="35.0" prefWidth="514.0" styleClass="titulo" stylesheets="@../../../../../estilos/consultas.css" textAlignment="CENTER">
                                                    <font>
                                                       <Font size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="lNivel1" layoutX="711.0" layoutY="15.0" prefHeight="35.0" prefWidth="99.0" styleClass="titulo" stylesheets="@../../../../../estilos/consultas.css">
+                                                <Label layoutX="711.0" layoutY="15.0" prefHeight="35.0" prefWidth="99.0" styleClass="titulo" stylesheets="@../../../../../estilos/consultas.css">
                                                    <font>
                                                       <Font size="25.0" />
                                                    </font>
                                                 </Label>
-                                                <TextFlow fx:id="tfTexto1" layoutX="247.0" layoutY="80.0" prefHeight="200.0" prefWidth="598.0" stylesheets="@../../../../../estilos/consultas.css" textAlignment="CENTER" />
-                                                <Pane layoutX="14.0" layoutY="80.0" prefHeight="267.0" prefWidth="240.0">
-                                                   <children>
-                                                      <Label layoutX="15.0" layoutY="15.0" styleClass="texto" stylesheets="@../../../../../estilos/consultas.css" text="Apartados" />
-                                                      <ListView fx:id="lbApartados1" layoutX="14.0" layoutY="52.0" onMouseClicked="#textoCriatura" prefHeight="200.0" prefWidth="166.0" styleClass="botones" stylesheets="@../../../../../estilos/consultas.css" />
-                                                   </children>
-                                                </Pane>
+                                                <TextFlow fx:id="tfTextoD" layoutX="247.0" layoutY="80.0" prefHeight="200.0" prefWidth="598.0" stylesheets="@../../../../../estilos/consultas.css" textAlignment="CENTER" />
+                                             </children>
+                                          </Pane>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Pane>
+                        <Pane fx:id="consultaEquipo" layoutX="3.0" layoutY="61.0" prefHeight="555.0" prefWidth="1000.0" visible="false">
+                           <children>
+                              <ScrollPane layoutY="-8.0" prefHeight="584.0" prefWidth="1000.0">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="2002.0" prefWidth="986.0">
+                                       <children>
+                                          <Pane layoutY="-1.0" prefHeight="2001.0" prefWidth="985.0" styleClass="fondo" stylesheets="@../../../../../estilos/consultas.css">
+                                             <children>
+                                                <Label layoutX="25.0" layoutY="20.0" styleClass="texto" stylesheets="@../../../../../estilos/consultas.css" text="Equipo" />
+                                                <Label fx:id="lNombreD1" alignment="CENTER" layoutX="289.0" layoutY="20.0" prefHeight="35.0" prefWidth="514.0" styleClass="titulo" stylesheets="@../../../../../estilos/consultas.css" text="Armas" textAlignment="CENTER" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="711.0" layoutY="15.0" prefHeight="35.0" prefWidth="99.0" styleClass="titulo" stylesheets="@../../../../../estilos/consultas.css">
+                                                   <font>
+                                                      <Font size="25.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextFlow fx:id="tfEquipo" layoutX="247.0" layoutY="80.0" prefHeight="200.0" prefWidth="598.0" stylesheets="@../../../../../estilos/consultas.css" textAlignment="CENTER" />
                                              </children>
                                           </Pane>
                                        </children>
@@ -178,7 +199,8 @@
                         <Pane layoutX="6.0" layoutY="6.0" opacity="0.73" prefHeight="55.0" prefWidth="990.0" styleClass="panelSuperior" stylesheets="@../../../estilos/styles.css" />
                         <Button layoutX="166.0" layoutY="14.0" mnemonicParsing="false" onAction="#clase" prefHeight="39.0" prefWidth="106.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="Clases" />
                         <Button layoutX="31.0" layoutY="14.0" mnemonicParsing="false" onAction="#recursion" prefHeight="39.0" prefWidth="106.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="Recursion" />
-                        <Button layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#clase" prefHeight="39.0" prefWidth="106.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="Descriptor" />
+                        <Button layoutX="300.0" layoutY="14.0" mnemonicParsing="false" onAction="#descriptor" prefHeight="39.0" prefWidth="106.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="Descriptor" />
+                        <Button layoutX="425.0" layoutY="14.0" mnemonicParsing="false" onAction="#equipo" prefHeight="39.0" prefWidth="106.0" styleClass="botones" stylesheets="@../../../estilos/styles.css" text="Equipo" />
                      </children>
                   </AnchorPane>
             </content>
@@ -187,15 +209,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane layoutY="-7.0" prefHeight="631.0" prefWidth="1007.0" styleClass="fondo" stylesheets="@../../../estilos/consultas.css">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1500.0" prefWidth="990.0">
+                        <ScrollPane prefHeight="800.0" prefWidth="1000.0">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1497.0" prefWidth="950.0">
                                  <children>
-                                    <SplitPane dividerPositions="0.9426559356136821" layoutY="-1.0" prefHeight="1501.0" prefWidth="991.0" stylesheets="@../../../estilos/fichas.css">
+                                    <SplitPane dividerPositions="0.852112676056338" prefHeight="1500.0" prefWidth="1000.0" stylesheets="@../../../estilos/fichas.css">
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="802.0" prefWidth="988.0">
                                              <children>
-                                                <Pane prefHeight="839.0" prefWidth="1089.0" style="-fx-background-color: #225e87;">
+                                                <Pane prefHeight="1497.0" prefWidth="1089.0" style="-fx-background-color: #225e87;">
                                                    <children>
                                                       <Pane layoutX="762.0" layoutY="19.0" prefHeight="68.0" prefWidth="170.0">
                                                          <children>
@@ -284,7 +306,7 @@
                                                                </children>
                                                             </GridPane>
                                                             <Label contentDisplay="CENTER" layoutX="14.0" prefHeight="21.0" prefWidth="97.0" style="-fx-alignment: center; -fx-background-color: #225e87;" styleClass="texto" stylesheets="@../../../estilos/fichas.css" text="Inteligencia" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP" />
-                                                            <TextField fx:id="tIntelegenciaAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
+                                                            <TextField fx:id="tInteligenciaAct" layoutX="4.0" layoutY="21.0" prefHeight="62.0" prefWidth="122.0" style="-fx-background-color: #b8dffa; -fx-alignment: center;" />
                                                          </children>
                                                       </Pane>
                                                       <Label layoutX="521.0" layoutY="110.0" text="EN" textFill="WHITE">
@@ -292,7 +314,6 @@
                                                             <Font size="14.0" />
                                                          </font>
                                                       </Label>
-                                                      <ComboBox fx:id="cbRecursion" layoutX="558.0" layoutY="105.0" prefWidth="150.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                       <Pane layoutX="633.0" layoutY="147.0" prefHeight="116.0" prefWidth="193.0" styleClass="panel" stylesheets="@../../../estilos/fichas.css">
                                                          <children>
                                                             <TextField fx:id="tRecuperacion" layoutX="114.0" layoutY="44.0" prefHeight="53.0" prefWidth="65.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css" />
@@ -323,8 +344,8 @@
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Button layoutX="230.0" layoutY="91.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                                            <TextField layoutX="23.0" layoutY="91.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                                            <Button layoutX="230.0" layoutY="91.0" mnemonicParsing="false" onAction="#nuevoDispo" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                                            <TextField fx:id="lDispo" layoutX="23.0" layoutY="91.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                             <ListView fx:id="lbDispositivos" layoutX="23.0" layoutY="137.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                             <TextField fx:id="tDispositivos" layoutX="14.0" layoutY="43.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css" />
                                                             <Label layoutX="25.0" layoutY="26.0" text="Max" textFill="WHITE" />
@@ -337,8 +358,8 @@
                                                                   <Font name="System Bold" size="18.0" />
                                                                </font>
                                                             </Label>
-                                                            <Button layoutX="235.0" layoutY="94.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                                            <TextField layoutX="31.0" layoutY="94.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                                            <Button layoutX="235.0" layoutY="94.0" mnemonicParsing="false" onAction="#nuevoEquipo" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                                            <TextField fx:id="lEquipo" layoutX="31.0" layoutY="94.0" prefHeight="29.0" prefWidth="201.0" promptText="Equipo" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                             <ListView fx:id="lbEquipo" layoutX="24.0" layoutY="134.0" prefHeight="268.0" prefWidth="267.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                             <TextField fx:id="tDinero" layoutX="229.0" layoutY="31.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css" />
                                                             <TextField fx:id="tArmadura" layoutX="16.0" layoutY="31.0" prefHeight="41.0" prefWidth="45.0" styleClass="circular" stylesheets="@../../../estilos/fichas.css">
@@ -350,6 +371,8 @@
                                                             <Label layoutX="234.0" layoutY="6.0" text="Dinero" textFill="WHITE" />
                                                          </children>
                                                       </Pane>
+                                                      <TextField fx:id="cbRecursion" layoutX="559.0" layoutY="108.0" styleClass="texto" stylesheets="@../../../estilos/styles.css" />
+                                                      <Button layoutX="31.0" layoutY="27.0" mnemonicParsing="false" onAction="#CrearFicha" prefHeight="29.0" prefWidth="124.0" text="Guardar" />
                                                    </children>
                                                 </Pane>
                                                 <Pane layoutX="216.0" layoutY="891.0" prefHeight="423.0" prefWidth="307.0" styleClass="fondo" stylesheets="@../../../estilos/consultas.css">
@@ -359,8 +382,8 @@
                                                             <Font size="18.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button layoutX="230.0" layoutY="44.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                                      <TextField layoutX="23.0" layoutY="44.0" prefHeight="29.0" prefWidth="201.0" promptText="Habilidad" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                                      <Button layoutX="230.0" layoutY="44.0" mnemonicParsing="false" onAction="#nuevaHabilidad" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                                      <TextField fx:id="lHabilidades" layoutX="23.0" layoutY="44.0" prefHeight="29.0" prefWidth="201.0" promptText="Habilidad" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                       <ListView fx:id="lbCapacidadesEsp" layoutX="23.0" layoutY="92.0" prefHeight="308.0" prefWidth="267.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
                                                    </children>
                                                 </Pane>
@@ -371,46 +394,68 @@
                                                             <Font size="18.0" />
                                                          </font>
                                                       </Label>
-                                                      <Button layoutX="215.0" layoutY="47.0" mnemonicParsing="false" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
-                                                      <TextField layoutX="14.0" layoutY="47.0" prefHeight="29.0" prefWidth="185.0" promptText="Competencias" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
-                                                      <GridPane layoutX="14.0" layoutY="90.0" prefHeight="308.0" prefWidth="260.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css">
-                                                         <columnConstraints>
-                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                         </columnConstraints>
-                                                         <rowConstraints>
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                         </rowConstraints>
-                                                      </GridPane>
+                                                      <Button layoutX="215.0" layoutY="47.0" mnemonicParsing="false" onAction="#nuevaCompetencia" stylesheets="@../../../estilos/fichas.css" text="Asignar" />
+                                                      <TextField fx:id="lCompetencias" layoutX="14.0" layoutY="47.0" prefHeight="29.0" prefWidth="185.0" promptText="Competencias" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                                      <ScrollPane layoutX="18.0" layoutY="104.0" prefHeight="302.0" prefWidth="260.0">
+                                                         <content>
+                                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="546.0" prefWidth="246.0">
+                                                               <children>
+                                                                  <GridPane fx:id="gridComp" layoutY="-12.0" prefHeight="566.0" prefWidth="268.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css">
+                                                                     <columnConstraints>
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                     </columnConstraints>
+                                                                     <rowConstraints>
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                     </rowConstraints>
+                                                                  </GridPane>
+                                                               </children>
+                                                            </AnchorPane>
+                                                         </content>
+                                                      </ScrollPane>
                                                    </children>
                                                 </Pane>
                                              </children>
                                           </AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                              <children>
-                                                <TextArea layoutX="28.0" layoutY="14.0" prefHeight="1461.0" prefWidth="362.0" styleClass="descripcion" stylesheets="@../../../estilos/fichas.css" />
+                                                <TextArea fx:id="taNotas" layoutX="29.0" layoutY="385.0" prefHeight="957.0" prefWidth="362.0" styleClass="descripcion" stylesheets="@../../../estilos/fichas.css" />
                                                 <Label layoutX="532.0" layoutY="14.0" text="Trasfondo" textFill="WHITE">
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>
                                                 </Label>
+                                                <Label layoutX="170.0" layoutY="14.0" text="Vinculo" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
                                                 <TextArea fx:id="taTrasfondo" layoutX="415.0" layoutY="49.0" prefHeight="1425.0" prefWidth="362.0" styleClass="texto" stylesheets="@../../../estilos/fichas.css" />
+                                                <TextArea fx:id="taVinculo" layoutX="28.0" layoutY="62.0" prefHeight="245.0" prefWidth="362.0" styleClass="descripcion" stylesheets="@../../../estilos/fichas.css" />
+                                                <Label layoutX="170.0" layoutY="337.0" text="Notas" textFill="WHITE">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
                                           </AnchorPane>
                                        </items>
                                     </SplitPane>
                                  </children>
                               </AnchorPane>
-                          </content>
+                           </content>
                         </ScrollPane>
                      </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Notas">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextArea layoutX="21.0" layoutY="34.0" prefHeight="565.0" prefWidth="953.0" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>
