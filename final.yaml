@@ -1,0 +1,1020 @@
+type: collection.insomnia.rest/5.0
+name: teefege API
+meta:
+  id: wrk_9425db22357844cebeeb8196bfe846bd
+  created: 1748271562672
+  modified: 1748271562672
+collection:
+  - name: users
+    meta:
+      id: fld_d8136b7f34374a2eb34b95c9f1337979
+      created: 1748090636506
+      modified: 1748122988483
+      sortKey: -1748114799422.5
+    children:
+      - url: "{{base_url}}/user"
+        name: Create user
+        meta:
+          id: req_806c182be92e4e399e74105b644485a6
+          created: 1748090639951
+          modified: 1748442572026
+          isPrivate: false
+          sortKey: -1748090639951
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username": "{{username}}",
+            	"password": "{{password}}"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/user"
+        name: Delete user
+        meta:
+          id: req_47a308022e5c4fc6979ccbd80d07d35a
+          created: 1748094080213
+          modified: 1748125509991
+          isPrivate: false
+          sortKey: -1748094080213
+        method: DELETE
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: test
+    meta:
+      id: fld_1260d6e0752c4b77b16f56a0cb52f81f
+      created: 1748122853728
+      modified: 1748886253658
+      sortKey: -1748122853728
+    children:
+      - url: "{{base_url}}/test"
+        name: test
+        meta:
+          id: req_f27c22f2dddd4cfd9518e6b3b6b4e585
+          created: 1748085513257
+          modified: 1748122860091
+          isPrivate: false
+          sortKey: -1748122859998
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/test/protected"
+        name: test protected
+        meta:
+          id: req_849b2822072745ddb3543b322a9bc059
+          created: 1748122827916
+          modified: 1748157292320
+          isPrivate: false
+          sortKey: -1748122859898
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        authentication:
+          type: bearer
+          token: "{{token}}"
+        scripts:
+          preRequest: |-
+            const login_request_body = {
+            	"username": insomnia.environment.get("username"),
+            	"password": insomnia.environment.get("password")
+            };
+
+            const raw_request = {
+            	"url": `${insomnia.environment.get("base_url")}/user/login`,
+            	"method": "POST",
+            	"header": {
+            		"Content-Type": "application/json"
+            	},
+            	"body": {
+            		"mode": "raw",
+            		"raw": JSON.stringify(login_request_body)
+            	}
+            };
+
+            const response = await new Promise((resolve, reject) => {
+            	insomnia.sendRequest(raw_request,
+            											(err, resp) => {
+            												if(err != null){
+            													reject(err);
+            												}else{
+            													resolve(resp);
+            												}
+            	})
+            });
+
+            if(response.code === 200){
+            	const response_data = JSON.parse(response.body);
+            	insomnia.environment.set("token", response_data.token);
+            }else{
+            	insomnia.environment.set("token", "");
+            }
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: manueles
+    meta:
+      id: fld_194c2a1868c842dfb0ffeb543b1a1675
+      created: 1748141367597
+      modified: 1748886262667
+      sortKey: -1748141367597
+    children:
+      - url: "{{base_url}}/manual"
+        name: lista de manueles
+        meta:
+          id: req_4bfa360f0e424084a85e1545ab60e240
+          created: 1748141373588
+          modified: 1748141518613
+          isPrivate: false
+          sortKey: -1748141373588
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{base_url}}/manual/the_stange"
+        name: manuel por id
+        meta:
+          id: req_cf1fd449217e463b9b17789686bc5a37
+          created: 1748141520550
+          modified: 1748273201656
+          isPrivate: false
+          sortKey: -1748141520550
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    scripts:
+      preRequest: |-
+        const login_request_body = {
+        	"username": insomnia.environment.get("username"),
+        	"password": insomnia.environment.get("password")
+        };
+
+        const raw_request = {
+        	"url": `${insomnia.environment.get("base_url")}/user/login`,
+        	"method": "POST",
+        	"header": {
+        		"Content-Type": "application/json"
+        	},
+        	"body": {
+        		"mode": "raw",
+        		"raw": JSON.stringify(login_request_body)
+        	}
+        };
+
+        const response = await new Promise((resolve, reject) => {
+        	insomnia.sendRequest(raw_request,
+        											(err, resp) => {
+        												if(err != null){
+        													reject(err);
+        												}else{
+        													resolve(resp);
+        												}
+        	})
+        });
+
+        if(response.code === 200){
+        	const response_data = JSON.parse(response.body);
+        	insomnia.environment.set("token", response_data.token);
+        }else{
+        	insomnia.environment.set("token", "");
+        }
+    authentication:
+      type: bearer
+      token: "{{token}}"
+  - name: The Strange
+    meta:
+      id: fld_5cb43b74c33d4dcb88c91a05a89d36b5
+      created: 1748146191517
+      modified: 1748993451585
+      sortKey: -1748146191517
+    children:
+      - name: Recursiones
+        meta:
+          id: fld_ae74498c7ade4ccfbddb2628bff7d224
+          created: 1748146201594
+          modified: 1748973357994
+          sortKey: -1748146201594
+        children:
+          - url: "{{base_url}}/{{TheStrange_prefix}}/recursion"
+            name: lista de recursiones
+            meta:
+              id: req_8e70d9e6207b45dcbdf8cc56487c9ae8
+              created: 1748146233668
+              modified: 1748146313619
+              isPrivate: false
+              sortKey: -1748146233668
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{TheStrange_prefix}}/recursion/Ardeyn"
+            name: recursion por nombre
+            meta:
+              id: req_a7959a0bdf6e4ac190a50c4cf6ed69f7
+              created: 1748146345541
+              modified: 1748278997640
+              isPrivate: false
+              sortKey: -1748143877109
+            method: GET
+            parameters:
+              - id: pair_0c7b9a97d6f44c6abd554999a4f15b9c
+                disabled: false
+              - id: pair_daf7270f7b53410aa36a64ecf07d6285
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{TheStrange_prefix}}/recursion/Ruk/rasgos"
+            name: lista rasgos de una recursion
+            meta:
+              id: req_9a2c39614d6b499087bcc214ad2c20a5
+              created: 1748155050606
+              modified: 1748155322179
+              isPrivate: false
+              sortKey: -1748142698829.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{TheStrange_prefix}}/recursion/Ruk/spicyDescriptor"
+            name: descriptor picanton 🔥🔥🔥
+            meta:
+              id: req_83671ac3b83545289e6a2cbbf9942da4
+              created: 1748276641709
+              modified: 1748279025415
+              isPrivate: false
+              sortKey: -1748145055388.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{TheStrange_prefix}}/recursion/Ruk/creaturas"
+            name: lista de creaturas pa la recursion
+            meta:
+              id: req_81410c9740b1487780f08fc84ede3943
+              created: 1748446751519
+              modified: 1748446784559
+              isPrivate: false
+              sortKey: -1748145644528.25
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: descriptor
+        meta:
+          id: fld_3a0220ee475e46a6b103ae12cffeec54
+          created: 1748277348057
+          modified: 1748441611840
+          sortKey: -1748277348057
+        children:
+          - url: "{{base_url}}/{{TheStrange_prefix}}/descriptor"
+            name: lista de descriptores
+            meta:
+              id: req_dfd8faaef9584d5fae67be032d2b320d
+              created: 1748277367527
+              modified: 1748277383386
+              isPrivate: false
+              sortKey: -1748277373091
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Creaturador
+        meta:
+          id: fld_d496c1a036394629914ed3443a0c491f
+          created: 1748448406983
+          modified: 1748947299319
+          sortKey: -1748448406983
+        children:
+          - url: "{{base_url}}/{{TheStrange_prefix}}/creaturador"
+            name: lista de creaturas
+            meta:
+              id: req_6d70d2edffe441b98471df6dafeb3189
+              created: 1748448473465
+              modified: 1748448586220
+              isPrivate: false
+              sortKey: -1748448483872
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{TheStrange_prefix}}/creaturador/GREEN HOMUNCULUS"
+            name: info de LA CREATURA
+            meta:
+              id: req_05e7dac5dfc8469bb7af075b715cbc0c
+              created: 1748448609294
+              modified: 1748448628605
+              isPrivate: false
+              sortKey: -1748362928481.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: campaña
+        meta:
+          id: fld_a09db30a44a1458d948e7f16ad40d649
+          created: 1748450914692
+          modified: 1748951003445
+          sortKey: -1748450914892
+        children:
+          - url: "{{base_url}}/campanyan"
+            name: lista de campañas
+            meta:
+              id: req_38dd6b10cc9845979ebe07f8e2f82a6e
+              created: 1748450923253
+              modified: 1748450954692
+              isPrivate: false
+              sortKey: -1748450936453
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/webi wabo"
+            name: uma campaña
+            meta:
+              id: req_3bab6f4fb7cc4674929b6390c5829a91
+              created: 1748450975932
+              modified: 1748450982324
+              isPrivate: false
+              sortKey: -1748449710162.5
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/mine"
+            name: lista de campañas tuias
+            meta:
+              id: req_df99a432005742fb896b4533fb544f25
+              created: 1748451032342
+              modified: 1748451140650
+              isPrivate: false
+              sortKey: -1748450323307.75
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan"
+            name: creacionar
+            meta:
+              id: req_f049ff2724b449dbaf651e263727a4dd
+              created: 1748454130812
+              modified: 1748454239314
+              isPrivate: false
+              sortKey: -1748449097017.25
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"nombre": "brea",
+                	"descripcion": "re fachera la campaña",
+                	"manual": "the_stange",
+                	"idImagen": 1,
+                	"contrasenyn": "chupame la polla"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/3/archivar"
+            name: archivar
+            meta:
+              id: req_81c57bd99279481db5043a54e1e905f4
+              created: 1748889945697
+              modified: 1748890179326
+              isPrivate: false
+              sortKey: -1748449403589.875
+            method: POST
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/unirme"
+            name: joinear
+            meta:
+              id: req_e53ede2deb524925923e54fcfa3953c9
+              created: 1748890931886
+              modified: 1748947351806
+              isPrivate: false
+              sortKey: -1748448790444.625
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"id_campaña": 5,
+                	"contrasenyan": "chupame la polla"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/1/5"
+            name: quitar usuario
+            meta:
+              id: req_a7268f37cebe46a685252e4cb639d892
+              created: 1748947052519
+              modified: 1748947415839
+              isPrivate: false
+              sortKey: -1748449250303.5625
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/3/fichas"
+            name: fichardas
+            meta:
+              id: req_9a04764b92e24e85a6ce379a7174d3e8
+              created: 1748950095624
+              modified: 1748950117587
+              isPrivate: false
+              sortKey: -1748449556876.1875
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/campanyan/3/fichas/1"
+            name: anyadir fichardas
+            meta:
+              id: req_5ac8e592903646f288c88cc6bad54ad9
+              created: 1748950879081
+              modified: 1748950919302
+              isPrivate: false
+              sortKey: -1748449480233.0312
+            method: POST
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: rasgos
+        meta:
+          id: fld_ce92a5be0b664fceaf20c827997fb9d4
+          created: 1748645530896
+          modified: 1748969614333
+          sortKey: -1748645530896
+        children:
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/rasgo"
+            name: lista de rasgos
+            meta:
+              id: req_8a05a1a5edc347fe83648c4844bb587c
+              created: 1748645541975
+              modified: 1748645720876
+              isPrivate: false
+              sortKey: -1748645550679
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/rasgo/ABIDES IN STONE"
+            name: rasgo por nombre
+            meta:
+              id: req_5ac32e3154f9466ab8cb7b66e0dcf134
+              created: 1748646427253
+              modified: 1748646573258
+              isPrivate: false
+              sortKey: -1748548243566
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: clases
+        meta:
+          id: fld_ec702925a7264875b667d7313f53ff6d
+          created: 1748647227970
+          modified: 1748947314292
+          sortKey: -1748548222894
+        children:
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/clase"
+            name: lista de clases
+            meta:
+              id: req_c799d4565f1e45ddbd60b82a307428c9
+              created: 1748647227972
+              modified: 1748647238340
+              isPrivate: false
+              sortKey: -1748645550679
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/rasgo/ABIDES IN STONE"
+            name: rasgo por nombre
+            meta:
+              id: req_dbea7eb6c3d04672b8b7c8c694adc6bf
+              created: 1748647227973
+              modified: 1748647227973
+              isPrivate: false
+              sortKey: -1748548243566
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: ficha
+        meta:
+          id: fld_a698d58a80c148c0a42c38de25bb868f
+          created: 1748649394511
+          modified: 1748993451585
+          sortKey: -1748596876895
+        children:
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/ficha"
+            name: lista de tus fichas
+            meta:
+              id: req_18726e3b5dad421eac5183fdb91fb04b
+              created: 1748649394516
+              modified: 1748649419377
+              isPrivate: false
+              sortKey: -1748645550679
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/ficha/8"
+            name: ficha por id
+            meta:
+              id: req_f53a771f077b412288c5a77cfd6595e1
+              created: 1748649394518
+              modified: 1748993258384
+              isPrivate: false
+              sortKey: -1748548243566
+            method: GET
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/ficha"
+            name: creacionar ficha
+            meta:
+              id: req_09f5f9e2cd0c488a9b1074ccec62c4b9
+              created: 1748649468740
+              modified: 1748991318511
+              isPrivate: false
+              sortKey: -1748499590009.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: >-
+                {
+                	"Manual_id": "the_stange",
+                	"accion": true,
+                	"armadura": 16,
+                	"aumentarC": true,
+                	"clase": "arkero",
+                	"competenciaH": false,
+                	"descriptor": "describeme esta",
+                	"dinero": 200,
+                	"esfuerzo": 420,
+                	"esfuerzoExtra": true,
+                	"experiencia": 69,
+                	"hora": true,
+                	"horas": true,
+                	"inteligenciaAct": 12,
+                	"limiteDispositivos": 5,
+                	"maxDispositivos": 1,
+                	"minutos": true,
+                	"nombre": "yuan el arkero",
+                	"otros": false,
+                	"perfeccion": true,
+                	"rango": 60,
+                	"rasgo": "no",
+                	"recuperacion": "no >:(",
+                	"recursion": "Ruk",
+                	"reservaInteligenciaMax": 20,
+                	"reservaVelocidadMax": 20,
+                	"reservaVigorMax": 20,
+                	"tipo": "malote",
+                	"trasfondo": "muy muy malote",
+                	"velocidadAct": 20,
+                	"ventajaInteligenciaMax": 20,
+                	"ventajaVelocidadMax": 20,
+                	"ventajaVigorMax": 20,
+                	"vigorAct": 20,
+                	"vinculoDescriptor": "no me describes no me vinuclo",
+                	"dispositivos": [{"nombre": "motumbo"}],
+                	"equipo": [{"nombre": "pajillator plus evolution 2019 edition"}],
+                	"capacidadesEspeciales": [{"nombre": "Mamada con los pies"}],
+                	"competencias": [{"nombre": "muy capaz", "especializado": true}]
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/{{ _.TheStrange_prefix }}/ficha/8"
+            name: deletus
+            meta:
+              id: req_8df53c5770ac4853ab950ea9c3fe6b53
+              created: 1748993273849
+              modified: 1748993276769
+              isPrivate: false
+              sortKey: -1748523916787.75
+            method: DELETE
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+    scripts:
+      preRequest: |-
+        const login_request_body = {
+        	"username": insomnia.environment.get("username"),
+        	"password": insomnia.environment.get("password")
+        };
+
+        const raw_request = {
+        	"url": `${insomnia.environment.get("base_url")}/user/login`,
+        	"method": "POST",
+        	"header": {
+        		"Content-Type": "application/json"
+        	},
+        	"body": {
+        		"mode": "raw",
+        		"raw": JSON.stringify(login_request_body)
+        	}
+        };
+
+        const response = await new Promise((resolve, reject) => {
+        	insomnia.sendRequest(raw_request,
+        											(err, resp) => {
+        												if(err != null){
+        													reject(err);
+        												}else{
+        													resolve(resp);
+        												}
+        	})
+        });
+
+        if(response.code === 200){
+        	const response_data = JSON.parse(response.body);
+        	insomnia.environment.set("token", response_data.token);
+        }else{
+        	insomnia.environment.set("token", "");
+        }
+    authentication:
+      type: bearer
+      token: "{{token}}"
+    environment:
+      TheStrange_prefix: the_strange
+  - url: "{{base_url}}/user/login"
+    name: Login
+    meta:
+      id: req_76d218940db346fa8d35e9d61a8fdd24
+      created: 1748103775780
+      modified: 1748122984286
+      isPrivate: false
+      sortKey: -1748106745117
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "{{username}}",
+        	"password": "{{password}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{base_url}}/user/logout"
+    name: Logout
+    meta:
+      id: req_7036b29d697145cfbc32d807852a443c
+      created: 1748127377794
+      modified: 1748128398360
+      isPrivate: false
+      sortKey: -1748100412665
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "{{username}}",
+        	"password": "{{password}}"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    authentication:
+      type: bearer
+      token: "{{token}}"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_8773673fdf40468ab930d1e1cbde8d6f
+    created: 1748085513199
+    modified: 1748993451580
+environments:
+  name: tefeye
+  meta:
+    id: env_a5598c3eedc84d0e95b2b5a2e3f63c92
+    created: 1748085513193
+    modified: 1748993451583
+    isPrivate: false
+  data:
+    base_url: http://localhost:8080
+    username: juan
+    password: juan
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiekdBUFBZSzlnYzYzOXhrVTV0OXZIbjVGVnlpcWxXRGNVZ1gzaktrdTJscWpqOWVkWlMzUWZkQkE1anRUNTE1WW55NmxtZVZNeVFrTjg2SGY3d0N6Z0JTOGtlZnJkR0UxOXUyc25BM3hzZUc4M3FsRXFYNE1hVTloa0dSajRSZW5Jc1ArbnhYRDhSVkhnQWNKYmRVUkJBPT0ifQ.HgoLwkJseJFq7LjLpoOpkVduPBu277Q5EcGTOtxyyHA
+  subEnvironments:
+    - name: pi
+      meta:
+        id: env_61a6c6cc6c8f4f8e850ec53883bb1a7c
+        created: 1748886156939
+        modified: 1748973338508
+        isPrivate: false
+        sortKey: 1748886156939
+      data:
+        base_url: http://192.168.1.129:13013
+        username: juan
+        password: juan
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZ211bHhybVVDZW9wQnczVEhkWkNrME9wWWpJZWdTdWd3aFpJMzd6dEYxamxmNmNLZnQwZjRsdC9Zb0wxRUhMNUkrK0xjTUttQXIxRHlwU3BTTm84Q0Z0U0szV1YrUUpYdHhVdldTenBSd2p2azhQLzRETVB5dnNrTHZOUjV5MkNoaDdmbEpoQmJucVJvVWVETWlyUm1RPT0ifQ.RN2uw_aTrdGSTAbcfPwMQ9xoL9Dwfo9mV-mWTofEsX0
+    - name: tefeye
+      meta:
+        id: env_fe3fafc46e6b48168f0bfceb850ea93d
+        created: 1748947236077
+        modified: 1748993451582
+        isPrivate: false
+        sortKey: 1748886156989
+      data:
+        base_url: http://localhost:8080
+        username: juan
+        password: juan
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoibDgvWWUrNGtRSUJGVVRyUWZKZVRWTWVqRWNXVE5JRVI4Z2FmdExieGQvT243OUVyK2hlY3RwM1RXUEprOFZhMWMrMm9raDhFZUJqcElSS3FpZEh2dnhDRXZSdllDU3FrK0JiZUFhNVJTQkhPWGZheVJLaU9sR0IrSXV2WldUS3hmRncxYkhWMS9YYml0MG05WHdlemdBPT0ifQ.qA338sMTKyKynX8Y-Vp7RKKhdTvVtsRvYAABm0yNfx0
+    - name: tefeye yuan
+      meta:
+        id: env_6943c1d64347461dbe08d9e213b08292
+        created: 1748947274494
+        modified: 1748947537037
+        isPrivate: false
+        sortKey: 1748886157039
+      data:
+        base_url: http://localhost:8080
+        username: yuan
+        password: yuan
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiTDc3WStXVkY2bW0zRy96K0pnSDJqdys1ck95RjQ3cUV0bkJPQlV4NUE5SGVkd2I4NE5aR0xCVkMyNTV2d21OcGZxc3FGZkY5eTYzdFF2YXM3bFdMOEJpcmZNOXY5ZFhLTlovZi81U1BwZ0ZJMGlTNXhydFdxb3VqQU5FeEV0SkdTWWJGajdWMGc4aEZpRS9hYnBsemtRPT0ifQ.YdntYWsrs7YvpAc7WQoOfU4leprKAwNySlitiq52wH8
